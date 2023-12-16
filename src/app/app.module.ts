@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import { ErrorComponent } from './error/error.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
@@ -33,13 +31,14 @@ import { RangeSelectorComponent } from './companies/range-selector/range-selecto
 import { PaginationComponent } from './companies/pagination/pagination.component';
 import { SearchBarComponent } from './companies/search-bar/search-bar.component';
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
+import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
-    ErrorComponent,
     NavbarComponent,
     InscrireComponent,
     CompanyInscriptionComponent,
@@ -66,13 +65,16 @@ import { AccessForbiddenComponent } from './error/access-forbidden/access-forbid
     RangeSelectorComponent,
     PaginationComponent,
     SearchBarComponent,
-    AccessForbiddenComponent
+    AccessForbiddenComponent,
+    NonExistentURLsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

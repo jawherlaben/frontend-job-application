@@ -8,11 +8,11 @@ import { AuthenticationService } from '../services/authentification.service';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent {
-
   authForm: FormGroup;
-    
+
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthenticationService 
   ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -27,8 +27,17 @@ export class AuthentificationComponent {
 
   onSubmit() {
     if (this.authForm.valid) {
-      console.log('Form Value', this.authForm.value);
-      // Implement your authentication logic here
+      this.authService.login(this.authForm.value.email, this.authForm.value.password)
+        .subscribe(
+          response => {
+            console.log('Login successful', response);
+            // Handle successful login, such as redirecting to another page
+          },
+          error => {
+            console.error('Login error', error);
+            // Handle login error, such as showing a message to the user
+          }
+        );
     }
   }
 }

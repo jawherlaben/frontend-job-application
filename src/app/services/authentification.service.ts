@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ export interface AuthResponse {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
   private authUrl = 'http://';
 
@@ -20,7 +21,6 @@ export class AuthenticationService {
     return this.http.post<AuthResponse>(this.authUrl, { email, password }, { headers })
       .pipe(
         map(response => {
-          // If there's a token in the response, save it in local storage or handle it as needed
           if (response && response.token) {
             localStorage.setItem('currentUserToken', response.token);
           }
