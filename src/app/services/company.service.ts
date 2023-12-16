@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Company } from '../Model/Company';
 
-
+@Injectable({
+  providedIn: 'root'
+})
 export class CompanyService {
 
   private companies: Company[] = [

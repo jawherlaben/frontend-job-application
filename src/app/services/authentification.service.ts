@@ -2,17 +2,17 @@ import { Injectable, Injector } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 export interface AuthResponse {
   token: string;
 }
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthenticationService {
-  private authUrl = 'http://';
+  private authUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
