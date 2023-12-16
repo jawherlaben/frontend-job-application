@@ -17,12 +17,14 @@ export class CompaniesComponent implements OnInit {
 
 
   
-  constructor() {}
+  constructor() {
+    this.companies = this.getCompanies(); // Initialize with your data fetching logic
+    this.filteredCompanies = this.companies;
+    this.totalCompanies = this.companies.length;
+  }
 
   ngOnInit(): void {
-    this.companies = this.getCompanies();
-    this.totalCompanies = this.companies.length;
-    this.updatePaginatedCompanies();
+
   }
 
   getCompanies(): Company[] {
@@ -58,5 +60,7 @@ export class CompaniesComponent implements OnInit {
     this.filteredCompanies = this.companies.filter((company) =>
       company.name.toLowerCase().includes(this.searchTerm)
     );
+    this.totalCompanies = this.filteredCompanies.length;
+    this.updatePaginatedCompanies();
   }
 }
