@@ -1,0 +1,13 @@
+.main-container {
+    display: flex;
+    flex-direction: column-reverse; 
+    align-items: center;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .main-container {
+      flex-direction: row; 
+    }
+  }
+  

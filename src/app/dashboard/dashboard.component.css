@@ -1,0 +1,22 @@
+.app-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  /* Assign widths to components for layout */
+  app-profile-sidebar {
+    width: 20%;
+    /* More styling here */
+  }
+  
+  app-feed {
+    width: 60%;
+    /* More styling here */
+  }
+  
+  app-network-sidebar, app-advertisement {
+    width: 20%;
+    /* More styling here */
+  }
+  

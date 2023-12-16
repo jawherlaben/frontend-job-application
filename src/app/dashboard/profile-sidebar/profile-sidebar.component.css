@@ -1,0 +1,40 @@
+.profile-sidebar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .avatar {
+    display: block;
+    margin-bottom: 16px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
+  
+  .photo-button {
+    margin-bottom: 16px;
+    background-color: #0a66c2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .photo-button:hover {
+    background-color: #084482;
+  }
+  
+  .profile-links a {
+    display: block;
+    color: #0a66c2;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  
+  .profile-links a:hover {
+    text-decoration: underline;
+  }
+  

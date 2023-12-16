@@ -1,0 +1,57 @@
+.resources {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .resources h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .resource-list li {
+    display: flex;
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .resource-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .icon {
+    font-size: 24px; /* Adjust size as needed */
+    width: 30px; /* Ensure icons align nicely */
+    margin-right: 16px;
+  }
+  
+  .resource-list strong {
+    font-size: 16px;
+    color: #333;
+    display: block;
+  }
+  
+  .resource-list span {
+    font-size: 14px;
+    color: #666;
+    display: block;
+  }
+  
+  .resource-list p {
+    font-size: 14px;
+    color: #666;
+    margin: 4px 0;
+  }
+  

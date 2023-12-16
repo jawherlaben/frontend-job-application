@@ -1,0 +1,98 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    height: 80%;
+}
+
+.login-section {
+    width: 40%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #003d82;
+}
+
+.login-form a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.login-form p {
+    font-size: 12px;
+}
+
+.illustration-section {
+    width: 60%;
+    /* Align the image to the center if it doesn't occupy the full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustration-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cta-section {
+    background-color: #f3f2ef;
+    padding: 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: #333;
+}
+
+.cta-section button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #0056b3;
+    background-color: white;
+    cursor: pointer;
+}
+
+.cta-section button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+    }
+    .login-section, .illustration-section {
+        width: 100%;
+    }
+}

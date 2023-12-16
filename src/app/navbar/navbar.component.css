@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 0 10px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-left: auto;  /* Cela pousse les liens et les boutons vers la droite */
+}
+
+/* Liens de navigation */
+.navbar-nav .nav-link {
+  color: white;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Boutons d'inscription et d'authentification */
+.navbar-nav .btn {
+  padding: 5px 10px;
+  margin-left: 10px; /* Espace entre les boutons */
+  font-weight: bold;
+
+}
+
+.btn-outline-primary {
+  border-color: white;
+  color: white;
+  font-weight: bold;
+
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  font-weight: bold;
+
+}
+
+.btn-primary:hover {
+  background-color: darkblue;
+  font-weight: bold;
+
+}

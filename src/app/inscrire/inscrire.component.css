@@ -1,0 +1,59 @@
+.reg-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+h2 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+.reg-inner {
+  background-color: #333; 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 650px;
+  color: #fff; /* White text */
+}
+
+.nav-inscription {
+  margin-bottom: 20px;
+  background-color: #333;
+}
+
+/* Centre les boutons dans le conteneur .nav-inscription */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-tab {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 10px 100px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+  border-bottom: 3px solid transparent; /* Pour éviter les sauts de mise en page */
+}
+
+.button-tab:hover, .button-tab.active {
+  border-bottom: 3px solid #007bff;
+}
+
+.button-tab:focus {
+  outline: none;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
