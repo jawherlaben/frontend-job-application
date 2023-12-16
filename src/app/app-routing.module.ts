@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
@@ -18,6 +19,8 @@ const routes: Routes = [
   {path: 'companies' , component : CompaniesComponent},
   { path: 'inscrire', component: InscrireComponent },
   { path: 'dashboard', component: DashboardComponent },
+
+  { path: '403', component: AccessForbiddenComponent },
 
   { path: '**', component: ErrorComponent },
 

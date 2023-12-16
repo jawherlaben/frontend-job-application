@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../services/authentification.service';
 
 @Component({
   selector: 'app-authentification',
@@ -10,12 +11,13 @@ export class AuthentificationComponent {
 
   authForm: FormGroup;
     
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+  ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]
     });
-
   }
 
   isInvalidAndTouched(field: string): boolean {

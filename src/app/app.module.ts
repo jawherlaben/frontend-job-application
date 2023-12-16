@@ -32,6 +32,8 @@ import { CompanyListComponent } from './companies/company-list/company-list.comp
 import { RangeSelectorComponent } from './companies/range-selector/range-selector.component';
 import { PaginationComponent } from './companies/pagination/pagination.component';
 import { SearchBarComponent } from './companies/search-bar/search-bar.component';
+import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { SearchBarComponent } from './companies/search-bar/search-bar.component'
     CompanyListComponent,
     RangeSelectorComponent,
     PaginationComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    AccessForbiddenComponent
   ],
   imports: [
     BrowserModule,
