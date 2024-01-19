@@ -1,15 +1,21 @@
 
 <div class="flex justify-between gap-5 mx-8 mb-4">
-    <form class="flex flex-col gap-5 self-center justify-center p-5 h-full rounded-xl shadow-xl" (submit)="onSubmit()">
-        <h1 class="text-xl font-medium text-center">Bienvenue dans Profilïx</h1>
-        
-        <app-input inputType="text" inputId="email" inputPlaceholder="Email"></app-input>
-        <app-input inputType="password" inputId="password" inputPlaceholder="Password"></app-input>
-        <div class="flex justify-between items-center">
-            <a class="text-blue-500" [routerLink]="['/inscrire']">Pas encore membre?</a>
-            <app-button type="submit">Se connecter</app-button>
-        </div>
-        <p class="text-xs text-gray-500">En cliquant sur Continuer, vous acceptez les conditions d'utilisation, la politique de confidentialité et la politique en matière de cookies de Profilix.</p>
+    <form class="h-full self-center" (submit)="onSubmit()">
+        <app-card>
+            <h1 class="text-xl font-medium text-center">Bienvenue dans Profilïx</h1>
+            
+            <div class="flex flex-col gap-2">
+                <app-input inputType="text" inputId="email" inputPlaceholder="Email"></app-input>
+                <app-input inputType="password" inputId="password" inputPlaceholder="Password"></app-input>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <a class="text-blue-500" [routerLink]="['/inscrire']">Pas encore membre?</a>
+                <app-button type="submit">Se connecter</app-button>
+            </div>
+
+            <p class="text-xs text-gray-500">En cliquant sur Continuer, vous acceptez les conditions d'utilisation, la politique de confidentialité et la politique en matière de cookies de Profilix.</p>
+        </app-card>
     </form>
 
     <div>

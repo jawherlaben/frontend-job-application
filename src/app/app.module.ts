@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './common/button/button.component';
 import { InputComponent } from './common/input/input.component';
 import { UnderlinedLinkComponent } from './common/underlined-link/underlined-link.component';
+import { CardComponent } from './common/card/card.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { UnderlinedLinkComponent } from './common/underlined-link/underlined-lin
     NonExistentURLsComponent,
     ButtonComponent,
     InputComponent,
-    UnderlinedLinkComponent
+    UnderlinedLinkComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
