@@ -1,36 +1,11 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.home-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 50px;
-    height: 80%;
-}
-
-.login-section {
-    width: 40%;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .login-form input {
-    padding: 10px;
-    margin: 5px 0;
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 .login-form button {
-    padding: 10px;
+    padding: 0.5rem;
     background-color: #0056b3;
     color: white;
     border: none;
@@ -51,27 +26,10 @@ body, html {
     font-size: 12px;
 }
 
-.illustration-section {
-    width: 60%;
-    /* Align the image to the center if it doesn't occupy the full width */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.illustration-section img {
-    max-width: 100%;
-    height: auto;
-}
-
 .cta-section {
     background-color: #f3f2ef;
-    padding: 20px;
+    padding: 2rem;
     text-align: center;
-}
-
-.cta-section h2 {
-    color: #333;
 }
 
 .cta-section button {
@@ -87,12 +45,8 @@ body, html {
     color: white;
 }
 
-/* Responsive design adjustments */
 @media (max-width: 768px) {
     .home-container {
         flex-direction: column;
-    }
-    .login-section, .illustration-section {
-        width: 100%;
     }
 }

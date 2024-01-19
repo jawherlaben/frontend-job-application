@@ -1,24 +1,25 @@
 
-<div class="home-container">
-    <div class="login-section">
-        <h1>Welcome to your professional community</h1>
-        <form class="login-form">
-            <input type="text" placeholder="Email or phone" required>
-            <input type="password" placeholder="Password" required>
-            <a href="#">Forgot password?</a>
-            <button type="submit">Sign In</button>
-            <p>By clicking Continue, you agree to LinkedIns User Agreement, Privacy Policy, and Cookie Policy.</p>
-        </form>
+<div class="flex justify-between gap-5 mx-8 mb-4">
+    <form class="flex flex-col gap-5 self-center justify-center p-5 h-full rounded-xl shadow-xl" (submit)="onSubmit()">
+        <h1 class="text-xl font-medium text-center">Bienvenue dans Profilïx</h1>
+        
+        <app-input inputType="text" inputId="email" inputPlaceholder="Email"></app-input>
+        <app-input inputType="password" inputId="password" inputPlaceholder="Password"></app-input>
+        <div class="flex justify-between items-center">
+            <a class="text-blue-500" [routerLink]="['/inscrire']">Pas encore membre?</a>
+            <app-button type="submit">Se connecter</app-button>
+        </div>
+        <p class="text-xs text-gray-500">En cliquant sur Continuer, vous acceptez les conditions d'utilisation, la politique de confidentialité et la politique en matière de cookies de Profilix.</p>
+    </form>
+
+    <div>
+        <img class="rounded-xl" src="assets/images/workspace.png" alt="Professional at Work">
     </div>
-    <div class="illustration-section">
-        <!-- Image is supposed to be here -->
-        <img src="assets/images/workspace.png" alt="Professional at Work">
-    </div>
 </div>
-<div class="cta-section">
-    <h2>Post your job for millions of people to see</h2>
-    <button [routerLink]="['inscrire']">Post a job</button>
+
+<div class="flex flex-col gap-5 justify-center items-center bg-gray-300 p-5">
+    <h2 class="text-xl font-semibold">Partager des offres de travail pour des personnes motivées</h2>
+    <app-button [routerLink]="['/inscrire']">Publier une offre</app-button>
 </div>
-<div>
-    <app-companies></app-companies>
-</div>
+
+<app-companies></app-companies>
