@@ -33,6 +33,8 @@ import { SearchBarComponent } from './companies/search-bar/search-bar.component'
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonComponent } from './common/button/button.component';
+import { InputComponent } from './common/input/input.component';
 
 
 @NgModule({
@@ -66,7 +68,9 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationComponent,
     SearchBarComponent,
     AccessForbiddenComponent,
-    NonExistentURLsComponent
+    NonExistentURLsComponent,
+    ButtonComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
