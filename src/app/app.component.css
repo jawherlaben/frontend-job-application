@@ -1,7 +1,3 @@
-.router-outlet-wrapper {
-  padding-top: 90px; 
-}
-
 app-authentification {
   margin-top: 20px; 
   width: 100%;
