@@ -8,15 +8,27 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() primary: boolean = true;
   @Input() buttonType: string = 'button';
+  @Input() disabled: boolean = false;
   @Output() onClick = new EventEmitter<MouseEvent>();
+
+  class: string;
+
+  constructor() {
+    this.class = "rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in";
+  }
 
   onClickButton(event: MouseEvent) {
     this.onClick.emit(event);
   }
 
   get buttonClass(): string {
-    return this.primary ?
-      'rounded-md bg-blue-500 text-white py-2 px-4 font-medium hover:bg-blue-700 transition ease-out hover:ease-in'
-      : 'rounded-md bg-white p-2 text-blue-500 font-medium hover:bg-blue-500 hover:text-white transition ease-out hover:ease-in';
+    if (this.primary)
+      this.class += " bg-blue-500 text-white hover:bg-blue-700";
+    else
+      this.class += " bg-white text-blue-500 hover:bg-blue-500 hover:text-white";
+    
+    if (this.disabled)
+      this.class += " opacity-50 cursor-not-allowed";
+    return this.class;
   }
 }

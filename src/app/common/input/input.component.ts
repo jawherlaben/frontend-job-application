@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class InputComponent {
   @Input() inputClass: string = 'px-5 py-2 rounded-md';
   @Input() inputPlaceholder: string = '';
+  @Input() inputFormControlName: string = '';
   @Input() inputId: string = '';
   @Input() inputType: string = '';
 }
