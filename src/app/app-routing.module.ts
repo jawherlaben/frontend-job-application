@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthentificationComponent } from './authentification/authentification.component';
-import { InscrireComponent } from './inscrire/inscrire.component';
+import { InscrireComponent } from './authentification/inscrire/inscrire.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';

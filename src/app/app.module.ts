@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import { InscrireComponent } from './inscrire/inscrire.component';
-import { CompanyInscriptionComponent } from './inscrire/company-inscription/company-inscription.component';
-import { UserInscriptionComponent } from './inscrire/user-inscription/user-inscription.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -37,6 +34,10 @@ import { ButtonComponent } from './common/button/button.component';
 import { InputComponent } from './common/input/input.component';
 import { UnderlinedLinkComponent } from './common/underlined-link/underlined-link.component';
 import { CardComponent } from './common/card/card.component';
+import { ConnecterComponent } from './authentification/connecter/connecter.component';
+import { InscrireComponent } from './authentification/inscrire/inscrire.component';
+import { UserInscriptionComponent } from './authentification/inscrire/user-inscription/user-inscription.component';
+import { CompanyInscriptionComponent } from './authentification/inscrire/company-inscription/company-inscription.component';
 
 
 @NgModule({
@@ -44,9 +45,6 @@ import { CardComponent } from './common/card/card.component';
     AppComponent,
     AuthentificationComponent,
     NavbarComponent,
-    InscrireComponent,
-    CompanyInscriptionComponent,
-    UserInscriptionComponent,
     HomeComponent,
     FooterComponent,
     CompaniesComponent,
@@ -74,7 +72,11 @@ import { CardComponent } from './common/card/card.component';
     ButtonComponent,
     InputComponent,
     UnderlinedLinkComponent,
-    CardComponent
+    CardComponent,
+    ConnecterComponent,
+    InscrireComponent,
+    UserInscriptionComponent,
+    CompanyInscriptionComponent
   ],
   imports: [
     BrowserModule,
