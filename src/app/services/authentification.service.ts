@@ -7,10 +7,8 @@ import { environment } from 'src/environments/environment.prod';
 export interface AuthResponse {
   token: string;
 }
-@Injectable({
-  providedIn: 'root'
-})
 
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private authUrl = environment.apiUrl;
 
