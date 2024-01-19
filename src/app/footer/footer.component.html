@@ -3,22 +3,22 @@
     <img src="assets/Profilix_dbg.png" alt="Profilix Logo" />
   </div>
 
-  <div class="flex gap-10 pt-5">
+  <div class="flex gap-10 pt-5 text-white">
     <div>
-      <h5 class="text-lg text-white">Parcourir Proflix</h5>
+      <h5 class="text-lg font-medium">Parcourir Proflix</h5>
       <br>
-      <ul>
-        <li><a [routerLink]="['profile']">Apprentissage</a></li>
-        <li><a [routerLink]="['dashboard']">Emplois</a></li>
+      <ul class="text-sm">
+        <li><app-underlined-link [routerLink]="['profile']">Apprentissage</app-underlined-link></li>
+        <li><app-underlined-link [routerLink]="['dashboard']">Emplois</app-underlined-link></li>
       </ul>
     </div>
 
     <div>
-      <h5 class="text-lg text-white">Général</h5>
+      <h5 class="text-lg font-medium">Général</h5>
       <br>
-      <ul>
-        <li><a [routerLink]="['contact']">Contact</a></li>
-        <li><a href="#">À propos</a></li>
+      <ul class="text-sm">
+        <li><app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link></li>
+        <li><app-underlined-link href="#">À propos</app-underlined-link></li>
       </ul>
     </div>
   </div>
