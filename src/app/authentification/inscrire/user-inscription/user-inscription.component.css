@@ -15,25 +15,6 @@
     width: 100%; 
   }
   
-  .btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-  }
-  
-  .btn-primary:disabled {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    opacity: 0.65;
-  }
-  
   /* Si vous avez besoin de styles spécifiques pour le bouton de la navbar de l'InscrireComponent */
   .navbar-inscription .btn {
     margin-right: 10px;

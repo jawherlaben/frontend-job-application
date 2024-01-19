@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-
 @Component({
   selector: 'app-user-inscription',
   templateUrl: './user-inscription.component.html',

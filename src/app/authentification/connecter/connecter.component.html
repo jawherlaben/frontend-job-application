@@ -1,0 +1,28 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <app-card>
+        <h1 class="text-xl font-medium text-center">Bienvenue dans Profilïx</h1>
+        
+        <div class="flex flex-col gap-2">
+            <label for="email">Email</label>
+            <input class="px-5 py-2 rounded-md" type="email" id="email" name="email" formControlName="email" placeholder="Email" required />
+            <div *ngIf="isInvalidAndTouched('email')" class="text-red-500"> Please enter a valid email address. </div>
+  
+            <label for="password">Password</label>
+            <input class="px-5 py-2 rounded-md" type="password" id="password" name="password" formControlName="password" placeholder="Password" required />
+            <div *ngIf="isInvalidAndTouched('password')" class="text-red-500"> Please enter a valid password. </div>
+        </div>
+  
+        <div class="flex justify-between items-center">
+            <a class="text-blue-500" [routerLink]="['/inscrire']">Pas encore membre?</a>
+            <button
+              class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="!authForm.valid"
+              type="submit"
+            >
+              Se connecter
+            </button>
+        </div>
+  
+        <p class="text-xs text-gray-500">En s'identifiant, vous acceptez les conditions d'utilisation et de confidentialité de Profilix.</p>
+    </app-card>
+  </form>
