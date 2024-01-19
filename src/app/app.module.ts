@@ -35,6 +35,7 @@ import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './common/button/button.component';
 import { InputComponent } from './common/input/input.component';
+import { UnderlinedLinkComponent } from './common/underlined-link/underlined-link.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { InputComponent } from './common/input/input.component';
     AccessForbiddenComponent,
     NonExistentURLsComponent,
     ButtonComponent,
-    InputComponent
+    InputComponent,
+    UnderlinedLinkComponent
   ],
   imports: [
     BrowserModule,
