@@ -1,16 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand" [routerLink]="['home']">
+<nav class="app-navbar fixed top-0 w-full z-50 flex justify-between items-center bg-gray-700 h-20 p-4 px-10">
+  <a [routerLink]="['home']">
     <img src="assets/Profilix_dbg.png" alt="Profilix" width="100">
   </a>
   
-  <!-- Ajout d'un conteneur div pour les liens et les boutons avec la classe ml-auto -->
-  <div class="navbar-nav ml-auto">
-    <a class="nav-link" [routerLink]="['home']">Accueil </a>
-    <a class="nav-link" [routerLink]="['companies']">Companies</a>
-    <a class="nav-link" [routerLink]="['contact']">Contact</a>
+  <div class="flex gap-5 items-center text-white">
+    <a [routerLink]="['home']">Accueil </a>
+    <a [routerLink]="['companies']">Companies</a>
+    <a [routerLink]="['contact']">Contact</a>
 
     
-    <button class="btn btn-outline-primary" type="button" [routerLink]="['inscrire']">S'inscrire</button>
-    <button class="btn btn-primary" type="button" [routerLink]="['authentification']">S'identifier</button>
+    <app-button buttonType="button" [routerLink]="['inscrire']">S'inscrire</app-button>
+    <app-button buttonType="button" [routerLink]="['authentification']">Se connecter</app-button>
   </div>
 </nav>

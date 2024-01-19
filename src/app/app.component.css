@@ -2,52 +2,10 @@
   padding-top: 90px; 
 }
 
-
-app-navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  body {
-    padding-top: 70px;
-  }
-  
-  app-authentification {
-    margin-top: 20px; 
-    width: 100%;
-    display: block; 
-    justify-content: center;
-    align-items: center;
-  }
-  
-:root {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --link-color: #007bff;
-  }
-  
-  body.dark-mode {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --link-color: #0096ff;
-  }
-  
-  body.light-mode {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --link-color: #0096ff;
-  }
-  
-
-  body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  a {
-    color: var(--link-color);
-  }
-  
-  
+app-authentification {
+  margin-top: 20px; 
+  width: 100%;
+  display: block; 
+  justify-content: center;
+  align-items: center;
+}
