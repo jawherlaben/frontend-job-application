@@ -1,5 +1,9 @@
+// STEPS on how to use this file :
+// Remove .template from this file's name
+// Remove this block of comments
+
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'http://localhost:3000' // In Here you put link WITHOUT / at the end, watch out !
   };
   
