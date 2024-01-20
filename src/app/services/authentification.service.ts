@@ -16,7 +16,7 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl, { email, password }, { headers })
+    return this.http.post<AuthResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
       .pipe(
         map(response => {
           if (response && response.token) {
