@@ -7,8 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() backgroundColor: string = 'bg-gray-300/50';
+  @Input() flexStyle: string = 'flex-col';
 
   get classes(): string {
-    return `flex flex-col gap-5 justify-center p-7 rounded-xl shadow-xl ${this.backgroundColor}`;
+    return `flex ${this.flexStyle} gap-5 justify-center p-7 rounded-xl shadow-xl ${this.backgroundColor}`;
   }
 }
