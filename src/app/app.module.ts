@@ -38,6 +38,8 @@ import { ConnecterComponent } from './authentification/connecter/connecter.compo
 import { InscrireComponent } from './authentification/inscrire/inscrire.component';
 import { UserInscriptionComponent } from './authentification/inscrire/user-inscription/user-inscription.component';
 import { CompanyInscriptionComponent } from './authentification/inscrire/company-inscription/company-inscription.component';
+import { UserConnectComponent } from './authentification/connecter/user-connect/user-connect.component';
+import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
 
 
 @NgModule({
@@ -76,7 +78,9 @@ import { CompanyInscriptionComponent } from './authentification/inscrire/company
     ConnecterComponent,
     InscrireComponent,
     UserInscriptionComponent,
-    CompanyInscriptionComponent
+    CompanyInscriptionComponent,
+    UserConnectComponent,
+    CompanyConnectComponent
   ],
   imports: [
     BrowserModule,

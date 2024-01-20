@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./company-inscription.component.css']
 })
 export class CompanyInscriptionComponent {
+  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
+  
+  onClick() {
+    this.changeType.emit();
+  }
 
   onCompanySubmit(formValue: any) {
     console.log(formValue);

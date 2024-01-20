@@ -27,6 +27,16 @@
       <label for="country">Pays</label>
       <input type="text" class="form-control" id="country" required ngModel name="country">
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!companyForm.valid">S'inscrire</button>
+    
+    <div class="flex justify-between items-center">
+      <a class="text-blue-500 cursor-pointer" (click)="onClick()">Déjà membre?</a>
+      <button
+        class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+        [disabled]="!companyForm.valid"
+        type="submit"
+      >
+        S'inscrire
+      </button>
+    </div>
   </form>
   

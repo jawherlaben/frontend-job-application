@@ -1,3 +1,10 @@
 <div>
-  <app-connecter></app-connecter>
+  <div *ngIf="authType == 'login'">
+    <app-connecter (changeType)="changeType()"></app-connecter>
+  </div>
+  
+  <div *ngIf="authType == 'inscrire'">
+    <app-inscrire (changeType)="changeType()"></app-inscrire>
+  </div>
+
 </div>
