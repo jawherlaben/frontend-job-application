@@ -1,32 +1,25 @@
 <form #companyForm="ngForm" (ngSubmit)="onCompanySubmit(companyForm.value)">
-    <div class="form-group">
-      <label for="name">Nom de l'entreprise</label>
-      <input type="text" class="form-control" id="name" required ngModel name="name">
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="description" required ngModel name="description"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" required ngModel name="email">
-    </div>
-    <div class="form-group">
-      <label for="password">Mot de passe</label>
-      <input type="password" class="form-control" id="password" required ngModel name="password">
-    </div>
-    <div class="form-group">
-      <label for="website">Site Web</label>
-      <input type="text" class="form-control" id="website" ngModel name="website">
-    </div>
-    <div class="form-group">
-      <label for="state">État</label>
-      <input type="text" class="form-control" id="state" required ngModel name="state">
-    </div>
-    <div class="form-group">
-      <label for="country">Pays</label>
-      <input type="text" class="form-control" id="country" required ngModel name="country">
-    </div>
+  <div class="flex flex-col gap-2 [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>select]:px-5 [&>select]:py-2 [&>select]:rounded-md">
+    <label for="name">Nom de l'entreprise</label>
+    <input type="text" id="name" required ngModel name="name">
+
+    <label for="description">Description</label>
+    <textarea id="description" required ngModel name="description"></textarea>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required ngModel name="email">
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" required ngModel name="password">
+
+    <label for="website">Site Web</label>
+    <input type="text" id="website" ngModel name="website">
+
+    <label for="state">État</label>
+    <input type="text" id="state" required ngModel name="state">
+
+    <label for="country">Pays</label>
+    <input type="text" id="country" required ngModel name="country">
     
     <div class="flex justify-between items-center">
       <a class="text-blue-500 cursor-pointer" (click)="onClick()">Déjà membre?</a>
@@ -38,5 +31,5 @@
         S'inscrire
       </button>
     </div>
-  </form>
-  
+  </div>
+</form>

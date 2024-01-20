@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-inscrire',
@@ -6,12 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./inscrire.component.css']
 })
 export class InscrireComponent {
-  inscriptionType = 'user';
-  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
-  
-  onClick() {
-    this.changeType.emit();
-  }
+  @Input() inscriptionType = 'user';
 
   setInscriptionType(type: string) {
     this.inscriptionType = type;

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentification.service';
+import { AuthentificationTypeService } from '../../authentification-type.service';
 
 @Component({
   selector: 'app-company-connect',
@@ -12,20 +13,11 @@ export class CompanyConnectComponent {
   loginMessage: string = '';
   loginMessageClass: string = '';
 
-  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
-
-  onClick() {
-    this.changeType.emit();
-  }
-  
-  ngOnInit(): void {
-    this.authForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
-    });
+  onClick(): void {
+    this.authentificationService.emitUserType();
   }
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService ) {
+  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]

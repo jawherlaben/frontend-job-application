@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { AuthentificationTypeService } from '../../authentification-type.service';
 
 @Component({
   selector: 'app-company-inscription',
@@ -7,10 +8,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./company-inscription.component.css']
 })
 export class CompanyInscriptionComponent {
-  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
-  
-  onClick() {
-    this.changeType.emit();
+  onClick(): void {
+    this.authentificationService.emitUserType();
+  }
+
+  constructor( private formBuilder: FormBuilder, private authentificationService: AuthentificationTypeService ) {
+    
   }
 
   onCompanySubmit(formValue: any) {

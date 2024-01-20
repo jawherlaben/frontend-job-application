@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthentificationTypeService } from '../../authentification-type.service';
 
 @Component({
   selector: 'app-user-inscription',
@@ -7,10 +8,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user-inscription.component.css']
 })
 export class UserInscriptionComponent {
-  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
-  
-  onClick() {
-    this.changeType.emit();
+  onClick(): void {
+    this.authentificationService.emitUserType();
+  }
+
+  constructor( private authentificationService: AuthentificationTypeService ) {
   }
 
   onUserSubmit(form: NgForm) {

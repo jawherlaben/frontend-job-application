@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentification.service';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-connecter',
@@ -8,17 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentification.service
   styleUrls: ['./connecter.component.css']
 })
 export class ConnecterComponent {
-  connectType = 'user';
-  @Output() changeType: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
+  @Input() connectType: string = 'user';
   
-  onClick() {
-    this.changeType.emit();
-  }
-
   constructor() {}
-
-  setconnectType(type: string) {
-    this.connectType = type;
-  }
-
 }
