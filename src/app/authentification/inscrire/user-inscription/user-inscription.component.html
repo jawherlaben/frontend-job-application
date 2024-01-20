@@ -1,29 +1,41 @@
 <form #userForm="ngForm" (ngSubmit)="onUserSubmit(userForm.value)">
   <div class="flex flex-col gap-2 w-full [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>select]:px-5 [&>select]:py-2 [&>select]:rounded-md">
-    <label for="firstname">Prénom</label>
-    <input type="text" id="firstname" required ngModel name="firstname">
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="firstname">Prénom</label>
+        <input type="text" id="firstname" required ngModel name="firstname">
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="lastname">Nom de famille</label>
+        <input type="text" id="lastname" required ngModel name="lastname" minlength="3">
+      </div>
+    </div>
     
-    <label for="lastname">Nom de famille</label>
-    <input type="text" id="lastname" required ngModel name="lastname" minlength="3">
-    
-    <label for="phoneNumber">Numéro de téléphone</label>
-    <input type="text" id="phoneNumber" required ngModel name="phoneNumber" minlength="8" maxlength="50">
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" required ngModel name="email">
-    
-    <label for="password">Mot de passe</label>
-    <input type="password" id="password" required ngModel name="password">
-    
-    <label for="address">Adresse</label>
-    <input type="text" id="address" required ngModel name="address" minlength="3" maxlength="32">
-    
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="address">Adresse</label>
+        <input type="text" id="address" required ngModel name="address" minlength="3" maxlength="32">
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="phoneNumber">Numéro de téléphone</label>
+        <input type="number" id="phoneNumber" required ngModel name="phoneNumber" minlength="8" maxlength="50">
+      </div>
+    </div>
+
     <label for="gender">Genre</label>
     <select id="gender" required ngModel name="gender">
       <option value="male">Homme</option>
       <option value="female">Femme</option>
       <option value="other">Autre</option>
     </select>
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" required ngModel name="email">
+    
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" required ngModel name="password">
 
     <div class="flex justify-between items-center">
       <a class="text-blue-500 cursor-pointer" (click)="onClick()">Déjà membre?</a>

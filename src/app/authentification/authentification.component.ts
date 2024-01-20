@@ -8,7 +8,7 @@ import { AuthentificationTypeService } from './authentification-type.service';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent {
-  authType: string = '';
+  authType: string = 'login';
   connectType = 'user';
   
   setconnectType(type: string) {
