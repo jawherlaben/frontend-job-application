@@ -43,7 +43,7 @@ export class CompanyConnectComponent {
 
   onSubmit() {
     if (this.authForm.valid) {
-      this.authService.login(this.authForm.value.email, this.authForm.value.password)
+      this.authService.companyLogin(this.authForm.value.email, this.authForm.value.password)
         .subscribe({
           next: (response) => {
             this.showErrorMessage('Login successful');

@@ -14,9 +14,22 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
+  userLogin(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<AuthResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
+      .pipe(
+        map(response => {
+          if (response && response.token) {
+            localStorage.setItem('currentUserToken', response.token);
+          }
+          return response;
+        })
+      );
+  }
+
+  companyLogin(email: string, password: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', { email, password }, { headers })
       .pipe(
         map(response => {
           if (response && response.token) {

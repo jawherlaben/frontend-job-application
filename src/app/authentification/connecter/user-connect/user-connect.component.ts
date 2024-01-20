@@ -43,7 +43,7 @@ export class UserConnectComponent {
 
   onSubmit() {
     if (this.authForm.valid) {
-      this.authService.login(this.authForm.value.email, this.authForm.value.password)
+      this.authService.userLogin(this.authForm.value.email, this.authForm.value.password)
         .subscribe({
           next: (response) => {
             this.showErrorMessage('Login successful', 'success');
