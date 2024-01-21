@@ -40,6 +40,34 @@ export class AuthenticationService {
       );
   }
 
+  userRegister(email: string, password: string): Observable<any> {
+    // TODO
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<AuthResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
+      .pipe(
+        map(response => {
+          if (response && response.token) {
+            localStorage.setItem('currentUserToken', response.token);
+          }
+          return response;
+        })
+      );
+  }
+
+  companyRegister(email: string, password: string): Observable<any> {
+    // TODO
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', { email, password }, { headers })
+      .pipe(
+        map(response => {
+          if (response && response.token) {
+            localStorage.setItem('currentUserToken', response.token);
+          }
+          return response;
+        })
+      );
+  }
+
   logout(): void {
     localStorage.removeItem('currentUserToken');
   }

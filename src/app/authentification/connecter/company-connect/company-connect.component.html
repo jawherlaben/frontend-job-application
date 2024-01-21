@@ -1,14 +1,14 @@
 <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <div class="flex flex-col gap-2 [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md">
-        <div [class]="loginMessageClass">{{ loginMessage }}</div>
+        <div class="self-end px-5" [class]="loginMessageClass">{{ loginMessage }}</div>
         
         <label for="email">Company Email</label>
         <input type="email" id="email" name="email" formControlName="email" placeholder="Email" required />
-        <div *ngIf="isInvalidAndTouched('email')" class="text-red-500"> Please enter a valid email address. </div>
+        <div *ngIf="isInvalidAndTouched('email')" class="text-red-500"> Veuillez saisir un adresse mail valide. </div>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" formControlName="password" placeholder="Password" required />
-        <div *ngIf="isInvalidAndTouched('password')" class="text-red-500"> Please enter a valid password. </div>
+        <div *ngIf="isInvalidAndTouched('password')" class="text-red-500"> Veuillez saisir un mot de passe valide. </div>
 
         <div class="flex justify-between items-center mt-2">
             <a class="text-blue-500 cursor-pointer" (click)="onClick()">Pas encore membre?</a>
