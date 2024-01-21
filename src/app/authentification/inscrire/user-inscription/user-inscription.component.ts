@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthentificationTypeService } from '../../authentification-type.service';
 import { AuthenticationService } from '../../../services/authentification.service';
+import { UserFormDTO } from './UserInscription.dto';
+
+
 
 @Component({
   selector: 'app-user-inscription',
@@ -9,25 +11,17 @@ import { AuthenticationService } from '../../../services/authentification.servic
   styleUrls: ['./user-inscription.component.css']
 })
 export class UserInscriptionComponent {
-  authForm: FormGroup;
-  loginMessage: string = '';
-  loginMessageClass: string = '';
+  model: UserFormDTO = {};
+  loginMessage: string;
+  loginMessageClass: string;
   
   onClick(): void {
     this.authentificationService.emitUserType();
   }
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
-    this.authForm = this.formBuilder.group({
-      
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
-    });
-  }
-
-  isInvalidAndTouched(field: string): boolean {
-    const ctrl = this.authForm.get(field);
-    return ctrl !== null && ctrl.invalid && ctrl.touched;
+  constructor( private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
+    this.loginMessage = '';
+    this.loginMessageClass = '';
   }
 
   showErrorMessage(message: string, type: string = 'error') {
@@ -43,19 +37,20 @@ export class UserInscriptionComponent {
   }
 
   onSubmit() {
-    if (this.authForm.valid) {
-      this.authService.userRegister(this.authForm.value.email, this.authForm.value.password)
-        .subscribe({
-          next: (response) => {
+    this.authService.userRegister(this.model)
+      .subscribe({
+        next: (response) => {
+          if (response.statusCode == 201)
             this.showErrorMessage('Inscription Réussie', 'success');
-          },
-          error: (error) => {
+          else
             this.showErrorMessage('Erreur de connexion');
-          }
-        });
-    }
-    else {
-      this.showErrorMessage('Erreur de connexion');
-    }
+        },
+        error: (errorResponse) => {
+          if (errorResponse.error.message == "User already exists")
+            this.showErrorMessage('Email existe déjà');
+          else
+            this.showErrorMessage('Erreur de connexion');
+        }
+      });
   }
 }
