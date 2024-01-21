@@ -3,9 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
+import { UserFormDTO } from '../authentification/inscrire/user-inscription/UserInscription.dto';
+import { CompanyFormDTO } from '../authentification/inscrire/company-inscription/CompanyInscription.dto';
 
-export interface AuthResponse {
+export interface LoginResponse {
   token: string;
+}
+
+export interface RegistrationResponse {
+  statusCode: number;
+  message: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -16,7 +23,7 @@ export class AuthenticationService {
 
   userLogin(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
+    return this.http.post<LoginResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
       .pipe(
         map(response => {
           if (response && response.token) {
@@ -29,7 +36,7 @@ export class AuthenticationService {
 
   companyLogin(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', {companyEmail: email, companyPassword: password }, { headers })
+    return this.http.post<LoginResponse>(this.authUrl + '/auth/company-login', {companyEmail: email, companyPassword: password }, { headers })
       .pipe(
         map(response => {
           if (response && response.token) {
@@ -40,32 +47,14 @@ export class AuthenticationService {
       );
   }
 
-  userRegister(email: string, password: string): Observable<any> {
-    // TODO
+  userRegister(userForm: UserFormDTO): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
-      .pipe(
-        map(response => {
-          if (response && response.token) {
-            localStorage.setItem('currentUserToken', response.token);
-          }
-          return response;
-        })
-      );
+    return this.http.post<RegistrationResponse>( this.authUrl + '/user/register', userForm, { headers } )
   }
 
-  companyRegister(email: string, password: string): Observable<any> {
-
+  companyRegister(companyForm: CompanyFormDTO): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', { email, password }, { headers })
-      .pipe(
-        map(response => {
-          if (response && response.token) {
-            localStorage.setItem('currentUserToken', response.token);
-          }
-          return response;
-        })
-      );
+    return this.http.post<RegistrationResponse>(this.authUrl + '/company', companyForm, { headers })
   }
 
   logout(): void {

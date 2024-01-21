@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthentificationTypeService } from '../../authentification-type.service';
 import { AuthenticationService } from '../../../services/authentification.service';
+import { CompanyFormDTO } from './CompanyInscription.dto';
 
 @Component({
   selector: 'app-company-inscription',
@@ -9,19 +9,17 @@ import { AuthenticationService } from '../../../services/authentification.servic
   styleUrls: ['./company-inscription.component.css']
 })
 export class CompanyInscriptionComponent {
-  authForm: FormGroup;
-  loginMessage: string = '';
-  loginMessageClass: string = '';
+  model: CompanyFormDTO = {};
+  loginMessage: string;
+  loginMessageClass: string;
   
   onClick(): void {
     this.authentificationService.emitUserType();
   }
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
-    this.authForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
-    });
+  constructor(private authService: AuthenticationService, private authentificationService: AuthentificationTypeService) {
+    this.loginMessage = '';
+    this.loginMessageClass = '';
   }
 
   showErrorMessage(message: string, type: string = 'error') {
@@ -37,19 +35,20 @@ export class CompanyInscriptionComponent {
   }
 
   onSubmit() {
-    if (this.authForm.valid) {
-      this.authService.userRegister(this.authForm.value.email, this.authForm.value.password)
-        .subscribe({
-          next: (response) => {
+    this.authService.companyRegister(this.model)
+      .subscribe({
+        next: (response) => {
+          if (response.statusCode == 201)
             this.showErrorMessage('Inscription Réussie', 'success');
-          },
-          error: (error) => {
+          else
             this.showErrorMessage('Erreur de connexion');
-          }
-        });
-    }
-    else {
-      this.showErrorMessage('Erreur de connexion');
-    }
+        },
+        error: (errorResponse) => {
+          if (errorResponse.error.message == "Company already exists")
+            this.showErrorMessage('Email existe déjà');
+          else
+            this.showErrorMessage('Erreur de connexion');
+        }
+      });
   }
 }
