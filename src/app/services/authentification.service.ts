@@ -29,7 +29,7 @@ export class AuthenticationService {
 
   companyLogin(email: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', { email, password }, { headers })
+    return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', {companyEmail: email, companyPassword: password }, { headers })
       .pipe(
         map(response => {
           if (response && response.token) {

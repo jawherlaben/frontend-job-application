@@ -46,7 +46,10 @@ export class CompanyConnectComponent {
       this.authService.companyLogin(this.authForm.value.email, this.authForm.value.password)
         .subscribe({
           next: (response) => {
-            this.showErrorMessage('Login successful');
+            if (response.token)
+              this.showErrorMessage('Login successful', "success");
+            else
+              this.showErrorMessage('Erreur de connexion');
           },
           error: (error) => {
             this.showErrorMessage('Erreur de connexion');
