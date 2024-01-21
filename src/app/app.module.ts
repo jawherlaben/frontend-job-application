@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import { InscrireComponent } from './inscrire/inscrire.component';
-import { CompanyInscriptionComponent } from './inscrire/company-inscription/company-inscription.component';
-import { UserInscriptionComponent } from './inscrire/user-inscription/user-inscription.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -33,6 +30,16 @@ import { SearchBarComponent } from './companies/search-bar/search-bar.component'
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonComponent } from './common/button/button.component';
+import { InputComponent } from './common/input/input.component';
+import { UnderlinedLinkComponent } from './common/underlined-link/underlined-link.component';
+import { CardComponent } from './common/card/card.component';
+import { ConnecterComponent } from './authentification/connecter/connecter.component';
+import { InscrireComponent } from './authentification/inscrire/inscrire.component';
+import { UserInscriptionComponent } from './authentification/inscrire/user-inscription/user-inscription.component';
+import { CompanyInscriptionComponent } from './authentification/inscrire/company-inscription/company-inscription.component';
+import { UserConnectComponent } from './authentification/connecter/user-connect/user-connect.component';
+import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
 
 
 @NgModule({
@@ -40,9 +47,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AuthentificationComponent,
     NavbarComponent,
-    InscrireComponent,
-    CompanyInscriptionComponent,
-    UserInscriptionComponent,
     HomeComponent,
     FooterComponent,
     CompaniesComponent,
@@ -66,7 +70,17 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationComponent,
     SearchBarComponent,
     AccessForbiddenComponent,
-    NonExistentURLsComponent
+    NonExistentURLsComponent,
+    ButtonComponent,
+    InputComponent,
+    UnderlinedLinkComponent,
+    CardComponent,
+    ConnecterComponent,
+    InscrireComponent,
+    UserInscriptionComponent,
+    CompanyInscriptionComponent,
+    UserConnectComponent,
+    CompanyConnectComponent
   ],
   imports: [
     BrowserModule,

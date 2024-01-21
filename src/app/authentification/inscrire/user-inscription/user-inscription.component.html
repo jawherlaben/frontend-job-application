@@ -1,0 +1,57 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-2 w-full [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>select]:px-5 [&>select]:py-2 [&>select]:rounded-md">
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="firstname">Prénom</label>
+        <input type="text" id="firstname" required name="firstname">
+        <div *ngIf="isInvalidAndTouched('firstname')" class="text-red-500"> Veuillez saisir un prénom valide. </div>
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="lastname">Nom de famille</label>
+        <input type="text" id="lastname" required name="lastname" minlength="3">
+        <div *ngIf="isInvalidAndTouched('lastname')" class="text-red-500"> Veuillez saisir un nom valide. </div>
+      </div>
+    </div>
+    
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="address">Adresse</label>
+        <input type="text" id="address" required name="address" minlength="3" maxlength="32">
+        <div *ngIf="isInvalidAndTouched('address')" class="text-red-500"> Veuillez saisir une adresse valide. </div>
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="phoneNumber">Numéro de téléphone</label>
+        <input type="number" id="phoneNumber" required name="phoneNumber" minlength="8" maxlength="50">
+        <div *ngIf="isInvalidAndTouched('phoneNumber')" class="text-red-500"> Veuillez saisir un numéro de téléphone valide. </div>
+      </div>
+    </div>
+
+    <label for="gender">Genre</label>
+    <select id="gender" required name="gender">
+      <option value="male">Homme</option>
+      <option value="female">Femme</option>
+      <option value="other">Autre</option>
+    </select>
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" required name="email">
+    <div *ngIf="isInvalidAndTouched('email')" class="text-red-500"> Veuillez saisir un adresse mail valide. </div>
+    
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" required name="password">
+    <div *ngIf="isInvalidAndTouched('password')" class="text-red-500"> Veuillez saisir un mot de passe valide. </div>
+
+    <div class="flex justify-between items-center">
+      <a class="text-blue-500 cursor-pointer" (click)="onClick()">Déjà membre?</a>
+      <button
+          class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+          [disabled]="!authForm.valid"
+          type="submit"
+      >
+        S'inscrire
+      </button>
+    </div>
+  </div>
+</form>
