@@ -8,7 +8,7 @@ import { AuthentificationTypeService } from './authentification-type.service';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent {
-  authType: string = 'login';
+  authType: string = '';
   connectType = 'user';
   
   setconnectType(type: string) {
@@ -21,6 +21,10 @@ export class AuthentificationComponent {
     this.subscription = this.authentificationService.userType$.subscribe(() => {
       this.handleUserType();
     });
+  }
+  
+  ngOnInit() {
+    this.authType = 'login';
   }
 
   handleUserType(): void {
