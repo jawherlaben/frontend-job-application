@@ -1,0 +1,47 @@
+<form #companyForm="ngForm" (ngSubmit)="onCompanySubmit(companyForm.value)">
+  <div class="flex flex-col gap-2 [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>select]:px-5 [&>select]:py-2 [&>select]:rounded-md">
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="name">Nom de l'entreprise</label>
+        <input type="text" id="name" required ngModel name="name">
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full [&>textarea]:px-5 [&>textarea]:py-2 [&>textarea]:rounded-md [&>textarea]:w-full [&>textarea]:resize-none">
+        <label for="description">Description</label>
+        <textarea id="description" required ngModel name="description"></textarea>
+      </div>
+    </div>
+
+    <div class="flex gap-2 [&>div]:w-full">
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="state">État</label>
+        <input type="text" id="state" required ngModel name="state">
+      </div>
+      
+      <div class="[&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md [&>input]:w-full">
+        <label for="country">Pays</label>
+        <input type="text" id="country" required ngModel name="country">
+      </div>
+    </div>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required ngModel name="email">
+
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" required ngModel name="password">
+
+    <label for="website">Site Web</label>
+    <input type="text" id="website" ngModel name="website">
+    
+    <div class="flex justify-between items-center">
+      <a class="text-blue-500 cursor-pointer" (click)="onClick()">Déjà membre?</a>
+      <button
+        class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+        [disabled]="!companyForm.valid"
+        type="submit"
+      >
+        S'inscrire
+      </button>
+    </div>
+  </div>
+</form>

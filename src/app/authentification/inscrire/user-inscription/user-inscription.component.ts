@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { AuthentificationTypeService } from '../../authentification-type.service';
 
 @Component({
   selector: 'app-user-inscription',
@@ -8,6 +8,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user-inscription.component.css']
 })
 export class UserInscriptionComponent {
+  onClick(): void {
+    this.authentificationService.emitUserType();
+  }
+
+  constructor( private authentificationService: AuthentificationTypeService ) {
+  }
 
   onUserSubmit(form: NgForm) {
     if (form.valid) {

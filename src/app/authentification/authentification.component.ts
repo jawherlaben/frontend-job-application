@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentification.service';
+import { Subscription } from 'rxjs';
+import { AuthentificationTypeService } from './authentification-type.service';
 
 @Component({
   selector: 'app-authentification',
@@ -8,69 +8,29 @@ import { AuthenticationService } from '../services/authentification.service';
   styleUrls: ['./authentification.component.css']
 })
 export class AuthentificationComponent {
-  authForm: FormGroup;
+  authType: string = 'login';
+  connectType = 'user';
+  
+  setconnectType(type: string) {
+    this.connectType = type;
+  }
+  
+  private subscription: Subscription;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthenticationService 
-  ) {
-    this.authForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
+  constructor(private authentificationService: AuthentificationTypeService) {
+    this.subscription = this.authentificationService.userType$.subscribe(() => {
+      this.handleUserType();
     });
   }
 
-  isInvalidAndTouched(field: string): boolean {
-    const ctrl = this.authForm.get(field);
-    return ctrl !== null && ctrl.invalid && ctrl.touched;
+  handleUserType(): void {
+    if (this.authType == 'login')
+      this.authType = 'inscrire';
+    else
+      this.authType = 'login';
   }
 
-  onSubmit() {
-    if (this.authForm.valid) {
-      this.authService.login(this.authForm.value.email, this.authForm.value.password)
-        .subscribe(
-          response => {
-            console.log('Login successful', response);
-          },
-          error => {
-            console.error('Login error', error);
-          }
-        );
-    }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
-
-
-/*
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentification.service';
-
-@Component({
-  selector: 'app-authentification',
-  templateUrl: './authentification.component.html',
-  styleUrls: ['./authentification.component.css']
-})
-export class AuthentificationComponent {
-  authForm: FormGroup;
-
-  constructor(
-
-    private formBuilder: FormBuilder,
-    //private authService: AuthenticationService 
-  ) {
-    this.authForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]]
-    });
-  }
-
-  isInvalidAndTouched(field: string): boolean {
-    const ctrl = this.authForm.get(field);
-    return ctrl !== null && ctrl.invalid && ctrl.touched;
-  }
-
-  onSubmit() {}
-}
-
-*/
