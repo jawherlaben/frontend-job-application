@@ -40,6 +40,7 @@ import { UserInscriptionComponent } from './authentification/inscrire/user-inscr
 import { CompanyInscriptionComponent } from './authentification/inscrire/company-inscription/company-inscription.component';
 import { UserConnectComponent } from './authentification/connecter/user-connect/user-connect.component';
 import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
+import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head-profile-buttons.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { CompanyConnectComponent } from './authentification/connecter/company-co
     UserInscriptionComponent,
     CompanyInscriptionComponent,
     UserConnectComponent,
-    CompanyConnectComponent
+    CompanyConnectComponent,
+    HeadProfileButtonsComponent
   ],
   imports: [
     BrowserModule,

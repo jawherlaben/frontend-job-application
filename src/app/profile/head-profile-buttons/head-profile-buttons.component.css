@@ -1,0 +1,14 @@
+  .profile-actions button {
+    background-color: #0a66c2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-actions button:hover {
+    background-color: #084482;
+  }
+  

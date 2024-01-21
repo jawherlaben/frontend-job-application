@@ -55,7 +55,7 @@ export class AuthenticationService {
   }
 
   companyRegister(email: string, password: string): Observable<any> {
-    // TODO
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<AuthResponse>(this.authUrl + '/auth/company-login', { email, password }, { headers })
       .pipe(
