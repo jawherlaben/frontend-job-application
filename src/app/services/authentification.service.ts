@@ -12,7 +12,7 @@ export interface AuthResponse {
 })
 
 export class AuthenticationService {
-  private authUrl = environment.apiUrl;
+  private authUrl = environment.loginUrl;
 
   constructor(private http: HttpClient) {}
 
