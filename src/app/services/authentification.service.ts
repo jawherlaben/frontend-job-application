@@ -17,7 +17,7 @@ export interface RegistrationResponse {
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private authUrl = environment.loginUrl;
+  private authUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
