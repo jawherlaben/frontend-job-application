@@ -1,10 +1,11 @@
-<div class="app-container">
-  
-    <app-head-profile> </app-head-profile>
-    <!--<app-feed></app-feed>
-    <app-network-sidebar></app-network-sidebar>
-    <app-advertisement></app-advertisement> -->
-    <app-job-offers> </app-job-offers> 
+<div class="app-container grid grid-cols-4 gap-4">
+  <div class="col1 col-span-1">
+    <app-head-user-dashboard [user]="user"></app-head-user-dashboard>
 
   </div>
-  
+  <div class="col2 col-span-2">
+    <app-job-offers></app-job-offers>
+  </div>
+  <div class="col3 col-span-1">
+  </div>
+</div>
