@@ -19,10 +19,18 @@ export class CompaniesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.companies = this.companyService.getCompanies();
-    this.filteredCompanies = [...this.companies]; // Start with all companies
-    this.totalCompanies = this.companies.length; // Set the total number of companies
-    this.onPageChange(1);
+    // this.companies = this.companyService.getCompanies();
+    // this.filteredCompanies = [...this.companies]; // Start with all companies
+    // this.totalCompanies = this.companies.length; // Set the total number of companies
+    // this.onPageChange(1);
+    
+    console.log(this.companyService.getCompanies());
+    this.companyService.getCompanies().subscribe((companies: Array<Company>) => {
+      this.companies = [...companies];
+      this.totalCompanies = this.companies.length; 
+      this.onPageChange(1);
+    }); 
+
   }
 
   updatePaginatedCompanies(): void {
