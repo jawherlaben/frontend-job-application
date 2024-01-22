@@ -1,5 +1,5 @@
 export interface User {
-    _id?: string;
+    _id: string;
     firstname: string;
     lastname: string;
     phoneNumber: string;
@@ -7,10 +7,9 @@ export interface User {
     password: string;
     dateBirth?: string;
     appliedJobs?: string[];
-    gender?: string;
+    gender: string;
     address?: string;
     profileImage?: string;
-    role?: string;
-    date_added?: Date;
+    role: string;
+    date_added: Date;
   }
-  
