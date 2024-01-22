@@ -43,6 +43,7 @@ import { CompanyConnectComponent } from './authentification/connecter/company-co
 import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head-profile-buttons.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     CompanyConnectComponent,
     HeadProfileButtonsComponent,
     JobOffersComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    HeadUserDashboardComponent
   ],
   imports: [
     BrowserModule,
