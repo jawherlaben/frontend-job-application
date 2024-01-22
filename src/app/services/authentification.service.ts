@@ -26,10 +26,8 @@ export class AuthenticationService {
   private isCompanyUserSubject = new BehaviorSubject<boolean>(false);
   isCompanyUser = this.isCompanyUserSubject.asObservable();
 
-  private isLoggedOutSubject = new BehaviorSubject<boolean>(false);
   private redirectToHomeSubject = new BehaviorSubject<boolean>(false);
 
-  isLoggedOut = this.isLoggedOutSubject.asObservable();
   redirectToHome = this.redirectToHomeSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -78,8 +76,9 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem('currentUserToken');
-    this.isLoggedOutSubject.next(true);
     this.redirectToHomeSubject.next(true);
+    this.isLoggedInSubject.next(false);
+    this.isCompanyUserSubject.next(false);
     this.router.navigate(['/']);
   }
 
