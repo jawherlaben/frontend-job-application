@@ -1,22 +1,39 @@
-import { Component } from '@angular/core';
-import { ThemeService } from '../theme.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+export class NavbarComponent implements OnInit {
+  isUserLoggedIn = false; 
+  isCompanyUser = false; 
 
-export class NavbarComponent {
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
-  constructor(public themeService: ThemeService) {}
+  ngOnInit() {
+    this.authService.isLoggedIn.subscribe(loggedIn => {
+      this.isUserLoggedIn = loggedIn;
+      if (this.isUserLoggedIn) {
+        this.authService.isCompanyUser.subscribe(isCompanyUser => {
+          this.isCompanyUser = isCompanyUser;
+        });
+      }
+    });
 
-  toggleTheme() {
-    this.themeService.toggleDarkMode();
+    this.authService.redirectToHome.subscribe(redirectToHome => {
+      if (redirectToHome) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 
-  get isDarkMode() {
-    return this.themeService.isDarkModeEnabled();
+  logout() {
+    this.authService.logout();
+    this.isUserLoggedIn = false;
+    this.isCompanyUser = false;
   }
   
 }
