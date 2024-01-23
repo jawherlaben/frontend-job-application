@@ -51,6 +51,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
 import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 
 @NgModule({
@@ -99,7 +100,8 @@ import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-subme
     SidebarComponent,
     SidebarMenuComponent,
     SidebarSubmenuComponent,
-    ProfileMenuComponent
+    ProfileMenuComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

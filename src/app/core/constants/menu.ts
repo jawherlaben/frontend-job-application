@@ -21,8 +21,6 @@ export class Menu {
           label: 'Auth',
           route: '/auth',
           children: [
-            { label: 'Sign up', route: '/' },
-            { label: 'Sign in', route: '/' },
             { label: 'Forgot Password', route: '/' },
             { label: 'New Password', route: '/' },
             { label: 'Two Steps', route: '/' },
