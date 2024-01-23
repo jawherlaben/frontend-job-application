@@ -18,13 +18,14 @@
     <app-underlined-link [routerLink]="['companies']">Companies</app-underlined-link>
     <app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link>
 
-    <ng-container *ngIf="isUserLoggedIn">
-      <app-button (click)="logout()">Se Deconnecter</app-button>
-    </ng-container>
-
     <ng-container *ngIf="!isUserLoggedIn">
       <app-button [routerLink]="['authentification']">Se connecter</app-button>
     </ng-container>
+
+
+    <div class="relative" *ngIf="isUserLoggedIn">
+      <app-profile-menu [user]="user"> </app-profile-menu>
+    </div>
 
   </div>
 </nav>
