@@ -41,6 +41,9 @@ import { CompanyInscriptionComponent } from './authentification/inscrire/company
 import { UserConnectComponent } from './authentification/connecter/user-connect/user-connect.component';
 import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
 import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head-profile-buttons.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
 
 @NgModule({
@@ -82,7 +85,10 @@ import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head
     CompanyInscriptionComponent,
     UserConnectComponent,
     CompanyConnectComponent,
-    HeadProfileButtonsComponent
+    HeadProfileButtonsComponent,
+    JobOffersComponent,
+    UserDashboardComponent,
+    HeadUserDashboardComponent
   ],
   imports: [
     BrowserModule,

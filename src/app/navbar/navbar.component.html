@@ -4,10 +4,27 @@
   </a>
   
   <div class="flex gap-5 items-center text-white">
+
     <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
+    <ng-container *ngIf="isUserLoggedIn && !isCompanyUser">
+      <app-underlined-link [routerLink]="['user-dashboard']">Tableau de bord </app-underlined-link>
+  
+    </ng-container>
+  
+    <ng-container *ngIf="isUserLoggedIn && isCompanyUser">
+      <app-button [routerLink]="['company-dashboard']">Tableau de bord </app-button>
+    </ng-container>
+
     <app-underlined-link [routerLink]="['companies']">Companies</app-underlined-link>
     <app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link>
 
-    <app-button [routerLink]="['authentification']">Se connecter</app-button>
+    <ng-container *ngIf="isUserLoggedIn">
+      <app-button (click)="logout()">Se Deconnecter</app-button>
+    </ng-container>
+
+    <ng-container *ngIf="!isUserLoggedIn">
+      <app-button [routerLink]="['authentification']">Se connecter</app-button>
+    </ng-container>
+
   </div>
 </nav>
