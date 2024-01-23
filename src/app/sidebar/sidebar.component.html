@@ -4,11 +4,7 @@
   <div class="px-4">
     <div class="relative h-10">
       <div class="flex items-center" *ngIf="menuService.showSideBar">
-        <a class="flex items-center justify-center rounded bg-primary-500 p-2 focus:outline-none focus:ring-1">
-        </a>
-        <b class="ml-1 pl-2 text-sm font-bold dark:text-night-50">
-          Nom wl prénom
-        </b>
+        <app-head-user-dashboard [user]="user"> </app-head-user-dashboard>
       </div>
       <button
         (click)="toggleSidebar()"
