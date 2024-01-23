@@ -35,7 +35,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/cog.svg',
           label: 'Settings',
-          route: '/settings',
+          route: '/UserSettings',
         },
         {
           icon: 'assets/icons/heroicons/outline/bell.svg',
