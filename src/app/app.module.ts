@@ -45,6 +45,13 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
+import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
+
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
+import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
+
 
 @NgModule({
   declarations: [
@@ -88,14 +95,20 @@ import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dash
     HeadProfileButtonsComponent,
     JobOffersComponent,
     UserDashboardComponent,
-    HeadUserDashboardComponent
+    HeadUserDashboardComponent,
+    SidebarComponent,
+    SidebarMenuComponent,
+    SidebarSubmenuComponent,
+    ProfileMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularSvgIconModule.forRoot(),
+
   ],
   providers: [
   ],
