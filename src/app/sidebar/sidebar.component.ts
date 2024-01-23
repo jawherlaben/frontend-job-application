@@ -12,7 +12,6 @@ import { MenuService } from '../services/menu.service';
  
 })
 export class SidebarComponent implements OnInit {
-  //public appJson: any = packageJson;
 
   constructor(public themeService: ThemeService, public menuService: MenuService) {}
 
@@ -22,7 +21,5 @@ export class SidebarComponent implements OnInit {
     this.menuService.toggleSidebar();
   }
 
-  toggleTheme() {
-    //this.themeService.theme = !this.themeService.isDark ? 'dark' : 'light';
-  }
+  
 }
