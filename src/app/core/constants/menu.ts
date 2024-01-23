@@ -40,7 +40,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/bell.svg',
           label: 'Notifications',
-          route: '/',
+          route: '/UserNotifications',
         },
       ],
     },

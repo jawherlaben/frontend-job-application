@@ -52,6 +52,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
 import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
+import { UserForgotPasswordComponent } from './user-forgot-password/user-forgot-password.component';
 
 
 @NgModule({
@@ -101,7 +103,9 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     SidebarMenuComponent,
     SidebarSubmenuComponent,
     ProfileMenuComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    UserNotificationsComponent,
+    UserForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

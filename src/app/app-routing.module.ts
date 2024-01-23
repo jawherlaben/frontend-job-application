@@ -10,6 +10,7 @@ import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'company-dashboard', component: CompanyDashboardComponent },
   {path : 'UserSettings', component : UserSettingsComponent},
+  {path : 'UserNotifications', component : UserNotificationsComponent},
 
   { path: '403', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
