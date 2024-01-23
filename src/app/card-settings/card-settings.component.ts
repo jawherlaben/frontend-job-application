@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from '../Model/user';
 
 @Component({
   selector: 'app-card-settings',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-settings.component.css']
 })
 export class CardSettingsComponent {
+  @Input() user: User | undefined;
+
+  saveSettings()
+  {
+    console.log("Edit User");
+  }
 
 }
