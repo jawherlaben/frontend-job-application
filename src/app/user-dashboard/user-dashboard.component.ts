@@ -8,13 +8,13 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
-  
   public user: User | undefined;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUserFromToken().subscribe(user => {
+    this.userService.getUserFromToken();
+    this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
     });
   }
