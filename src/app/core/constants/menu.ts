@@ -19,11 +19,11 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/lock-closed.svg',
           label: 'Auth',
-          route: '/auth',
+          route: '/auth/user',
           children: [
-            { label: 'Forgot Password', route: '/' },
-            { label: 'New Password', route: '/' },
-            { label: 'Two Steps', route: '/' },
+            { label: 'Forgot Password', route: '/UserForgotPassword' },
+            { label: 'New Password', route: '/UserForgotPassword' },
+            { label: 'Two Steps', route: '/UserForgotPassword' },
           ],
         },
       ],

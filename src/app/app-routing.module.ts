@@ -11,6 +11,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
+import { UserForgotPasswordComponent } from './user-forgot-password/user-forgot-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'company-dashboard', component: CompanyDashboardComponent },
   {path : 'UserSettings', component : UserSettingsComponent},
   {path : 'UserNotifications', component : UserNotificationsComponent},
+  {path : 'UserForgotPassword', component : UserForgotPasswordComponent},
 
   { path: '403', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
