@@ -3,9 +3,12 @@
       <app-sidebar> </app-sidebar>
   
     </div>
+    
     <div class="col2 col-span-2">
-      <app-card-settings [user]="user" > </app-card-settings>
+      <app-card-settings [user]="user" (userUpdateDTOChanged)="updateUserUpdateDTO($event)" > </app-card-settings>
     </div>
+
     <div class="col3 col-span-1">
+      <app-card-user-update [userUpdateDTO]="userUpdateDTO"> </app-card-user-update>
     </div>
   </div>

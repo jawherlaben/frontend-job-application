@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../Model/user';
 import { UserFormDTO } from '../authentification/inscrire/user-inscription/UserInscription.dto';
 import { NgForm } from '@angular/forms';
@@ -16,6 +16,7 @@ export class CardSettingsComponent {
   editMessage: string;
   editMessageClass: string;
 
+  @Output() userUpdateDTOChanged = new EventEmitter<UserUpdateDTO>();
 
   constructor( private userService: UserService) {
     this.editMessage = '';
@@ -28,6 +29,8 @@ export class CardSettingsComponent {
   private initializeModel(): void {
     if (this.user) {
       this.userUpdateDTO = { ...this.user };
+      this.userUpdateDTOChanged.emit(this.userUpdateDTO);
+
     }
   }
 
@@ -42,8 +45,6 @@ export class CardSettingsComponent {
       this.editMessage = '';
     }, 5000);
   }
-
-
 
   updateUserInfos(settingsForm: NgForm): void {
     if (settingsForm.valid && this.userUpdateDTO && this.userUpdateDTO._id) {
@@ -63,6 +64,4 @@ export class CardSettingsComponent {
       console.log("Le formulaire n'est pas valide ou les données sont manquantes.");
     }
   }
-  
-
 }

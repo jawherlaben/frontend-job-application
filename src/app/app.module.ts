@@ -56,6 +56,7 @@ import { UserNotificationsComponent } from './user-notifications/user-notificati
 import { UserForgotPasswordComponent } from './user-forgot-password/user-forgot-password.component';
 import { CardSettingsComponent } from './card-settings/card-settings.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { CardUserUpdateComponent } from './user-settings/cards/card-user-update/card-user-update.component';
 
 
 @NgModule({
@@ -109,7 +110,9 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     UserNotificationsComponent,
     UserForgotPasswordComponent,
     CardSettingsComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    CardUserUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,

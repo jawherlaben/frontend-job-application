@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { User } from '../Model/user';
 import { UserService } from '../services/user.service';
+import { UserUpdateDTO } from '../card-settings/UserUpdate.dto';
 
 @Component({
   selector: 'app-user-settings',
@@ -9,6 +10,8 @@ import { UserService } from '../services/user.service';
 })
 export class UserSettingsComponent {
   public user: User | undefined;
+  userUpdateDTO: UserUpdateDTO | null = null;
+
 
   constructor(private userService: UserService) {}
 
@@ -17,5 +20,10 @@ export class UserSettingsComponent {
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
     });
+  }
+
+  updateUserUpdateDTO(userUpdateDTO: UserUpdateDTO): void {
+    this.userUpdateDTO = userUpdateDTO;
+
   }
 }
