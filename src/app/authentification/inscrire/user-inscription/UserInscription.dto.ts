@@ -6,5 +6,4 @@ export interface UserFormDTO {
     gender?: string;
     email?: string;
     password?: string;
-    Aboutme?:string;
   }
