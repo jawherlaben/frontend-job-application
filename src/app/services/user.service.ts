@@ -50,9 +50,17 @@ export class UserService {
       this.setUser(undefined);
     }
   }
+
+  updateUser(user: User | undefined): Observable<any> {
+    const url = `${this.userUrl}/user/update/${user?._id}`; 
+    return this.http.patch(url, user);
+  }
+
 }
 
 function GetUserIdFromToken(token: string): string {
   const decodedToken: any = jwt_decode.jwtDecode(token);
   return decodedToken._id;
 }
+
+

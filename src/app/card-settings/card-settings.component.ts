@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../Model/user';
 import { UserFormDTO } from '../authentification/inscrire/user-inscription/UserInscription.dto';
+import { NgForm } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-card-settings',
@@ -14,7 +16,7 @@ export class CardSettingsComponent {
   editMessageClass: string;
 
 
-  constructor( ) {
+  constructor( private userService: UserService) {
     this.editMessage = '';
     this.editMessageClass = '';
   }
@@ -31,9 +33,19 @@ export class CardSettingsComponent {
     }, 5000);
   }
 
-  saveSettings()
-  {
-    console.log("Edit User");
+
+
+  updateUserInfos(settingsForm: NgForm) {
+    if (settingsForm.valid) {
+      this.userService.updateUser(this.user).subscribe({
+        next: (response) => {
+          console.log('Mise à jour réussie', response);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la mise à jour', error);
+        }
+      });
+    }
   }
 
 }
