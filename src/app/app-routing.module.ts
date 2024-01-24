@@ -14,25 +14,36 @@ import { UserNotificationsComponent } from './user-notifications/user-notificati
 import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
 import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
+import { SimpleUserComponent } from './user/simple-user/simple-user.component';
+import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
+
+  {path:'user-component',component : SimpleUserComponent},
+  { path: 'user-component', component: SimpleUserComponent, children: [
+
+    { path: 'profile', component: ProfileComponent },
+    { path: 'user-dashboard', component: UserDashboardComponent },
+
+
+    { path: 'contact', component: ContactComponent },
+
+    { path: 'user-settings', component: UserSettingsComponent },
+    { path: 'auth-settings', component: UserSettingsAuthComponent },
+    { path: 'payments-settings', component: PaiementsSettingsComponent },
+    { path: 'proflix-verified-settings', component: ProflixVerifiedSettingsComponent },
+    { path: 'user-notifications', component: UserNotificationsComponent },
+
+
+  ]},
+
   { path: 'contact', component: ContactComponent },
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'companies', component: CompaniesComponent },
-  { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'company-dashboard', component: CompanyDashboardComponent },
 
-  { path: 'user-settings', component: UserSettingsComponent },
-  { path: 'auth-settings', component: InformationsAutorisationsSettingsComponent },
-  { path: 'payments-settings', component: PaiementsSettingsComponent },
-  { path: 'proflix-verified-settings', component: ProflixVerifiedSettingsComponent },
-
-  
-
-  { path: 'user-notifications', component: UserNotificationsComponent },
 
   { path: 'forbidden', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },

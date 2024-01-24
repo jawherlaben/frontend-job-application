@@ -84,7 +84,7 @@ export class AuthenticationService {
 
   private redirectBasedOnRole(role: string): void {
     if (role === 'user') {
-      this.router.navigate(['/user-dashboard']);
+      this.router.navigate(['/user-component']);
     } else if (role === 'company') {
       this.router.navigate(['/company-dashboard']);
     }

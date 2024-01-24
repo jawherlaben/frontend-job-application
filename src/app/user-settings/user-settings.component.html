@@ -1,14 +1,9 @@
-<div class="app-container grid grid-cols-4 gap-4">
-    <div class="col1 col-span-1">
-      <app-sidebar> </app-sidebar>
-  
-    </div>
-    
-    <div class="col2 col-span-2">
-      <app-card-settings [user]="user" (userUpdateDTOChanged)="updateUserUpdateDTO($event)" > </app-card-settings>
-    </div>
-
-    <div class="col3 col-span-1">
-      <app-card-user-update [userUpdateDTO]="userUpdateDTO"> </app-card-user-update>
-    </div>
+<div class="app-container grid grid-cols-3 gap-2">
+  <div class="col1 col-span-2">
+    <app-card-settings [user]="user" (userUpdateDTOChanged)="updateUserUpdateDTO($event)"> </app-card-settings>
   </div>
+  
+  <div class="col2 col-span-1">
+    <app-card-user-update [userUpdateDTO]="userUpdateDTO"> </app-card-user-update>
+  </div>
+</div>
