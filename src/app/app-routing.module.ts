@@ -11,7 +11,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
-import { UserForgotPasswordComponent } from './user-forgot-password/user-forgot-password.component';
+import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
+import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
+import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,14 +22,19 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'companies', component: CompaniesComponent },
-  { path: 'dashboard', component: UserDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   { path: 'company-dashboard', component: CompanyDashboardComponent },
-  {path : 'UserSettings', component : UserSettingsComponent},
-  {path : 'UserNotifications', component : UserNotificationsComponent},
-  {path : 'UserForgotPassword', component : UserForgotPasswordComponent},
 
-  { path: '403', component: AccessForbiddenComponent },
+  { path: 'user-settings', component: UserSettingsComponent },
+  { path: 'auth-settings', component: InformationsAutorisationsSettingsComponent },
+  { path: 'payments-settings', component: PaiementsSettingsComponent },
+  { path: 'proflix-verified-settings', component: ProflixVerifiedSettingsComponent },
+
+  
+
+  { path: 'user-notifications', component: UserNotificationsComponent },
+
+  { path: 'forbidden', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
 ];
 
