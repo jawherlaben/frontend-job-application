@@ -53,10 +53,16 @@ import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.compon
 import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
-import { UserForgotPasswordComponent } from './user-forgot-password/user-forgot-password.component';
 import { CardSettingsComponent } from './user-settings/card-settings/card-settings.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
-import { CardUserUpdateComponent } from './user-settings/cards/card-user-update/card-user-update.component';
+import { CardUserUpdateComponent } from './user-settings/card-user-update/card-user-update.component';
+import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
+import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
+import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
+import { ForgetPasswordSettingsComponent } from './user-settings/forget-password-settings/forget-password-settings.component';
+import { NewPasswordSettingsComponent } from './user-settings/new-password-settings/new-password-settings.component';
+import { TwoStepsAuthSettingsComponent } from './user-settings/two-steps-auth-settings/two-steps-auth-settings.component';
+import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
 
 
 @NgModule({
@@ -108,10 +114,16 @@ import { CardUserUpdateComponent } from './user-settings/cards/card-user-update/
     ProfileMenuComponent,
     UserSettingsComponent,
     UserNotificationsComponent,
-    UserForgotPasswordComponent,
     CardSettingsComponent,
     DateFormatPipe,
     CardUserUpdateComponent,
+    UserSettingsAuthComponent,
+    ProflixVerifiedSettingsComponent,
+    PaiementsSettingsComponent,
+    ForgetPasswordSettingsComponent,
+    NewPasswordSettingsComponent,
+    TwoStepsAuthSettingsComponent,
+    InformationsAutorisationsSettingsComponent,
     
   ],
   imports: [
