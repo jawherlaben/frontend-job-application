@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { User } from '../Model/user';
 import { UserService } from '../services/user.service';
-import { UserUpdateDTO } from '../card-settings/UserUpdate.dto';
+import { UserUpdateDTO } from './card-settings/UserUpdate.dto';
 
 @Component({
   selector: 'app-user-settings',

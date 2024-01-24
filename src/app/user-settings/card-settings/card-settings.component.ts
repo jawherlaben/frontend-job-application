@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../Model/user';
-import { UserFormDTO } from '../authentification/inscrire/user-inscription/UserInscription.dto';
+import { User } from '../../Model/user';
+import { UserFormDTO } from '../../authentification/inscrire/user-inscription/UserInscription.dto';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { UserUpdateDTO } from './UserUpdate.dto';
 
 @Component({
