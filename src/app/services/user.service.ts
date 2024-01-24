@@ -51,8 +51,9 @@ export class UserService {
     }
   }
 
-  updateUser(user: User | undefined): Observable<any> {
-    const url = `${this.userUrl}/user/update/${user?._id}`; 
+  updateUser(user: User): Observable<any> {
+    const userEmail = encodeURIComponent(user.email);
+    const url = `${this.userUrl}/user/${userEmail}`;
     return this.http.patch(url, user);
   }
 

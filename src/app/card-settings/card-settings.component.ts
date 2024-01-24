@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./card-settings.component.css']
 })
 export class CardSettingsComponent {
-  @Input() user: User | undefined;
+  @Input() user: User | undefined ;
   model: UserFormDTO = {};
   editMessage: string;
   editMessageClass: string;
@@ -36,7 +36,7 @@ export class CardSettingsComponent {
 
 
   updateUserInfos(settingsForm: NgForm) {
-    if (settingsForm.valid) {
+    if (settingsForm.valid && this.user) {
       this.userService.updateUser(this.user).subscribe({
         next: (response) => {
           console.log('Mise à jour réussie', response);
@@ -45,7 +45,10 @@ export class CardSettingsComponent {
           console.error('Erreur lors de la mise à jour', error);
         }
       });
+    } else {
+      console.log("Le formulaire n'est pas valide ou l'utilisateur est undefined");
     }
   }
+  
 
 }
