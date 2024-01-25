@@ -12,4 +12,6 @@ export interface User {
     profileImage?: string;
     role: string;
     date_added: Date;
+    aboutme?: string;
+
   }

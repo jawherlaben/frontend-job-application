@@ -10,5 +10,4 @@ import { User } from '../Model/user';
 export class HeadUserDashboardComponent  {
   @Input() user: User | undefined;
 
-
 }
