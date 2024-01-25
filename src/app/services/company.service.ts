@@ -4,18 +4,19 @@ import { Company } from '../Model/Company';
 import {classpathoperations, pathconst} from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private user: UserService) {}
 
   getCompanies(): Observable<Company[]> {
     return this.httpClient
     .get<Company[]>(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}`, {headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('currentUserToken')}`,
     }});
   }
 
