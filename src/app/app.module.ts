@@ -17,9 +17,8 @@ import { ProfileSidebarComponent } from './dashboard/profile-sidebar/profile-sid
 import { FeedComponent } from './dashboard/feed/feed.component';
 import { NetworkSidebarComponent } from './dashboard/network-sidebar/network-sidebar.component';
 import { AdvertisementComponent } from './dashboard/advertisement/advertisement.component';
-import { ProfileComponent } from './profile/profile.component';
 import { SuggestionsComponent } from './profile/suggestions/suggestions.component';
-import { HeadProfileComponent } from './profile/head-profile/head-profile.component';
+import { HeadProfileComponent } from './profile/user-profil/user-head-profile/user-head-profile.component';
 import { StatistiquesComponent } from './profile/statistiques/statistiques.component';
 import { RessourcesComponent } from './profile/ressources/ressources.component';
 import { ActiviteComponent } from './profile/activite/activite.component';
@@ -91,7 +90,6 @@ import { UserExperienceCardComponent } from './profile/user-profil/user-experien
     FeedComponent,
     NetworkSidebarComponent,
     AdvertisementComponent,
-    ProfileComponent,
     SuggestionsComponent,
     HeadProfileComponent,
     StatistiquesComponent,

@@ -4,7 +4,6 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { CompaniesComponent } from './companies/companies.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProfileComponent } from './profile/profile.component';
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
 import { UserDashboardComponent } from './user/simple-user/user-dashboard/user-dashboard.component';

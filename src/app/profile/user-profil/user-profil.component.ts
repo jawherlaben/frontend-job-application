@@ -16,12 +16,11 @@ export class UserProfilComponent implements OnInit {
     this.userService.getUserFromToken();
     this.userService.getCurrentUser().subscribe(user => {
       this.user = user;
-      console.log(user);
     });
   }
 
-  editInfo(section: string) {
-    this.router.navigate(['/user-settings', { section }]);
+  navigateToSettingsSection(section: string) {
+    this.router.navigate(['user-component/user-settings'], { fragment: section });
   }
   
 }
