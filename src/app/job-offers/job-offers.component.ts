@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JobOfferService } from '../services/job-offer.service';
+import { JobOffer } from '../Model/job-offer';
 
 @Component({
   selector: 'app-job-offers',
@@ -6,336 +8,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./job-offers.component.css']
 })
 
-export class JobOffersComponent {
-  jobOffers: any[] = [
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    },
-    {
-      title: 'Software Developer',
-      recruiter: { name: 'ABC Tech', location: 'City, Country' },
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      pay: 'Paid',
-      type: 'full-time',
-      tags: ['JavaScript', 'Angular', 'Node.js']
-    },
-    {
-      title: 'UX Designer',
-      recruiter: { name: 'XYZ Design', location: 'Another City, Country' },
-      description: 'Aenean euismod bibendum laoreet.',
-      pay: 'Paid',
-      type: 'part-time',
-      tags: ['UI/UX', 'Sketch', 'InVision']
-    }
-  ];
-
-
+export class JobOffersComponent  implements OnInit {
+  jobOffers: JobOffer[] = [];
   selectedJob: any | null = null;
+
+  constructor(private jobOfferService: JobOfferService) {}
+
+  ngOnInit(): void {
+    this.getJobOffers();
+  }
+
+  getJobOffers(): void {
+    this.jobOfferService.getJobOffers().subscribe(
+      (jobOffers: JobOffer[]) => {
+        this.jobOffers = jobOffers;
+      },
+      (error) => {
+        console.error('Error fetching job offers:', error);
+      }
+    );
+  }
 
   toggleOptions(job: any): void {
     if (this.selectedJob && this.selectedJob !== job) {
-      // Fermez la liste déroulante du poste précédent s'il y en a un autre ouvert
       this.selectedJob.showOptions = false;
     }
 
@@ -349,7 +44,6 @@ export class JobOffersComponent {
     if (index !== -1) {
       this.jobOffers.splice(index, 1);
 
-      // Assurez-vous que le poste ignoré n'a pas la liste déroulante ouverte
       if (this.selectedJob === job) {
         this.selectedJob = null;
       }
