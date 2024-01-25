@@ -4,6 +4,10 @@
         <div class="mb-10">
           <h1 class="text-blue-gray mb-2 text-3xl font-bold">Education & Certifications</h1>
           <p class="text-gray-500 leading-relaxed">See my education history.</p>
+          <button (click)="editInfo('education')" class="flex items-center">
+            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+          </button>
+
         </div>
         <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12">
           <div *ngFor="let education of user?.education">
@@ -22,6 +26,10 @@
         <div class="mb-10">
           <h1 class="text-blue-gray mb-2 text-3xl font-bold">Experience</h1>
           <p class="text-gray-500 leading-relaxed">See my experience </p>
+          <button (click)="editInfo('experience')" class="flex items-center">
+            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+          </button>
+
         </div>
         <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12">
           <div *ngFor="let experience of user?.experience">
@@ -40,6 +48,9 @@
         <div class="mb-10">
           <h1 class="text-blue-gray mb-2 text-3xl font-bold">Skills</h1>
           <p class="text-gray-500 leading-relaxed">Check out my technical and soft skills.</p>
+          <button (click)="editInfo('skills')" class="flex items-center">
+            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+          </button>
         </div>
         <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12 lg:grid-cols-2">
           <div *ngFor="let skill of user?.skills">
