@@ -14,8 +14,7 @@ export class classpathoperations {
   public static readonly FIND_COMPANY_BY_EMAIL = 'findcompanybyemail';
 }
 
-export class environment {
-  public static production: false;
+export class environment { 
+  public static  production: false;
   public static readonly apiUrl = 'http://localhost:3000' 
-  
 };
