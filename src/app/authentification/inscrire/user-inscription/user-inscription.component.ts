@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthentificationTypeService } from '../../authentification-type.service';
 import { AuthenticationService } from '../../../services/authentification.service';
 import { UserFormDTO } from './UserInscription.dto';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +20,7 @@ export class UserInscriptionComponent {
     this.authentificationService.emitUserType();
   }
 
-  constructor( private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
+  constructor( private authService: AuthenticationService, private authentificationService: AuthentificationTypeService, private router: Router ) {
     this.loginMessage = '';
     this.loginMessageClass = '';
   }
@@ -40,10 +41,13 @@ export class UserInscriptionComponent {
     this.authService.userRegister(this.model)
       .subscribe({
         next: (response) => {
-          if (response.statusCode == 201)
+          if (response.statusCode == 201) {
             this.showErrorMessage('Inscription Réussie', 'success');
-          else
+            this.router.navigate(['/home']);
+          }
+          else {
             this.showErrorMessage('Erreur de connexion');
+          }
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "User already exists")
