@@ -42,7 +42,7 @@ import { UserConnectComponent } from './authentification/connecter/user-connect/
 import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
 import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head-profile-buttons.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserDashboardComponent } from './user/simple-user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
 import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
@@ -52,7 +52,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
 import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
+import { UserNotificationsComponent } from './user/simple-user/user-notifications/user-notifications.component';
 import { CardSettingsComponent } from './user-settings/card-settings/card-settings.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { CardUserUpdateComponent } from './user-settings/card-user-update/card-user-update.component';

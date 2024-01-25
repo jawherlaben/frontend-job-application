@@ -30,15 +30,10 @@ export class Menu {
           route: '/user-component/user-settings',
           children: [
             { label: 'Informations personnelles', route: '/user-component/user-settings' },
-            { label: 'Informations et autorisations', route: '/user-component/auth-settings' },
+            { label: 'Auth Settings',route:'/user-component/auth-settings',},
             { label: 'Paiements', route: '/user-component/payments-settings' },
             { label: 'Proflix Verified', route: '/user-component/proflix-verified-settings' },
           ],
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/lock-closed.svg',
-          label: 'Auth Settings',
-          route: '/user-component/auth-settings',
         },
       ],
     },
