@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NewPasswordSettingsComponent {
 
+  changePassword(): void {
+  }
+
 }
