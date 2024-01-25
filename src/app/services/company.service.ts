@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Company } from '../Model/Company';
 import {classpathoperations, pathconst} from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,10 @@ export class CompanyService {
 
   getCompanies(): Observable<Company[]> {
     return this.httpClient
-    .get<Company[]>(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}`);
+    .get<Company[]>(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}`, {headers: {
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    }});
   }
 
   getCompanyById(id: string): Observable<Company> {
