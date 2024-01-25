@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Ignoring environement secret files
-src/environments/*.ts
+src/environments/environement.prod.ts
