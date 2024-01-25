@@ -1,5 +1,3 @@
-// This is the file where you define variables that are specific to a development environment.
-
 export class pathconst {
   public static readonly COMPANY_ENDPOINT_PATH = 'company';
   public static readonly USER_ENDPOINT_PATH = 'user';
