@@ -45,7 +45,7 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './user/simple-user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
-import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
+import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.component';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -68,6 +68,10 @@ import { PasswordSecurityComponentComponent } from './user-settings/password-sec
 import { CardForgetPasswordComponent } from './user-settings/card-forget-password/card-forget-password.component';
 import { CardTwostepsAuthenticationComponent } from './user-settings/card-twosteps-authentication/card-twosteps-authentication.component';
 import { AuthInformationsSavedComponent } from './user-settings/auth-informations-saved/auth-informations-saved.component';
+import { UserProfilComponent } from './profile/user-profil/user-profil.component';
+import { UserEducationCardComponent } from './profile/user-profil/user-education-card/user-education-card.component';
+import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
+import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 
 
 @NgModule({
@@ -134,6 +138,10 @@ import { AuthInformationsSavedComponent } from './user-settings/auth-information
     CardForgetPasswordComponent,
     CardTwostepsAuthenticationComponent,
     AuthInformationsSavedComponent,
+    UserProfilComponent,
+    UserEducationCardComponent,
+    UserSkillsCardComponent,
+    UserExperienceCardComponent,
     
   ],
   imports: [

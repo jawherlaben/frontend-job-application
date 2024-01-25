@@ -15,6 +15,7 @@ import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verifi
 import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
 import { SimpleUserComponent } from './user/simple-user/simple-user.component';
 import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
+import { UserProfilComponent } from './profile/user-profil/user-profil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const routes: Routes = [
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: SimpleUserComponent, children: [
-    { path: 'profile', component: ProfileComponent },
+    { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
 
 
