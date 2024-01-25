@@ -17,38 +17,38 @@ export class CompaniesComponent implements OnInit {
 
   constructor(private companyService: CompanyService) {}
 
-
-  ngOnInit(): void {
-    this.companies = this.companyService.getCompanies();
-    this.filteredCompanies = [...this.companies]; // Start with all companies
-    this.totalCompanies = this.companies.length; // Set the total number of companies
-    this.onPageChange(1);
+  ngOnInit(): void {    
+    this.companyService.getCompanies().subscribe((companies: Array<Company>) => {
+      this.companies = [...companies];
+      this.totalCompanies = this.companies.length;
+      this.onPageChange(1);
+    });
   }
 
+  // Cette fonction se lance après le changement de la page et elle permet de:
+  // filtrer les entreprises de la variable globale (companies)
+  // mettre à jour les entreprises affichées dans la page (paginatedCompanies)
+  onPageChange(newPage: number): void {
+    this.currentPage = newPage;
+    this.updatePaginatedCompanies();
+    this.performSearch();
+  }
+
+  // Cette fonction permet de mettre à jour les entreprises affichées dans la page
   updatePaginatedCompanies(): void {
     const startIndex = (this.currentPage - 1) * this.companiesPerPage;
     const endIndex = startIndex + this.companiesPerPage;
     this.paginatedCompanies = this.filteredCompanies.slice(startIndex, endIndex);
   }
 
-  onPageChange(newPage: number): void {
-    this.currentPage = newPage;
-    this.updatePaginatedCompanies();
-  }
-
-  getCompanies(): Company[] {
-    return [
-      new Company('1', 'Company One', '123 First St.', 'This is the first company.', 'assets/logo1.png', 'http://company1.com', 'Active'),
-    ];
-  }
-
-  performSearch(query: string): void {
+  // Cette fonction permet de filtrer les entreprises de "companies" et de mettre à jour "filteredCompanies"
+  performSearch(query?: string): void {
     if (query) {
       this.filteredCompanies = this.companies.filter(company =>
         company.name.toLowerCase().includes(query.toLowerCase())
       );
     } else {
-      this.filteredCompanies = [...this.companies];
+      this.filteredCompanies = this.companies;
     }
     this.totalCompanies = this.filteredCompanies.length;
     this.onPageChange(1);
