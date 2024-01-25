@@ -40,8 +40,8 @@ export class ProfileMenuComponent implements OnInit {
     });
   }
 
-  public toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  public toggleMenu(value: boolean): void {
+    this.isMenuOpen = value;
   }
 
   logout() {
