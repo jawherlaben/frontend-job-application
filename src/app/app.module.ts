@@ -64,6 +64,10 @@ import { NewPasswordSettingsComponent } from './user-settings/new-password-setti
 import { TwoStepsAuthSettingsComponent } from './user-settings/two-steps-auth-settings/two-steps-auth-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
 import { SimpleUserComponent } from './user/simple-user/simple-user.component';
+import { PasswordSecurityComponentComponent } from './user-settings/password-security-component/password-security-component.component';
+import { CardForgetPasswordComponent } from './user-settings/card-forget-password/card-forget-password.component';
+import { CardTwostepsAuthenticationComponent } from './user-settings/card-twosteps-authentication/card-twosteps-authentication.component';
+import { AuthInformationsSavedComponent } from './user-settings/auth-informations-saved/auth-informations-saved.component';
 
 
 @NgModule({
@@ -126,6 +130,10 @@ import { SimpleUserComponent } from './user/simple-user/simple-user.component';
     TwoStepsAuthSettingsComponent,
     InformationsAutorisationsSettingsComponent,
     SimpleUserComponent,
+    PasswordSecurityComponentComponent,
+    CardForgetPasswordComponent,
+    CardTwostepsAuthenticationComponent,
+    AuthInformationsSavedComponent,
     
   ],
   imports: [
