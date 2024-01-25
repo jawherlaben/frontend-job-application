@@ -12,7 +12,6 @@ import { CompanyDashboardComponent } from './company-dashboard/company-dashboard
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
 import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
-import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
 import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
 import { SimpleUserComponent } from './user/simple-user/simple-user.component';
 import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
@@ -21,9 +20,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
-  {path:'user-component',component : SimpleUserComponent},
+  { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: SimpleUserComponent, children: [
-
     { path: 'profile', component: ProfileComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
 
