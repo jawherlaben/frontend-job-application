@@ -1,13 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../Model/user';
-import { UserService } from '../services/user.service';
-import { AuthenticationService } from '../services/authentification.service';
+import { User } from '../../Model/user';
+import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/authentification.service';
 
 @Component({
   selector: 'app-profile-menu',
   templateUrl: './profile-menu.component.html',
-  styleUrls: ['./profile-menu.component.css'],
 })
 export class ProfileMenuComponent implements OnInit {
   public isMenuOpen = false;

@@ -1,6 +1,20 @@
 <div class="app-container grid grid-cols-3 gap-2">
   <div class="col1 col-span-2">
+
+    <a id="app-card-settings"></a>
     <app-card-settings [user]="user" (userUpdateDTOChanged)="updateUserUpdateDTO($event)"> </app-card-settings>
+
+    <!--
+    <a id="education"></a>
+    <app-user-education-card> </app-user-education-card>
+
+    <a id="experience"></a>
+    <app-user-experience-card> </app-user-experience-card>
+
+    <a id="skills"></a>
+    <app-user-skills-card > </app-user-skills-card>
+    -->
+
   </div>
   
   <div class="col2 col-span-1">
