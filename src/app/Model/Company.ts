@@ -3,7 +3,7 @@ export class Company {
   name: string;
   address: string;
   description: string;
-  logo: string;
+  avatar: string;
   website: string;
   state: string;
 
@@ -12,7 +12,7 @@ export class Company {
     name: string,
     address: string,
     description: string,
-    logo: string,
+    avatar: string,
     website: string,
     state: string
   ) {
@@ -20,7 +20,7 @@ export class Company {
     this.name = name;
     this.address = address;
     this.description = description;
-    this.logo = logo;
+    this.avatar = avatar;
     this.website = website;
     this.state = state;
   }
