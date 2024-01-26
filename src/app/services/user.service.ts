@@ -57,9 +57,14 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${storedToken}` 
+    });
+
     const userEmail = encodeURIComponent(user.email);
     const url = `${this.userUrl}/user/${userEmail}`;
-    return this.http.patch(url, user);
+    return this.http.patch(url, user, { headers });
   }
 
 }

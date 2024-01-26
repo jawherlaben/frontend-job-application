@@ -12,5 +12,6 @@ export interface UserUpdateDTO {
     profileImage?: string;
     role?: string;
     date_added?: Date;
-    aboutme?: string;
+    description?: string;
+    dateTime_added?: string;
   }

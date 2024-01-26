@@ -57,11 +57,12 @@
               Date of birth
             </label>
             <input
-              type="date"
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              [ngModel]="userUpdateDTO.dateBirth | date:'yyyy-MM-dd'"
-              (ngModelChange)="userUpdateDTO.dateBirth = $event"
-            />
+            type="date"
+            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+            [(ngModel)]="userUpdateDTO.dateBirth"
+            name="dateBirth"
+            (ngModelChange)="userUpdateDTO.dateBirth = $event"
+          />
           </div>
         </div>
         <div class="w-full lg:w-6/12 px-4">
@@ -82,24 +83,6 @@
           </div>
         </div>
       </div>
-
-      <div class="w-full lg:w-6/12 px-4">
-        <div class="relative w-full mb-3">
-          <label
-            class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-            htmlFor="grid-password"
-          >
-            Date de création de compte
-          </label>
-          <input
-            type="date"
-            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-            [ngModel]="userUpdateDTO.date_added "
-            (ngModelChange)="userUpdateDTO.date_added = $event"  />
-        </div>
-        <p> {{userUpdateDTO.date_added }} </p>
-      </div>
-
 
 
       <hr class="mt-6 border-b-1 border-blueGray-300" />
@@ -134,7 +117,7 @@
             </label>
             <input
               class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              type="number" id="phoneNumber" [class.border-red-500]="!phoneNumber.valid && phoneNumber.touched" #phoneNumber="ngModel" [(ngModel)]="userUpdateDTO.phoneNumber" required name="phoneNumber" minlength="8" maxlength="8"
+              type="number" id="phoneNumber" [class.border-red-500]="!phoneNumber.valid && phoneNumber.touched" #phoneNumber="ngModel" [(ngModel)]="userUpdateDTO.phoneNumber" required name="phoneNumber" minlength="8" maxlength="16"
             />
             <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="text-red-500"> Veuillez saisir un numéro de téléphone valide. </div>
           </div>
@@ -149,8 +132,9 @@
           </label>
           <input
             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-            type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [class.border-red-500]="!email.valid && email.touched" #email="ngModel" [(ngModel)]="userUpdateDTO.email" required name="email"
+            type="email" id="email"  [class.border-red-500]="!email.valid && email.touched" #email="ngModel" [(ngModel)]="userUpdateDTO.email" required name="email"
           />
+
           <span *ngIf="!email.valid && email.touched" class="text-red-500"> Veuillez saisir un adresse mail valide. </span>
 
           </div>
@@ -160,9 +144,7 @@
 
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        About Me
-      </h6>
+
       <div class="flex flex-wrap">
         <div class="w-full lg:w-12/12 px-4">
           <div class="relative w-full mb-3">
@@ -175,7 +157,7 @@
             <textarea
               class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               rows="4"
-              type="text" id="Aboutme" [class.border-red-500]="!Aboutme.valid && Aboutme.touched" #Aboutme="ngModel" [(ngModel)]="userUpdateDTO.aboutme"  name="Aboutme" maxlength="250"
+              type="text" id="Aboutme" [class.border-red-500]="!Aboutme.valid && Aboutme.touched" #Aboutme="ngModel" [(ngModel)]="userUpdateDTO.description"  name="Aboutme" maxlength="250"
             >    
             <span *ngIf="!email.valid && email.touched" class="text-red-500"> Veuillez saisir une description valide. </span>
 

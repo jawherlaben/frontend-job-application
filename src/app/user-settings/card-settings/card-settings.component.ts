@@ -29,11 +29,27 @@ export class CardSettingsComponent {
   private initializeModel(): void {
     if (this.user) {
       this.userUpdateDTO = { ...this.user };
-      this.userUpdateDTOChanged.emit(this.userUpdateDTO);
+      this.userUpdateDTO.dateBirth = this.formatDate(this.user.dateBirth);
 
+      this.userUpdateDTOChanged.emit(this.userUpdateDTO);
     }
   }
-
+  private formatDate(dateString: string | undefined): string {
+    if (!dateString) {
+      return '';
+    }
+  
+    const d = new Date(dateString);
+    if (isNaN(d.getTime())) {
+      return '';
+    }
+  
+    const month = '' + (d.getMonth() + 1);
+    const day = '' + d.getDate();
+    const year = d.getFullYear();
+    return [year, month.padStart(2, '0'), day.padStart(2, '0')].join('-');
+  }
+  
   showErrorMessage(message: string, type: string = 'error') {
     this.editMessage = message;
     if (type == 'error')
@@ -47,10 +63,14 @@ export class CardSettingsComponent {
   }
 
   updateUserInfos(settingsForm: NgForm): void {
-    if (settingsForm.valid && this.userUpdateDTO && this.userUpdateDTO._id) {
+    if (settingsForm.valid && this.userUpdateDTO) {
+      /* && this.userUpdateDTO && this.userUpdateDTO._id */ 
       this.userService.updateUser(this.userUpdateDTO as User).subscribe({
         next: (response) => {
           console.log('Mise à jour réussie', response);
+          console.log(this.userUpdateDTO.dateBirth);
+          console.log(this.user?.dateBirth);
+
           if (this.user) {
             Object.assign(this.user, this.userUpdateDTO);
           }
@@ -64,4 +84,6 @@ export class CardSettingsComponent {
       console.log("Le formulaire n'est pas valide ou les données sont manquantes.");
     }
   }
+
+
 }

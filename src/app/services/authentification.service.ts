@@ -65,7 +65,7 @@ export class AuthenticationService {
 
   userRegister(userForm: UserFormDTO): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<RegistrationResponse>(this.authUrl + '/user/register', userForm, { headers });
+    return this.http.post<RegistrationResponse>(this.authUrl + '/auth/register', userForm, { headers });
   }
 
   companyRegister(companyForm: CompanyFormDTO): Observable<any> {
