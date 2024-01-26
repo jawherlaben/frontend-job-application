@@ -3,13 +3,13 @@ import { User } from '../Model/user';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
-import { environment } from 'src/environments/environment';
+import { classpathoperations, environment, pathconst } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl;
   private currentUserSubject: BehaviorSubject<User | undefined>;
 
   constructor(private http: HttpClient) {
@@ -30,7 +30,7 @@ export class UserService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${storedToken}` 
     });
-    const url = `${this.userUrl}/user/findUserbyId/${userId}`;
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${userId}`;
     return this.http.get<User>(url,{ headers });
   }
 
@@ -63,8 +63,19 @@ export class UserService {
     });
 
     const userEmail = encodeURIComponent(user.email);
-    const url = `${this.userUrl}/user/${userEmail}`;
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${userEmail}`;
     return this.http.patch(url, user, { headers });
+  }
+
+  changePassword(email: string, newPassword: string): Observable<any> {
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${storedToken}` 
+    });
+  
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.CHANGE_USERPWD_BY_EMAIL}/${email}`;
+
+    return this.http.patch(url, { password: newPassword }, { headers });
   }
 
 }
