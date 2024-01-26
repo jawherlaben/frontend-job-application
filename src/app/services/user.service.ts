@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Model/user';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,13 @@ export class UserService {
   }
 
   getUserById(userId: string): Observable<User> {
+    
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${storedToken}` 
+    });
     const url = `${this.userUrl}/user/findUserbyId/${userId}`;
-    return this.http.get<User>(url);
+    return this.http.get<User>(url,{ headers });
   }
 
   getUserFromToken(): void {
@@ -63,5 +68,3 @@ function GetUserIdFromToken(token: string): string {
   const decodedToken: any = jwt_decode.jwtDecode(token);
   return decodedToken._id;
 }
-
-

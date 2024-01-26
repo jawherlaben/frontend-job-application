@@ -17,9 +17,8 @@ import { ProfileSidebarComponent } from './dashboard/profile-sidebar/profile-sid
 import { FeedComponent } from './dashboard/feed/feed.component';
 import { NetworkSidebarComponent } from './dashboard/network-sidebar/network-sidebar.component';
 import { AdvertisementComponent } from './dashboard/advertisement/advertisement.component';
-import { ProfileComponent } from './profile/profile.component';
 import { SuggestionsComponent } from './profile/suggestions/suggestions.component';
-import { HeadProfileComponent } from './profile/head-profile/head-profile.component';
+import { HeadProfileComponent } from './profile/user-profil/user-head-profile/user-head-profile.component';
 import { StatistiquesComponent } from './profile/statistiques/statistiques.component';
 import { RessourcesComponent } from './profile/ressources/ressources.component';
 import { ActiviteComponent } from './profile/activite/activite.component';
@@ -42,17 +41,17 @@ import { UserConnectComponent } from './authentification/connecter/user-connect/
 import { CompanyConnectComponent } from './authentification/connecter/company-connect/company-connect.component';
 import { HeadProfileButtonsComponent } from './profile/head-profile-buttons/head-profile-buttons.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserDashboardComponent } from './user/simple-user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './head-user-dashboard/head-user-dashboard.component';
 
-import { ProfileMenuComponent } from './profile-menu/profile-menu.component';
+import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.component';
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
 import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { UserNotificationsComponent } from './user-notifications/user-notifications.component';
+import { UserNotificationsComponent } from './user/simple-user/user-notifications/user-notifications.component';
 import { CardSettingsComponent } from './user-settings/card-settings/card-settings.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { CardUserUpdateComponent } from './user-settings/card-user-update/card-user-update.component';
@@ -63,7 +62,19 @@ import { ForgetPasswordSettingsComponent } from './user-settings/forget-password
 import { NewPasswordSettingsComponent } from './user-settings/new-password-settings/new-password-settings.component';
 import { TwoStepsAuthSettingsComponent } from './user-settings/two-steps-auth-settings/two-steps-auth-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
+
 import { JobComponent } from './job/job.component';
+
+import { SimpleUserComponent } from './user/simple-user/simple-user.component';
+import { PasswordSecurityComponentComponent } from './user-settings/password-security-component/password-security-component.component';
+import { CardForgetPasswordComponent } from './user-settings/card-forget-password/card-forget-password.component';
+import { CardTwostepsAuthenticationComponent } from './user-settings/card-twosteps-authentication/card-twosteps-authentication.component';
+import { AuthInformationsSavedComponent } from './user-settings/auth-informations-saved/auth-informations-saved.component';
+import { UserProfilComponent } from './profile/user-profil/user-profil.component';
+import { UserEducationCardComponent } from './profile/user-profil/user-education-card/user-education-card.component';
+import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
+import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
+
 
 
 @NgModule({
@@ -83,7 +94,6 @@ import { JobComponent } from './job/job.component';
     FeedComponent,
     NetworkSidebarComponent,
     AdvertisementComponent,
-    ProfileComponent,
     SuggestionsComponent,
     HeadProfileComponent,
     StatistiquesComponent,
@@ -126,6 +136,15 @@ import { JobComponent } from './job/job.component';
     NewPasswordSettingsComponent,
     TwoStepsAuthSettingsComponent,
     InformationsAutorisationsSettingsComponent,
+    SimpleUserComponent,
+    PasswordSecurityComponentComponent,
+    CardForgetPasswordComponent,
+    CardTwostepsAuthenticationComponent,
+    AuthInformationsSavedComponent,
+    UserProfilComponent,
+    UserEducationCardComponent,
+    UserSkillsCardComponent,
+    UserExperienceCardComponent,
     
   ],
   imports: [

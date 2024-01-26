@@ -1,15 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { ClickOutsideDirective } from '../shared/click-outside-directive.directive'
-import { NgClass } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
-import { User } from '../Model/user';
-import { UserService } from '../services/user.service';
-import { AuthenticationService } from '../services/authentification.service';
+import { Router } from '@angular/router';
+import { User } from '../../Model/user';
+import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/authentification.service';
 
 @Component({
   selector: 'app-profile-menu',
   templateUrl: './profile-menu.component.html',
-  styleUrls: ['./profile-menu.component.css'],
 })
 export class ProfileMenuComponent implements OnInit {
   public isMenuOpen = false;
@@ -17,7 +14,6 @@ export class ProfileMenuComponent implements OnInit {
 
   isUserLoggedIn = false; 
   isCompanyUser = false; 
-  showDropdown = false;
 
   constructor(private authService: AuthenticationService,private userService: UserService, private router: Router) {}
 
@@ -31,7 +27,7 @@ export class ProfileMenuComponent implements OnInit {
 
       this.userService.getUserFromToken();
       this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
+        this.user = user;
       });
       }
     });
@@ -43,18 +39,11 @@ export class ProfileMenuComponent implements OnInit {
     });
   }
 
-  public toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-    this.userService.getUserFromToken();
-    this.userService.getCurrentUser().subscribe(user => {
-      this.user = user;
-    });
+  public toggleMenu(value: boolean): void {
+    this.isMenuOpen = value;
   }
 
   logout() {
     this.authService.logout();
-    this.isUserLoggedIn = false;
-    this.isCompanyUser = false;
-    this.showDropdown = false;
   }
 }

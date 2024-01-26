@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class UserSettingsAuthComponent {
 
+  activeModal: string | null = null;
+
+  openModal(modalType: string): void {
+    this.activeModal = modalType;
+  }
+
+  closeModal(): void {
+    this.activeModal = null;
+  }
 }

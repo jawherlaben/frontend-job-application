@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { UserFormDTO } from '../authentification/inscrire/user-inscription/UserInscription.dto';
 import { CompanyFormDTO } from '../authentification/inscrire/company-inscription/CompanyInscription.dto';
 import { Router } from '@angular/router';
@@ -27,7 +27,6 @@ export class AuthenticationService {
   isCompanyUser = this.isCompanyUserSubject.asObservable();
 
   private redirectToHomeSubject = new BehaviorSubject<boolean>(false);
-
   redirectToHome = this.redirectToHomeSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -84,9 +83,43 @@ export class AuthenticationService {
 
   private redirectBasedOnRole(role: string): void {
     if (role === 'user') {
-      this.router.navigate(['/user-dashboard']);
+      this.router.navigate(['/user-component']);
     } else if (role === 'company') {
       this.router.navigate(['/company-dashboard']);
+    }
+  }
+
+  isUserLoggedIn(): boolean {
+    return !!localStorage.getItem('currentUserToken');
+  }
+
+  isUser(): boolean {
+    const token = localStorage.getItem('currentUserToken');
+    if (token) {
+      const tokenPayload = this.decodeToken(token);
+      return tokenPayload.role === 'user';
+    } else {
+      return false;
+    }
+  }
+
+  isCompany(): boolean {
+    const token = localStorage.getItem('currentUserToken');
+    if (token) {
+      const tokenPayload = this.decodeToken(token);
+      return tokenPayload.role === 'company';
+    } else {
+      return false;
+    }
+  }
+
+  private decodeToken(token: string): any {
+    const tokenParts = token.split('.');
+    if (tokenParts.length === 3) {
+      const decodedToken = JSON.parse(atob(tokenParts[1]));
+      return decodedToken;
+    } else {
+      return null;
     }
   }
 }
