@@ -8,5 +8,5 @@ export interface JobOffer {
   tags?: string[];
   applications: string[]; 
   chats?: string[]; 
-  showOptions?:boolean;
+  recruiter: string;
 }
