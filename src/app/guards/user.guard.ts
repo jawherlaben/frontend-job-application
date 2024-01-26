@@ -7,12 +7,10 @@ import { AuthenticationService } from '../services/authentification.service';
   providedIn: 'root'
 })
 export class UserGuard {
-  //constructor(private authService: AuthenticationService, private toastr: ToastrService, private router: Router) {}
   constructor(private authService: AuthenticationService, private router: Router) {}
 
   canActivate(): boolean {
     if (!this.authService.isUserLoggedIn()) {
-      //this.toastr.info('Veuillez vous connecter !');
       this.router.navigate(['/authentification']);
       return false;
     }

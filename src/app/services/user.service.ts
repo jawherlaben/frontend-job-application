@@ -30,7 +30,7 @@ export class UserService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${storedToken}` 
     });
-    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${userId}`;
+    const url = `${this.apiUrl}/user/findUserbyId/${userId}`;
     return this.http.get<User>(url,{ headers });
   }
 
@@ -61,21 +61,9 @@ export class UserService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${storedToken}` 
     });
-
     const userEmail = encodeURIComponent(user.email);
-    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${userEmail}`;
-    return this.http.patch(url, user, { headers });
-  }
-
-  changePassword(email: string, newPassword: string): Observable<any> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${storedToken}` 
-    });
-  
-    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.CHANGE_USERPWD_BY_EMAIL}/${email}`;
-
-    return this.http.patch(url, { password: newPassword }, { headers });
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${user._id}`;
+    return this.http.patch(url, user,{headers });
   }
 
 }

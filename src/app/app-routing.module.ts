@@ -15,13 +15,18 @@ import { PaiementsSettingsComponent } from './user-settings/paiements-settings/p
 import { SimpleUserComponent } from './user/simple-user/simple-user.component';
 import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
 import { UserProfilComponent } from './profile/user-profil/user-profil.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
-  { path: 'user-component', component: SimpleUserComponent, children: [
+  { 
+    path: 'user-component',
+    component: SimpleUserComponent,
+    canActivate: [UserGuard], 
+    children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
 

@@ -11,7 +11,8 @@ export class classpathoperations {
   public static readonly FIND_COMPANY_BY_ID = 'findcompanybyid';
   public static readonly FIND_COMPANY_BY_EMAIL = 'findcompanybyemail';
 
-  public static readonly FIND_USER_BY_ID = 'findcompanybyemail';
+  public static readonly FIND_USER_BY_ID = 'findUserbyId';
+
   public static readonly CHANGE_USERPWD_BY_EMAIL = 'change-password';
 
   
