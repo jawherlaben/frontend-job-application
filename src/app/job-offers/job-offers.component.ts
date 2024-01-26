@@ -22,6 +22,7 @@ export class JobOffersComponent  implements OnInit {
     this.jobOfferService.getJobOffers().subscribe(
       (jobOffers: JobOffer[]) => {
         this.jobOffers = jobOffers;
+        console.log(jobOffers);
       },
       (error) => {
         console.error('Error fetching job offers:', error);

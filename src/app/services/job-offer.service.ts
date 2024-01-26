@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JobOffer } from '../Model/job-offer';
 import { Observable } from 'rxjs';
@@ -24,7 +24,11 @@ export class JobOfferService
   }
 
   getJobOffers(): Observable<JobOffer[]> {
-    return this.httpClient.get<JobOffer[]>(`${this.apiUrl}/${this.jobEndpoint}`);
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${storedToken}` 
+    });
+    return this.httpClient.get<JobOffer[]>(`${this.apiUrl}/${this.jobEndpoint}`,{ headers });
   }
 
   getJobOfferById(id: string): Observable<JobOffer> {
