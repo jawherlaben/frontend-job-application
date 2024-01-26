@@ -34,6 +34,7 @@ const routes: Routes = [
     { path: 'proflix-verified-settings', component: ProflixVerifiedSettingsComponent },
     { path: 'user-notifications', component: UserNotificationsComponent },
 
+    { path: 'company/:id', component: UserNotificationsComponent },
 
   ]},
 

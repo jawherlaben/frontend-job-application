@@ -1,23 +1,29 @@
 <div *ngFor="let job of jobOffers" class="job-offer mb-4 p-4 border rounded relative">
   <div class="flex items-start justify-end">
-    <button (click)="toggleOptions(job)" type="button" id="options-menu" aria-haspopup="true" aria-expanded="true" class="p-2">
+    <button (click)="toggleMenu(job._id)" type="button" [attr.id]="'options-menu-' + job._id" class="p-2 menu-button" aria-haspopup="true" aria-expanded="true">
       ...
     </button>
 
     <button class="px-4 py-2" (click)="ignoreJob(job)">X</button>
   </div>
 
-  <div *ngIf="job.showOptions" class="absolute top-10 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Enregistrer</a>
-    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Copier le lien vers le post</a>
-    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Voir l'entreprise</a>
-    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Je ne souhaite pas voir ceci</a>
+  <div *ngIf="openMenus[job._id]" class="absolute top-10 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" [attr.aria-labelledby]="'options-menu-' + job._id">
+    <a (click)="viewCompany(job.recruiter)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+      Voir l'entreprise
+    </a>
+    <a (click)="ignoreJob(job)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Je ne souhaite pas voir ceci</a>
   </div>
 
-  <div class="flex-1 pl-8">
-    <h3 class="text-lg font-bold">{{ job.title }}</h3>
-    <p class="text-gray-600 mb-2">Company: {{ job.recruiter.name }}</p>
-    <p>Location: {{ job.recruiter.location }}</p>
-    <p>Description: {{ job.description }}</p>
+  <div class="flex items-center">
+    <div class="rounded-full overflow-hidden mr-4">
+      <img [src]="companies[job.recruiter].avatar" alt="Logo" class="w-16 h-16 object-cover" >    
+    </div>
+
+    <div class="flex-1">
+      <h3 class="text-lg font-bold">{{ job.title }}</h3>
+      <p class="text-gray-600 mb-2">Company: {{ companies[job.recruiter].name }} </p>
+      <p>Location: </p>
+      <p>Description: {{ job.description }}</p>
+    </div>
   </div>
 </div>
