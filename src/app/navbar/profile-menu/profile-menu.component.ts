@@ -31,12 +31,6 @@ export class ProfileMenuComponent implements OnInit {
       });
       }
     });
-
-    this.authService.redirectToHome.subscribe(redirectToHome => {
-      if (redirectToHome) {
-        this.router.navigate(['/']);
-      }
-    });
   }
 
   public toggleMenu(value: boolean): void {
