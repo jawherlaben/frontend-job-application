@@ -1,0 +1,113 @@
+<div class="mx-5 max-w-fit flex justify-center items-center">
+  <app-card>
+    <h1 class="text-xl font-medium text-center mb-2">
+      Publier une Offre d'Emploi
+    </h1>
+
+    <form (submit)="submitJobForm()">
+      <!-- Titre de l'emploi -->
+      <div class="mb-4">
+        <label for="title" class="block text-sm font-medium text-gray-600"
+          >Titre de l'Emploi</label
+        >
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="job.title"
+          required
+          class="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+
+      <!-- Description de l'emploi -->
+      <div class="mb-4">
+        <label for="description" class="block text-sm font-medium text-gray-600"
+          >Description de l'Emploi</label
+        >
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="job.description"
+          required
+          class="mt-1 p-2 w-full border rounded-md resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Détails de l'emploi -->
+      <div class="mb-4">
+        <label for="body" class="block text-sm font-medium text-gray-600"
+          >Détails de l'Emploi</label
+        >
+        <textarea
+          id="body"
+          name="body"
+          [(ngModel)]="job.body"
+          required
+          class="mt-1 p-2 w-full border rounded-md resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Tags -->
+      <div class="mb-4">
+        <label for="tags" class="block text-sm font-medium text-gray-600"
+          >Tags (séparés par des virgules)</label
+        >
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          [(ngModel)]="job.tags"
+          class="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+
+      <!-- Salaire -->
+      <div class="mb-4">
+        <label for="pay" class="block text-sm font-medium text-gray-600"
+          >Salaire</label
+        >
+        <input
+          type="text"
+          id="pay"
+          name="pay"
+          [(ngModel)]="job.pay"
+          required
+          class="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+
+      <!-- Type de poste -->
+      <div class="mb-4">
+        <label for="type" class="block text-sm font-medium text-gray-600"
+          >Type de Poste</label
+        >
+        <select
+          id="type"
+          name="type"
+          [(ngModel)]="job.type"
+          required
+          class="mt-1 p-2 w-full border rounded-md"
+        >
+          <option value="">Sélectionnez un type</option>
+          <option value="ON_SITE">Sur Site</option>
+          <option value="REMOTE">Télétravail</option>
+          <option value="HYBRID">Hybride</option>
+        </select>
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">
+          Soumettre l'Offre
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-2">
+      <p class="text-xs text-gray-500">
+        En soumettant une offre d'emploi, vous acceptez les termes et conditions
+        de notre plateforme.
+      </p>
+    </div>
+  </app-card>
+</div>

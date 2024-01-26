@@ -14,10 +14,12 @@ import { UserNotificationsComponent } from './user-notifications/user-notificati
 import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
 import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
+import { JobComponent } from './job/job.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'job', component: JobComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'authentification', component: AuthentificationComponent },

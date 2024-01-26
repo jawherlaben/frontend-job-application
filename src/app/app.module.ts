@@ -63,6 +63,7 @@ import { ForgetPasswordSettingsComponent } from './user-settings/forget-password
 import { NewPasswordSettingsComponent } from './user-settings/new-password-settings/new-password-settings.component';
 import { TwoStepsAuthSettingsComponent } from './user-settings/two-steps-auth-settings/two-steps-auth-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './user-settings/informations-autorisations-settings/informations-autorisations-settings.component';
+import { JobComponent } from './job/job.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { InformationsAutorisationsSettingsComponent } from './user-settings/info
     CompanyConnectComponent,
     HeadProfileButtonsComponent,
     JobOffersComponent,
+    JobComponent,
     UserDashboardComponent,
     HeadUserDashboardComponent,
     SidebarComponent,
