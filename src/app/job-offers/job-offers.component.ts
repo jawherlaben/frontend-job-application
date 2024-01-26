@@ -29,19 +29,7 @@ export class JobOffersComponent  implements OnInit {
   ngOnInit(): void {
     this.getJobOffers();
   }
-  
-/*
-  getJobOffers(): void {
-    this.jobOfferService.getJobOffers().subscribe(
-      (jobOffers: JobOffer[]) => {
-        this.jobOffers = jobOffers;
-      },
-      (error) => {
-        console.error('Error fetching job offers:', error);
-      }
-    );
-  }
-*/
+
   
   getJobOffers(): void {
     this.jobOfferService.getJobOffers().subscribe(
@@ -74,10 +62,7 @@ export class JobOffersComponent  implements OnInit {
         this.selectedJob = null;
       }
     }
-    
-
   }
-
 
   public toggleMenu(jobId: string): void {
     if (this.openMenus[jobId] === undefined) {
