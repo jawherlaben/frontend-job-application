@@ -8,7 +8,6 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
     selector: 'app-sidebar-menu',
     templateUrl: './sidebar-menu.component.html',
-    styleUrls: ['./sidebar-menu.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
    
 })
