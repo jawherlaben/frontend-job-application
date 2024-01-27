@@ -77,6 +77,21 @@ export class UserService {
   }
   
 
+  changePassword(userId: string, currentPassword: string, newPassword: string): Observable<any> {
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${storedToken}`
+    });
+
+    const body = {
+      currentPassword,
+      newPassword
+    };
+
+    return this.http.patch(`${this.apiUrl}/user/changePassword/${userId}`, body, { headers });
+  }
+  
 }
 
 function GetUserIdFromToken(token: string): string {
