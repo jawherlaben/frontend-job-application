@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { classpathoperations, environment, pathconst } from 'src/environments/environment';
 import { Application } from '../Model/application';
@@ -26,13 +26,8 @@ export class UserService {
   }
 
   getUserById(userId: string): Observable<User> {
-    
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${storedToken}` 
-    });
-    const url = `${this.apiUrl}/user/findUserbyId/${userId}`;
-    return this.http.get<User>(url,{ headers });
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${userId}`;
+    return this.http.get<User>(url);
   }
 
   getUserFromToken(): void {
@@ -58,40 +53,23 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${storedToken}` 
-    });
-    const userEmail = encodeURIComponent(user.email);
     const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${user._id}`;
-    return this.http.patch(url, user,{headers });
+    return this.http.patch(url, user);
   }
-
 
   getUserApplications(userId?: string): Observable<Application[]> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${storedToken}` });
-
-
-    return this.http.get<Application[]>(`${this.apiUrl}/application/user/${userId}`, { headers });
+    return this.http.get<Application[]>(`${this.apiUrl}/${pathconst.APPLICATION_ENDPOINT_PATH}/${pathconst.USER_ENDPOINT_PATH}/${userId}`);
   }
-  
 
   changePassword(userId: string, currentPassword: string, newPassword: string): Observable<any> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${storedToken}`
-    });
-
     const body = {
       currentPassword,
       newPassword
     };
+    return this.http.patch(`${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.CHANGE_USERPWD_BY_ID}/${userId}`, body);
 
-    return this.http.patch(`${this.apiUrl}/user/changePassword/${userId}`, body, { headers });
   }
-  
+
 }
 
 function GetUserIdFromToken(token: string): string {

@@ -7,15 +7,10 @@ export class pathconst {
 }
 
 export class classpathoperations {
-  //companies operations
   public static readonly FIND_COMPANY_BY_ID = 'findcompanybyid';
   public static readonly FIND_COMPANY_BY_EMAIL = 'findcompanybyemail';
-
   public static readonly FIND_USER_BY_ID = 'findUserbyId';
-
-  public static readonly CHANGE_USERPWD_BY_EMAIL = 'change-password';
-
-  
+  public static readonly CHANGE_USERPWD_BY_ID = 'changePassword';
 }
 
 export class environment { 

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Company } from '../Model/Company';
 import {classpathoperations, pathconst} from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -21,12 +21,8 @@ export class CompanyService {
   }
 
   getCompanyById(id: string): Observable<Company> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${storedToken}` 
-    });
     return this.httpClient
-    .get<Company>(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${classpathoperations.FIND_COMPANY_BY_ID}/${id}`,{ headers });
+    .get<Company>(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${classpathoperations.FIND_COMPANY_BY_ID}/${id}`);
   }
 
   getCompanyByEmail(email: string): Observable<Company> {

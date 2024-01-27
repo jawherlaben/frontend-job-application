@@ -133,7 +133,6 @@ export class JobOffersComponent  implements OnInit {
     );
   }
 
-
   loadUserApplications(): void {
     this.userService.getCurrentUser().subscribe(user => {
       if (user && user._id) {

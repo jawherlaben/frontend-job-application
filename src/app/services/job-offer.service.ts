@@ -10,17 +10,11 @@ import { Application } from '../Model/application';
 })
 export class JobOfferService
 {
-
   private apiUrl = environment.apiUrl;
   private jobEndpoint = pathconst.JOB_ENDPOINT_PATH;
   private applicationEndPoint = pathconst.APPLICATION_ENDPOINT_PATH;
-
-  
-  
-
   private findCompanyByID = classpathoperations.FIND_COMPANY_BY_ID;
   private findCompanyByEmail = classpathoperations.FIND_COMPANY_BY_EMAIL;
-
 
   constructor(private httpClient: HttpClient) {}
 
@@ -29,11 +23,7 @@ export class JobOfferService
   }
 
   getJobOffers(): Observable<JobOffer[]> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${storedToken}` 
-    });
-    return this.httpClient.get<JobOffer[]>(`${this.apiUrl}/${this.jobEndpoint}`,{ headers });
+    return this.httpClient.get<JobOffer[]>(`${this.apiUrl}/${this.jobEndpoint}`);
   }
 
   getJobOfferById(id: string): Observable<JobOffer> {
@@ -63,12 +53,9 @@ export class JobOfferService
 
     return this.httpClient.post(`${this.apiUrl}/${this.applicationEndPoint}/${jobId}`, formData, { headers });
   }
-  
  
   getUserApplications(userId?: string): Observable<Application[]> {
-    const storedToken = localStorage.getItem('currentUserToken');
-    const headers = new HttpHeaders({ Authorization: `Bearer ${storedToken}` });
-    return this.httpClient.get<Application[]>(`${this.apiUrl}/application/user/${userId}`, { headers });
+    return this.httpClient.get<Application[]>(`${this.apiUrl}/application/user/${userId}`);
   }
 
 }
