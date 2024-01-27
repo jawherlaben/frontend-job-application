@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../Model/user';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { classpathoperations, environment, pathconst } from 'src/environments/environment';
+import { Application } from '../Model/application';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,16 @@ export class UserService {
     const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${user._id}`;
     return this.http.patch(url, user,{headers });
   }
+
+
+  getUserApplications(userId?: string): Observable<Application[]> {
+    const storedToken = localStorage.getItem('currentUserToken');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${storedToken}` });
+
+
+    return this.http.get<Application[]>(`${this.apiUrl}/application/user/${userId}`, { headers });
+  }
+  
 
 }
 
