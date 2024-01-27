@@ -13,7 +13,6 @@ import { User } from '../Model/user';
 export class NavbarComponent implements OnInit {
   isUserLoggedIn = false; 
   isCompanyUser = false; 
-  showDropdown = false;
   user: User | undefined; 
 
   constructor(
@@ -43,17 +42,21 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
-  }
 
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
+    console.log("isUserLoggedIn");
+    console.log(this.isUserLoggedIn);
+    console.log("isCompanyUser");
+    console.log(this.isCompanyUser);
+
   }
+ 
+
 
   logout() {
+    console.log("LOGOUT ! ");
     this.authService.logout();
     this.isUserLoggedIn = false;
     this.isCompanyUser = false;
-    this.showDropdown = false;
     this.router.navigate(['/authentification']); 
   }
 }
