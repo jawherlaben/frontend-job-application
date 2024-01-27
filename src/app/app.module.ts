@@ -58,6 +58,9 @@ import { UserEducationCardComponent } from './profile/user-profil/user-education
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
+import { LogoutGuard } from './guards/logout.guard';
+import { UserGuard } from './guards/user.guard';
+import { CompanyGuard } from './guards/company.guard';
 
 
 @NgModule({
@@ -129,7 +132,10 @@ import { LoginInterceptorProvider } from './interceptors/login.interceptor';
   ],
   providers: [
     
-    LoginInterceptorProvider
+    LoginInterceptorProvider,
+    LogoutGuard,
+    UserGuard,
+    CompanyGuard
   ],
   bootstrap: [AppComponent]
 })
