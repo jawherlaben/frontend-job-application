@@ -21,20 +21,19 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.isLoggedIn.pipe(
-    switchMap(loggedIn => {
-    this.isUserLoggedIn = loggedIn;
-    return loggedIn ? this.authService.isCompanyUser : of(false);
-      })
-    ).subscribe(isCompanyUser => {
-    this.isCompanyUser = isCompanyUser;
-    if (this.isUserLoggedIn) {
-    this.userService.getUserFromToken();
-    this.userService.getCurrentUser().subscribe(user => {
-    this.user = user;
+    this.authService.isLoggedIn.subscribe(loggedIn => {
+      this.isUserLoggedIn = loggedIn;
+      if (this.isUserLoggedIn) {
+        this.userService.currentUser.subscribe(user => {
+          this.user = user;
         });
       }
     });
+
+    this.authService.isCompanyUser.subscribe(isCompanyUser => {
+      this.isCompanyUser = isCompanyUser;
+    });
+    
   }
 
   logout() {

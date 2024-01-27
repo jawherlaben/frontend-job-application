@@ -26,7 +26,7 @@ export class ProfileMenuComponent implements OnInit {
         });
 
       this.userService.getUserFromToken();
-      this.userService.getCurrentUser().subscribe(user => {
+      this.userService.currentUser.subscribe(user => {
         this.user = user;
       });
       }

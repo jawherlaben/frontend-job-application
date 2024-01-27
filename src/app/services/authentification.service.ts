@@ -93,16 +93,6 @@ export class AuthenticationService {
     return !!localStorage.getItem('currentUserToken');
   }
 
-  isUser(): boolean {
-    const token = localStorage.getItem('currentUserToken');
-    if (token) {
-      const tokenPayload = this.decodeToken(token);
-      return tokenPayload.role === 'user';
-    } else {
-      return false;
-    }
-  }
-
   isCompany(): boolean {
     const token = localStorage.getItem('currentUserToken');
     if (token) {
