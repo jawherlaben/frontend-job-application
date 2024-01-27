@@ -22,14 +22,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
-  { 
-    path: 'user-component',
-    component: SimpleUserComponent,
-    canActivate: [UserGuard], 
-    children: [
+  { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
-
 
     { path: 'contact', component: ContactComponent },
 
@@ -40,7 +35,6 @@ const routes: Routes = [
     { path: 'user-notifications', component: UserNotificationsComponent },
 
     { path: 'company/:id', component: UserNotificationsComponent },
-
   ]},
 
   { path: 'contact', component: ContactComponent },
