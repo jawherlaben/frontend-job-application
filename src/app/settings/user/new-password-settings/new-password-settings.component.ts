@@ -50,7 +50,7 @@ export class NewPasswordSettingsComponent {
       const currentPassword = this.passwordForm.get('currentPassword')?.value;
       const newPassword = this.passwordForm.get('newPassword')?.value;
 
-      this.userService.getCurrentUser().subscribe(user => {
+      this.userService.currentUser.subscribe(user => {
         if (user && user._id) {
           this.userService.changePassword(user._id, currentPassword, newPassword).subscribe({
             next: (response) => {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { classpathoperations, environment, pathconst } from 'src/environments/environment';
 import { Application } from '../Model/application';
