@@ -26,13 +26,14 @@ export class AuthenticationService {
   private isCompanyUserSubject = new BehaviorSubject<boolean>(false);
   isCompanyUser = this.isCompanyUserSubject.asObservable();
 
-  private redirectToHomeSubject = new BehaviorSubject<boolean>(false);
-  redirectToHome = this.redirectToHomeSubject.asObservable();
-
   constructor(private http: HttpClient, private router: Router) {}
 
+  getHeaders() {
+    return new HttpHeaders({ 'Content-Type': 'application/json' });
+  }
+
   userLogin(email: string, password: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.getHeaders();
     return this.http.post<LoginResponse>(this.authUrl + '/auth/login', { email, password }, { headers })
       .pipe(
         map(response => {
@@ -48,7 +49,7 @@ export class AuthenticationService {
   }
 
   companyLogin(email: string, password: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.getHeaders();
     return this.http.post<LoginResponse>(this.authUrl + '/auth/company-login', {companyEmail: email, companyPassword: password }, { headers })
       .pipe(
         map(response => {
@@ -64,18 +65,17 @@ export class AuthenticationService {
   }
 
   userRegister(userForm: UserFormDTO): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<RegistrationResponse>(this.authUrl + '/user/register', userForm, { headers });
+    const headers = this.getHeaders();
+    return this.http.post<RegistrationResponse>(this.authUrl + '/auth/register', userForm, { headers });
   }
 
   companyRegister(companyForm: CompanyFormDTO): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.getHeaders();
     return this.http.post<RegistrationResponse>(this.authUrl + '/company', companyForm, { headers });
   }
 
   logout(): void {
     localStorage.removeItem('currentUserToken');
-    this.redirectToHomeSubject.next(true);
     this.isLoggedInSubject.next(false);
     this.isCompanyUserSubject.next(false);
     this.router.navigate(['/']);
@@ -91,16 +91,6 @@ export class AuthenticationService {
 
   isUserLoggedIn(): boolean {
     return !!localStorage.getItem('currentUserToken');
-  }
-
-  isUser(): boolean {
-    const token = localStorage.getItem('currentUserToken');
-    if (token) {
-      const tokenPayload = this.decodeToken(token);
-      return tokenPayload.role === 'user';
-    } else {
-      return false;
-    }
   }
 
   isCompany(): boolean {
