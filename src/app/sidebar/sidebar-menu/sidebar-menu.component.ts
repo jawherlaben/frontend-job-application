@@ -8,7 +8,6 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
     selector: 'app-sidebar-menu',
     templateUrl: './sidebar-menu.component.html',
-    styleUrls: ['./sidebar-menu.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
    
 })
@@ -24,7 +23,7 @@ export class SidebarMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserFromToken();
-    this.userService.getCurrentUser().subscribe(user => {
+    this.userService.currentUser.subscribe(user => {
     this.user = user;
     });
   }
