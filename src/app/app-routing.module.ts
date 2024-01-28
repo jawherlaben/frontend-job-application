@@ -6,16 +6,17 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
-import { UserDashboardComponent } from './user/simple-user/user-dashboard/user-dashboard.component';
-import { CompanyDashboardComponent } from './company-dashboard/company-dashboard.component';
-import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { UserNotificationsComponent } from './user/simple-user/user-notifications/user-notifications.component';
-import { ProflixVerifiedSettingsComponent } from './user-settings/proflix-verified-settings/proflix-verified-settings.component';
-import { PaiementsSettingsComponent } from './user-settings/paiements-settings/paiements-settings.component';
 import { JobComponent } from './job/job.component';
+import { UserDashboardComponent } from './dashboard/user/user-dashboard/user-dashboard.component';
+import { UserSettingsComponent } from './settings/user/user-settings.component';
+import { UserNotificationsComponent } from './notifications/user-notifications/user-notifications.component';
+import { ProflixVerifiedSettingsComponent } from './settings/user/proflix-verified-settings/proflix-verified-settings.component';
+import { PaiementsSettingsComponent } from './settings/user/paiements-settings/paiements-settings.component';
 import { SimpleUserComponent } from './user/simple-user/simple-user.component';
-import { UserSettingsAuthComponent } from './user-settings/user-settings-auth/user-settings-auth.component';
+import { UserSettingsAuthComponent } from './settings/user/user-settings-auth/user-settings-auth.component';
 import { UserProfilComponent } from './profile/user-profil/user-profil.component';
+import { UserGuard } from './guards/user.guard';
+import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,7 +24,7 @@ const routes: Routes = [
   { path: 'job', component: JobComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
-  { path: 'user-component', component: SimpleUserComponent, children: [
+  { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
 
