@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../Model/user';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { classpathoperations, environment, pathconst } from 'src/environments/environment';
+import { Application } from '../Model/application';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class UserService {
 
   getUserById(userId: string): Observable<User> {
     const headers = this.getHeaders();
-    const url = `${this.apiUrl}/user/findUserbyId/${userId}`;
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${userId}`;
     return this.http.get<User>(url,{ headers });
   }
 
@@ -50,9 +51,20 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    const headers = this.getHeaders();
-    const userEmail = encodeURIComponent(user.email);
     const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${user._id}`;
-    return this.http.patch(url, user,{headers });
+    return this.http.patch(url, user);
+  }
+
+  getUserApplications(userId?: string): Observable<Application[]> {
+    return this.http.get<Application[]>(`${this.apiUrl}/${pathconst.APPLICATION_ENDPOINT_PATH}/${pathconst.USER_ENDPOINT_PATH}/${userId}`);
+  }
+
+  changePassword(userId: string, currentPassword: string, newPassword: string): Observable<any> {
+    const body = {
+      currentPassword,
+      newPassword
+    };
+    return this.http.patch(`${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.CHANGE_USERPWD_BY_ID}/${userId}`, body);
+
   }
 }

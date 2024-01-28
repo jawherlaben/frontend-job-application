@@ -6,13 +6,11 @@
       <div
         class="flex rounded text-gray-400 hover:bg-gray-100 dark:text-night-300 dark:hover:bg-night-600"
         (click)="toggleMenu(sub)">
-        <!-- Condition -->
         <ng-container
           [ngTemplateOutlet]="sub.children ? childMenu : parentMenu"
           [ngTemplateOutletContext]="{ sub: sub }">
         </ng-container>
 
-        <!-- Parent Menu -->
         <ng-template #parentMenu let-sub="sub">
           <a
             [routerLink]="sub.route"
@@ -23,7 +21,6 @@
           </a>
         </ng-template>
 
-        <!-- Child Menu -->
         <ng-template #childMenu let-sub="sub">
           <a class="inline-block w-full cursor-pointer px-4 py-2 text-xs font-semibold">
             {{ sub.label }}
@@ -35,7 +32,6 @@
           </button>
         </ng-template>
       </div>
-      <!-- Submenu items -->
       <app-sidebar-submenu [submenu]="sub"></app-sidebar-submenu>
     </li>
   </ul>

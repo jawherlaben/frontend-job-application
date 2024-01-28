@@ -16,33 +16,33 @@ import { UserSettingsAuthComponent } from './settings/user/user-settings-auth/us
 import { UserProfilComponent } from './profile/user-profil/user-profil.component';
 import { UserGuard } from './guards/user.guard';
 import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
+import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
+
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
-
     { path: 'contact', component: ContactComponent },
-
     { path: 'user-settings', component: UserSettingsComponent },
     { path: 'auth-settings', component: UserSettingsAuthComponent },
     { path: 'payments-settings', component: PaiementsSettingsComponent },
     { path: 'proflix-verified-settings', component: ProflixVerifiedSettingsComponent },
     { path: 'user-notifications', component: UserNotificationsComponent },
-
     { path: 'company/:id', component: UserNotificationsComponent },
+    { path: 'authentification', component: AuthentificationComponent, canActivate:[LogoutGuard]},
   ]},
 
   { path: 'contact', component: ContactComponent },
-  { path: 'authentification', component: AuthentificationComponent },
+  { path: 'authentification', component: AuthentificationComponent, canActivate:[LogoutGuard]},
   { path: 'companies', component: CompaniesComponent },
   { path: 'company-dashboard', component: CompanyDashboardComponent },
 
-
+  
   { path: 'forbidden', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
 ];

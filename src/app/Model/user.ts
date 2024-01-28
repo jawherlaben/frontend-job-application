@@ -37,6 +37,3 @@ export interface User {
     description: string;
   }
 
-  export interface Application {
-
-  }

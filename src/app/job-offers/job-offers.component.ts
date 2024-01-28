@@ -1,17 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
 import { JobOffer } from '../Model/job-offer';
 import { Router } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 import { Company } from '../Model/Company';
+import { User } from '../Model/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-job-offers',
   templateUrl: './job-offers.component.html',
 })
+
 export class JobOffersComponent  implements OnInit {
+
+  @Input() user: User | undefined; 
+
+
   jobOffers: JobOffer[] = [];
   companies: { [id: string]: Company } = {};
+
+  comments: { [id: string]: string } = {}; 
+  appliedJobs: { [id: string]: boolean } = {};
+
+  selectedCVFileNames: { [id: string]: string } = {};
 
   selectedJob: any | null = null;
   public isMenuOpen = false;
@@ -21,11 +33,14 @@ export class JobOffersComponent  implements OnInit {
   constructor(
     private router: Router,
     private jobOfferService: JobOfferService,
-    private companyService: CompanyService
-  ) {}
+    private companyService: CompanyService,
+    private userService : UserService
+
+     ) {}
 
   ngOnInit(): void {
     this.getJobOffers();
+    this.loadUserApplications();
   }
   
   getJobOffers(): void {
@@ -72,5 +87,51 @@ export class JobOffersComponent  implements OnInit {
   viewCompany(companyId: string): void {
     this.router.navigate(['user-component/company', companyId]);
   }
+  
 
+  selectedCVs: { [id: string]: File } = {};
+
+
+  onFileSelected(event: Event, jobId: string) {
+    const element = event.currentTarget as HTMLInputElement;
+    let file: File | null = element.files ? element.files[0] : null;
+    if (file) {
+      this.selectedCVs[jobId] = file;
+    }
+  }
+
+  applyToJob(jobId: string): void {
+    const comment = this.comments[jobId] || '';
+    const cvFile = this.selectedCVs[jobId];
+
+    this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe(
+      response => {
+        console.log('Application sent!', response);
+        this.appliedJobs[jobId] = true;
+
+      },
+      error => {
+        console.error('Error when applying to job:', error);
+      }
+    );
+  }
+
+  loadUserApplications(): void {
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user && user._id) {
+        this.userService.getUserApplications(user._id).subscribe(
+          applications => {
+            applications.forEach(app => {
+              if (Array.isArray(app.job) && app.job.length > 0) {
+                const jobId = app.job[0];
+                this.appliedJobs[jobId] = true;
+                this.selectedCVFileNames[jobId] = app.cv; 
+              }
+            });
+          },
+          error => console.error('Erreur lors du chargement des candidatures:', error)
+        );
+      }
+    });
+  }
 }

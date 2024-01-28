@@ -11,7 +11,6 @@ import { CompaniesComponent } from './companies/companies.component';
 import { AboutComponent } from './about/about.component';
 import { TopCompaniesComponent } from './top-companies/top-companies.component';
 import { ContactComponent } from './contact/contact.component';
-
 import { HeadProfileComponent } from './profile/user-profil/user-head-profile/user-head-profile.component';
 import { CompanyListComponent } from './companies/company-list/company-list.component';
 import { RangeSelectorComponent } from './companies/range-selector/range-selector.component';
@@ -33,9 +32,7 @@ import { CompanyConnectComponent } from './authentification/connecter/company-co
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './dashboard/user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './dashboard/user/head-user-dashboard/head-user-dashboard.component';
-
 import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.component';
-
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
@@ -60,6 +57,10 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserEducationCardComponent } from './profile/user-profil/user-education-card/user-education-card.component';
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
+import { LoginInterceptorProvider } from './interceptors/login.interceptor';
+import { LogoutGuard } from './guards/logout.guard';
+import { UserGuard } from './guards/user.guard';
+import { CompanyGuard } from './guards/company.guard';
 
 
 @NgModule({
@@ -130,6 +131,11 @@ import { UserExperienceCardComponent } from './profile/user-profil/user-experien
 
   ],
   providers: [
+    
+    LoginInterceptorProvider,
+    LogoutGuard,
+    UserGuard,
+    CompanyGuard
   ],
   bootstrap: [AppComponent]
 })

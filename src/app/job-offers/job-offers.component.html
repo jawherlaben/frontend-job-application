@@ -26,4 +26,40 @@
       <p>Description: {{ job.description }}</p>
     </div>
   </div>
-</div>
+
+  <div class="apply-section mt-4 p-4 border-t">
+    <h5 class="text-lg font-semibold mb-2">Postuler à cette offre</h5>
+    <form (ngSubmit)="applyToJob(job._id)" class="space-y-4">
+      <div class="mb-3">
+        <textarea [disabled]="appliedJobs[job._id]" class="form-control w-full px-3 py-2 border rounded-md"
+                  [(ngModel)]="comments[job._id]" [ngModelOptions]="{standalone: true}"
+                  name="comment{{job._id}}" rows="4"
+                  placeholder="Ajoutez votre commentaire ou lettre de motivation ici..." required>
+        </textarea>
+      </div>
+
+      <div class="mb-3">
+        <input 
+        *ngIf="!selectedCVFileNames[job._id]"
+        type="file" (change)="onFileSelected($event, job._id)" 
+               name="cv{{job._id}}" 
+               [disabled]="appliedJobs[job._id]" 
+               accept=".pdf,.doc,.docx" />
+
+        <div *ngIf="selectedCVFileNames[job._id]">
+          Fichier CV: {{ selectedCVFileNames[job._id] }}
+        </div>
+      </div>
+
+      <button type="submit"
+      [class.bg-blue-500]="!appliedJobs[job._id]"
+      [class.bg-gray-400]="appliedJobs[job._id]"
+      [disabled]="appliedJobs[job._id]"
+      class="w-full text-white font-bold py-2 px-4 rounded">
+      {{ appliedJobs[job._id] ? 'Déjà postulé' : 'Postuler' }}
+      </button>
+
+
+
+    </form>
+  </div>

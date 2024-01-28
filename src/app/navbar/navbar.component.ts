@@ -33,10 +33,12 @@ export class NavbarComponent implements OnInit {
     this.authService.isCompanyUser.subscribe(isCompanyUser => {
       this.isCompanyUser = isCompanyUser;
     });
-    
   }
+ 
+
 
   logout() {
+    console.log("LOGOUT ! ");
     this.authService.logout();
     this.isUserLoggedIn = false;
     this.isCompanyUser = false;
