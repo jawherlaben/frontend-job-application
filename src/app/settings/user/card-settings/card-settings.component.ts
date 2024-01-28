@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../../Model/user';
-import { UserFormDTO } from '../../../authentification/inscrire/user-inscription/UserInscription.dto';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { UserUpdateDTO } from './UserUpdate.dto';
@@ -18,6 +17,7 @@ export class CardSettingsComponent {
 
   @Output() userUpdateDTOChanged = new EventEmitter<UserUpdateDTO>();
 
+
   constructor( private userService: UserService) {
     this.editMessage = '';
     this.editMessageClass = '';
@@ -30,8 +30,20 @@ export class CardSettingsComponent {
     if (this.user) {
       this.userUpdateDTO = { ...this.user };
       this.userUpdateDTO.dateBirth = this.formatDate(this.user.dateBirth);
-
       this.userUpdateDTOChanged.emit(this.userUpdateDTO);
+
+      this.userUpdateDTO.education = this.userUpdateDTO.education ?? [];
+      this.userUpdateDTO.experience = this.userUpdateDTO.experience ?? [];
+      this.userUpdateDTO.skills = this.userUpdateDTO.skills ?? [];
+
+    }
+    else {
+      this.userUpdateDTO = {
+        education: [],
+        experience: [],
+        skills: []
+      };    
+    
     }
   }
   private formatDate(dateString: string | undefined): string {
@@ -64,7 +76,6 @@ export class CardSettingsComponent {
 
   updateUserInfos(settingsForm: NgForm): void {
     if (settingsForm.valid && this.userUpdateDTO) {
-      /* && this.userUpdateDTO && this.userUpdateDTO._id */ 
       this.userService.updateUser(this.userUpdateDTO as User).subscribe({
         next: (response) => {
           console.log('Mise à jour réussie', response);
@@ -85,5 +96,41 @@ export class CardSettingsComponent {
     }
   }
 
+  addEducation() {
+    if (this.user && this.user.education) {
+      this.user?.education?.push({ title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' });
+    }
+  }
+
+  removeEducation(index: number) {
+    if (this.user && this.user.education) {
+      this.user.education.splice(index, 1);
+    }
+  }
+
+  addExperience() {
+    if (this.user && this.user.experience) {
+      this.user?.experience?.push({ title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' });
+    }
+  }
+
+  removeExperience(index: number) {
+    if (this.user && this.user.experience) {
+      this.user.experience.splice(index, 1);
+    }
+  }
+
+  addSkill(skill: String) {
+
+    if (!this.userUpdateDTO.skills) {
+      this.userUpdateDTO.skills = [];
+    }
+    
+
+  }
+  
+  removeSkill(index: number) {
+    this.userUpdateDTO.skills?.splice(index, 1);
+  }
 
 }

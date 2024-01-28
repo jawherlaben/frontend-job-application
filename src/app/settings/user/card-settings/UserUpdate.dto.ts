@@ -1,3 +1,5 @@
+import { Education, Experience } from "src/app/Model/user";
+
 export interface UserUpdateDTO {
     _id?: string;
     firstname?: string;
@@ -14,4 +16,7 @@ export interface UserUpdateDTO {
     date_added?: Date;
     description?: string;
     dateTime_added?: string;
+    education?: Education[];
+    experience?: Experience[];
+    skills?: String[];
   }

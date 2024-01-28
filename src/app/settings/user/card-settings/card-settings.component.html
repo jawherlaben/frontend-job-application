@@ -165,16 +165,54 @@
             >
           </div>
         </div>
-        <button
-        class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
-        type="button"
-        [disabled]="!settingsForm.valid"
-        type="submit"
-      >
-        Enregistrer 
-      </button>
       </div>
-      
+ 
+
+
+      <div>
+        <h2 class="text-xl font-bold mb-4">Education</h2>
+        <div *ngFor="let edu of user?.education; let i = index">
+          <input [(ngModel)]="edu.title" name="eduTitle{{i}}" placeholder="Titre du Diplôme" />
+          <input type="date" [(ngModel)]="edu.period.startDate" name="eduStartDate{{i}}" />
+          <input type="date" [(ngModel)]="edu.period.endDate" name="eduEndDate{{i}}" />
+          <textarea [(ngModel)]="edu.description" name="eduDescription{{i}}"></textarea>
+          <button (click)="removeEducation(i)">Supprimer</button>
+        </div>
+        <button (click)="addEducation()">Ajouter Education</button>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold mb-4">Experience</h2>
+        <div *ngFor="let exp of user?.experience; let i = index">
+          <input [(ngModel)]="exp.title" name="expTitle{{i}}" placeholder="Intitulé du Poste" />
+          <input type="date" [(ngModel)]="exp.period.startDate" name="expStartDate{{i}}" />
+          <input type="date" [(ngModel)]="exp.period.endDate" name="expEndDate{{i}}" />
+          <textarea [(ngModel)]="exp.description" name="expDescription{{i}}"></textarea>
+          <button (click)="removeExperience(i)">Supprimer</button>
+        </div>
+        <button (click)="addExperience()">Ajouter Experience</button>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold mb-4">Compétences</h2>
+        <div *ngIf="userUpdateDTO.skills as skills">
+          <div *ngFor="let skill of skills; let i = index">
+            <input [(ngModel)]="skills[i]" name="skill{{i}}" disabled="true"/>
+            <button (click)="removeSkill(i)">Supprimer</button>
+          </div>
+        </div>
+        <input #newSkill type="text" />
+        <button (click)="addSkill(newSkill.value); newSkill.value=''">Ajouter Compétence</button>
+      </div>
+
+
+
+      <button
+        type="submit"
+        class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+        [disabled]="!settingsForm.valid">
+        Enregistrer les Modifications
+      </button>
     </form>
   </div>
 </div>
