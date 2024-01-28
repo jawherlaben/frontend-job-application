@@ -134,8 +134,6 @@ import { CompanyGuard } from './guards/company.guard';
     
     LoginInterceptorProvider,
     LogoutGuard,
-    UserGuard,
-    CompanyGuard
   ],
   bootstrap: [AppComponent]
 })
