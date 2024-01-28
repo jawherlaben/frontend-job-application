@@ -30,7 +30,6 @@ export class JobOffersComponent  implements OnInit {
 
   openMenus: { [key: string]: boolean } = {};
 
-
   constructor(
     private router: Router,
     private jobOfferService: JobOfferService,
@@ -43,30 +42,24 @@ export class JobOffersComponent  implements OnInit {
     this.getJobOffers();
     this.loadUserApplications();
   }
-
   
   getJobOffers(): void {
-    this.jobOfferService.getJobOffers().subscribe(
-      (jobOffers: JobOffer[]) => {
+    this.jobOfferService.getJobOffers().subscribe({
+      next: (jobOffers: JobOffer[]) => {
         this.jobOffers = jobOffers;
         jobOffers.forEach(job => {
-          this.companyService.getCompanyById(job.recruiter).subscribe(
-            (company: Company) => {
+          this.companyService.getCompanyById(job.recruiter).subscribe((company: Company) => {
               this.companies[job.recruiter] = company;
-            }
-          );
+          });
         });
       },
-      (error) => {
+      error: (error: any) => {
         console.error('Error fetching job offers:', error);
       }
-    );
+    });
   }
 
-
-
   ignoreJob(job: any): void {
-  
     const index = this.jobOffers.indexOf(job);
 
     if (index !== -1) {
@@ -88,16 +81,6 @@ export class JobOffersComponent  implements OnInit {
       if (id !== jobId) {
         this.openMenus[id] = false;
       }
-    }
-  }
-
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    const targetElement = event.target as HTMLElement;
-    if (targetElement && !targetElement.matches('.menu-button, .menu-button *')) {
-      Object.keys(this.openMenus).forEach(key => {
-        this.openMenus[key] = false;
-      });
     }
   }
 

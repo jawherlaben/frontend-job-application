@@ -24,11 +24,7 @@ const routes: Routes = [
 
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
-  { 
-    path: 'user-component',
-    component: SimpleUserComponent,
-    canActivate: [UserGuard], 
-    children: [
+  { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
     { path: 'contact', component: ContactComponent },
