@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SubMenuItem } from 'src/app/Model/menu-model/menu-model';
+import { SubMenuItem } from 'src/app/Model/menu-model';
 import { MenuService } from 'src/app/services/menu.service';
 
 
@@ -8,20 +8,17 @@ import { MenuService } from 'src/app/services/menu.service';
   templateUrl: './sidebar-submenu.component.html',
 })
 export class SidebarSubmenuComponent implements OnInit {
-  @Input() public submenu = <SubMenuItem>{};
+  @Input() public submenu = <SubMenuItem>{
+    group: 'Menu',
+    separator: false,
+    items: [{
+      icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+      label: 'Dashboard',
+      route: '/user-component/user-dashboard',
+    }],
+  };
 
   constructor(public menuService: MenuService) {}
 
   ngOnInit(): void {}
-
-  public toggleMenu(menu: any) {
-    this.menuService.toggleSubMenu(menu);
-  }
-
-  private collapse(items: Array<any>) {
-    items.forEach((item) => {
-      item.expanded = false;
-      if (item.children) this.collapse(item.children);
-    });
-  }
 }

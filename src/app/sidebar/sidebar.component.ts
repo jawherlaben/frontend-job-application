@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
-import { NgClass, NgIf } from '@angular/common';
 import { ThemeService } from '../theme.service';
 import { MenuService } from '../services/menu.service';
 import { User } from '../Model/user';
 import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentification.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -15,7 +13,7 @@ import { UserService } from '../services/user.service';
 export class SidebarComponent implements OnInit {
   public user: User | undefined;
 
-  constructor(public themeService: ThemeService, public menuService: MenuService, private userService: UserService) {}
+  constructor(public themeService: ThemeService, public menuService: MenuService, private userService: UserService, public authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.userService.getUserFromToken();
@@ -23,11 +21,6 @@ export class SidebarComponent implements OnInit {
       this.user = user;
     });
   }
-  public toggleSidebar() {
-    this.menuService.toggleSidebar();
-  }
-
- 
 }
 
 
