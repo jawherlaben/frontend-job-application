@@ -19,12 +19,6 @@ export class CardSettingsComponent {
   isEducationInputEnabled: boolean = false;
   isExperienceInputEnabled: boolean = false;
 
-
-
-
-
-
-
   isEditingEducation: boolean = false;
   isEditingExperience: boolean = false;
   newEducation: Education = { title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' };
@@ -33,7 +27,6 @@ export class CardSettingsComponent {
 
   @Output() userUpdateDTOChanged = new EventEmitter<UserUpdateDTO>();
   @ViewChild('newSkill') newSkill?: ElementRef;
-
 
 
   constructor( private userService: UserService) {
@@ -97,7 +90,7 @@ export class CardSettingsComponent {
     if (settingsForm.valid && this.userUpdateDTO) {
       this.userService.updateUser(this.userUpdateDTO as User).subscribe({
         next: (response) => {
-          this.showErrorMessage('Update successful');
+          this.showErrorMessage('Update successful', "success");
           if (this.user) {
             Object.assign(this.user, this.userUpdateDTO);
           }

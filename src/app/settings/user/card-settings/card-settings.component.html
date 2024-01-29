@@ -191,9 +191,6 @@
     </div>
   </div>
 
-
-
-
   <div class="my-4 p-4 border border-gray-200 rounded-lg">
     <h2 class="text-xl font-bold mb-4">Experience</h2>
   
@@ -217,10 +214,6 @@
   </div>
 
 
-
-
-
-
       <div class="my-4 p-4 border border-gray-200 rounded-lg">
         <h2 class="text-xl font-bold mb-4">Compétences</h2>
         <div *ngIf="userUpdateDTO.skills as skills" class="space-y-2">
@@ -236,7 +229,6 @@
         <button type="button" *ngIf="isSkillInputEnabled" (click)="isSkillInputEnabled = false" class="mt-4 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ajouter Compétence</button>
       </div>
       
-
       <button
       class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
       type="button"
@@ -245,6 +237,8 @@
     >
       Enregistrer 
     </button>
+    <div class="self-end px-5" [class]="editMessageClass" >{{ editMessage }}</div>
+
 
     </form>
   </div>
