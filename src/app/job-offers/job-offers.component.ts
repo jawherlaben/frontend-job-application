@@ -13,9 +13,8 @@ import { UserService } from '../services/user.service';
 })
 
 export class JobOffersComponent  implements OnInit {
-
-  @Input() user: User | undefined; 
-
+  @Input() user: User | undefined;
+  postulerJob: string = "";
 
   jobOffers: JobOffer[] = [];
   companies: { [id: string]: Company } = {};
@@ -26,7 +25,6 @@ export class JobOffersComponent  implements OnInit {
   selectedCVFileNames: { [id: string]: string } = {};
 
   selectedJob: any | null = null;
-  public isMenuOpen = false;
 
   openMenus: { [key: string]: boolean } = {};
 
@@ -42,6 +40,14 @@ export class JobOffersComponent  implements OnInit {
     this.getJobOffers();
     this.loadUserApplications();
   }
+
+  togglePostuler(job: string): void {
+    if (this.postulerJob === job) {
+      this.postulerJob = "";
+    } else {
+      this.postulerJob = job;
+    }
+  }
   
   getJobOffers(): void {
     this.jobOfferService.getJobOffers().subscribe({
@@ -53,13 +59,14 @@ export class JobOffersComponent  implements OnInit {
           });
         });
       },
-      error: (error: any) => {
+      error: (error) => {
+        // add toastr here
         console.error('Error fetching job offers:', error);
       }
     });
   }
 
-  ignoreJob(job: any): void {
+  ignoreJob(job: JobOffer): void {
     const index = this.jobOffers.indexOf(job);
 
     if (index !== -1) {
@@ -106,11 +113,13 @@ export class JobOffersComponent  implements OnInit {
 
     this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe(
       response => {
+        // toastr
         console.log('Application sent!', response);
         this.appliedJobs[jobId] = true;
 
       },
       error => {
+        // toastr
         console.error('Error when applying to job:', error);
       }
     );
@@ -129,6 +138,7 @@ export class JobOffersComponent  implements OnInit {
               }
             });
           },
+          // toastr
           error => console.error('Erreur lors du chargement des candidatures:', error)
         );
       }
