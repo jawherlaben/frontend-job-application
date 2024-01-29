@@ -7,8 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class InscrireComponent {
   @Input() inscriptionType = 'user';
-  
-  onCompanySubmit(formValue: any) {
-    console.log(formValue);
-  }
 }

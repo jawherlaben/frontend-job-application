@@ -19,7 +19,7 @@ export interface User {
 
   }
 
-  export interface Experience {
+  interface Experience {
     title: string;
     period: {
       startDate: Date;
@@ -28,7 +28,7 @@ export interface User {
     description: string;
   }
 
-  export interface Education {
+  interface Education {
     title: string;
     period: {
       startDate: Date;
