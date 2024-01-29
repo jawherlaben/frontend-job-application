@@ -62,6 +62,7 @@
             [(ngModel)]="userUpdateDTO.dateBirth"
             name="dateBirth"
             (ngModelChange)="userUpdateDTO.dateBirth = $event"
+            required
           />
           </div>
         </div>
@@ -169,50 +170,82 @@
  
 
 
-      <div>
-        <h2 class="text-xl font-bold mb-4">Education</h2>
-        <div *ngFor="let edu of user?.education; let i = index">
-          <input [(ngModel)]="edu.title" name="eduTitle{{i}}" placeholder="Titre du Diplôme" />
-          <input type="date" [(ngModel)]="edu.period.startDate" name="eduStartDate{{i}}" />
-          <input type="date" [(ngModel)]="edu.period.endDate" name="eduEndDate{{i}}" />
-          <textarea [(ngModel)]="edu.description" name="eduDescription{{i}}"></textarea>
-          <button (click)="removeEducation(i)">Supprimer</button>
-        </div>
-        <button (click)="addEducation()">Ajouter Education</button>
-      </div>
 
-      <div>
-        <h2 class="text-xl font-bold mb-4">Experience</h2>
-        <div *ngFor="let exp of user?.experience; let i = index">
-          <input [(ngModel)]="exp.title" name="expTitle{{i}}" placeholder="Intitulé du Poste" />
-          <input type="date" [(ngModel)]="exp.period.startDate" name="expStartDate{{i}}" />
-          <input type="date" [(ngModel)]="exp.period.endDate" name="expEndDate{{i}}" />
-          <textarea [(ngModel)]="exp.description" name="expDescription{{i}}"></textarea>
-          <button (click)="removeExperience(i)">Supprimer</button>
-        </div>
-        <button (click)="addExperience()">Ajouter Experience</button>
-      </div>
 
-      <div>
+  <div class="my-4 p-4 border border-gray-200 rounded-lg">
+    <h2 class="text-xl font-bold mb-4">Education</h2>
+
+    <div *ngFor="let edu of userUpdateDTO?.education; let i = index" class="mb-4">
+      <input  [disabled]="!isEducationInputEnabled" [(ngModel)]="edu.title" name="eduTitle{{i}}" placeholder="Titre du Diplôme" class="border border-gray-300 p-2 rounded w-full mb-2" />
+      <input [disabled]="!isEducationInputEnabled" type="date" [(ngModel)]="edu.period.startDate" name="eduStartDate{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" required />
+      <input [disabled]="!isEducationInputEnabled" type="date" [(ngModel)]="edu.period.endDate" name="eduEndDate{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" required />
+      <textarea [disabled]="!isEducationInputEnabled" [(ngModel)]="edu.description" name="eduDescription{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" rows="3"></textarea>
+      <button *ngIf="isEducationInputEnabled" type="button" (click)="removeEducation(i)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Supprimer</button>
+    </div>
+    <div class="flex space-x-2 mt-4">
+      <button *ngIf="isEducationInputEnabled" type="button" (click)="addEducation()" 
+      [disabled]="!isEducationValid()" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ajouter Education</button>
+      <button *ngIf="isEducationInputEnabled" type="button" (click)="validateEducation()" 
+      [disabled]="!isEducationValid()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Valider Education</button>
+      <button *ngIf="!isEducationInputEnabled" type="button" (click)="editEducation()" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Modifier</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="my-4 p-4 border border-gray-200 rounded-lg">
+    <h2 class="text-xl font-bold mb-4">Experience</h2>
+  
+    <div *ngFor="let exp of userUpdateDTO?.experience; let i = index" class="mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+        <input [disabled]="!isExperienceInputEnabled" [(ngModel)]="exp.title" name="expTitle{{i}}" placeholder="Intitulé du Poste" class="border border-gray-300 p-2 rounded w-full mb-2" required/>
+        <div class="flex space-x-2">
+          <input [disabled]="!isExperienceInputEnabled" type="date" [(ngModel)]="exp.period.startDate" name="expStartDate{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" required/>
+          <input [disabled]="!isExperienceInputEnabled" type="date" [(ngModel)]="exp.period.endDate" name="expEndDate{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" required />
+        </div>
+      </div>
+      <textarea [disabled]="!isExperienceInputEnabled" [(ngModel)]="exp.description" name="expDescription{{i}}" class="border border-gray-300 p-2 rounded w-full mb-2" rows="3" required></textarea>
+      <button *ngIf="isExperienceInputEnabled" (click)="removeExperience(i)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Supprimer</button>
+    </div>
+  
+    <div class="flex space-x-2 mt-4">
+      <button [disabled]="!isExperienceValid()" *ngIf="isExperienceInputEnabled" (click)="addExperience()" type="button"  class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ajouter Experience</button>
+      <button [disabled]="!isExperienceValid()" *ngIf="isExperienceInputEnabled"  (click)="validateExperience()" type="button"  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Valider Experience</button>
+      <button *ngIf="!isExperienceInputEnabled" (click)="editExperience()" type="button"  class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Modifier</button>
+    </div>
+  </div>
+
+
+
+
+
+
+      <div class="my-4 p-4 border border-gray-200 rounded-lg">
         <h2 class="text-xl font-bold mb-4">Compétences</h2>
-        <div *ngIf="userUpdateDTO.skills as skills">
-          <div *ngFor="let skill of skills; let i = index">
-            <input [(ngModel)]="skills[i]" name="skill{{i}}" disabled="true"/>
-            <button (click)="removeSkill(i)">Supprimer</button>
+        <div *ngIf="userUpdateDTO.skills as skills" class="space-y-2">
+          <div *ngFor="let skill of skills; let i = index" class="flex items-center justify-between">
+            <p class="mr-2">{{ skill }}</p>
+            <button type="button" (click)="removeSkill(i)" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Supprimer</button>
           </div>
         </div>
-        <input #newSkill type="text" />
-        <button (click)="addSkill(newSkill.value); newSkill.value=''">Ajouter Compétence</button>
+        <div *ngIf="!isSkillInputEnabled" class="mt-4 flex">
+          <input #newSkill type="text" class="border border-gray-300 px-3 py-1 rounded-l" />
+          <button type="button" (click)="addSkill(newSkill.value); newSkill.value=''" class="bg-blue-500 text-white px-3 py-1 rounded-r hover:bg-blue-600">Valider</button>
+        </div>
+        <button type="button" *ngIf="isSkillInputEnabled" (click)="isSkillInputEnabled = false" class="mt-4 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ajouter Compétence</button>
       </div>
-
-
+      
 
       <button
-        type="submit"
-        class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
-        [disabled]="!settingsForm.valid">
-        Enregistrer les Modifications
-      </button>
+      class="bg-blue-500 text-white hover:bg-blue-700 rounded-md font-medium py-2 px-4 transition ease-out hover:ease-in disabled:opacity-50 disabled:cursor-not-allowed"
+      type="button"
+      [disabled]="!settingsForm.valid || isEducationInputEnabled || isExperienceInputEnabled || !isSkillInputEnabled "
+      type="submit"
+    >
+      Enregistrer 
+    </button>
+
     </form>
   </div>
 </div>
