@@ -39,7 +39,6 @@ import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.compone
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
-import { SidebarSubmenuComponent } from './sidebar/sidebar-submenu/sidebar-submenu.component';
 import { UserSettingsComponent } from './settings/user/user-settings.component';
 import { UserNotificationsComponent } from './notifications/user-notifications/user-notifications.component';
 import { CardSettingsComponent } from './settings/user/card-settings/card-settings.component';
@@ -96,7 +95,6 @@ import { UserExperienceCardComponent } from './profile/user-profil/user-experien
     HeadUserDashboardComponent,
     SidebarComponent,
     SidebarMenuComponent,
-    SidebarSubmenuComponent,
     ProfileMenuComponent,
     UserSettingsComponent,
     UserNotificationsComponent,

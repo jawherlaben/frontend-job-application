@@ -19,7 +19,6 @@ export class Menu {
         },
       ],
     },
-
     {
       group: 'Settings',
       separator: false,
@@ -28,16 +27,24 @@ export class Menu {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Profile Settings',
           route: '/user-component/user-settings',
-          children: [
-            { label: 'Informations personnelles', route: '/user-component/user-settings' },
-            { label: 'Auth Settings',route:'/user-component/auth-settings',},
-            { label: 'Paiements', route: '/user-component/payments-settings' },
-            { label: 'Proflix Verified', route: '/user-component/proflix-verified-settings' },
-          ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Auth Settings',
+          route:'/user-component/auth-settings',
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Paiements', 
+          route: '/user-component/payments-settings' 
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Proflix Verified', 
+          route: '/user-component/proflix-verified-settings' 
         },
       ],
     },
-
     {
       group: 'Notifications',
       separator: false,

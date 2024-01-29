@@ -12,6 +12,7 @@ import { AuthenticationService } from '../services/authentification.service';
 })
 export class SidebarComponent implements OnInit {
   public user: User | undefined;
+  showSideBar: boolean = true;
 
   constructor(public themeService: ThemeService, public menuService: MenuService, private userService: UserService, public authService: AuthenticationService) {}
 
@@ -19,6 +20,10 @@ export class SidebarComponent implements OnInit {
     this.userService.getUserFromToken();
     this.userService.currentUser.subscribe(user => {
       this.user = user;
+    });
+    
+    this.menuService.showSideBar$.subscribe((showSideBar) => {
+      this.showSideBar = showSideBar;
     });
   }
 }
