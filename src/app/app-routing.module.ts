@@ -11,7 +11,7 @@ import { UserSettingsComponent } from './settings/user/user-settings.component';
 import { UserNotificationsComponent } from './notifications/user-notifications/user-notifications.component';
 import { ProflixVerifiedSettingsComponent } from './settings/user/proflix-verified-settings/proflix-verified-settings.component';
 import { PaiementsSettingsComponent } from './settings/user/paiements-settings/paiements-settings.component';
-import { SimpleUserComponent } from './user/simple-user/simple-user.component';
+import { AuthenticatedDashboardComponent } from './auth-dashboard/auth-dashboard.component';
 import { UserSettingsAuthComponent } from './settings/user/user-settings-auth/user-settings-auth.component';
 import { UserProfilComponent } from './profile/user-profil/user-profil.component';
 import { UserGuard } from './guards/user.guard';
@@ -24,7 +24,7 @@ const routes: Routes = [
 
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
-  { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
+  { path: 'user-component', component: AuthenticatedDashboardComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
     { path: 'user-dashboard', component: UserDashboardComponent },
     { path: 'contact', component: ContactComponent },
