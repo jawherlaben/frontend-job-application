@@ -7,12 +7,11 @@
 
     <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
     <ng-container *ngIf="isUserLoggedIn && !isCompanyUser">
-      <app-underlined-link [routerLink]="['user-component', 'user-dashboard']">Tableau de bord </app-underlined-link>
-  
+      <app-underlined-link [routerLink]="['user-component']">Tableau de bord </app-underlined-link>
     </ng-container>
   
     <ng-container *ngIf="isUserLoggedIn && isCompanyUser">
-      <app-button [routerLink]="['company-dashboard']">Tableau de bord </app-button>
+      <app-underlined-link [routerLink]="['company-dashboard']">Tableau de bord </app-underlined-link>
     </ng-container>
 
     <app-underlined-link [routerLink]="['companies']">Companies</app-underlined-link>

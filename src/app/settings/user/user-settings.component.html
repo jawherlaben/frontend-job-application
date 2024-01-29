@@ -1,6 +1,5 @@
 <div class="app-container grid grid-cols-3 gap-2">
-  <div class="col1 col-span-2">
-
+  <div class="col-span-2">
     <a id="app-card-settings"></a>
     <app-card-settings [user]="user" (userUpdateDTOChanged)="updateUserUpdateDTO($event)"> </app-card-settings>
 
@@ -17,7 +16,7 @@
 
   </div>
   
-  <div class="col2 col-span-1">
+  <div class="col-span-1">
     <app-card-user-update [userUpdateDTO]="userUpdateDTO"> </app-card-user-update>
   </div>
 </div>

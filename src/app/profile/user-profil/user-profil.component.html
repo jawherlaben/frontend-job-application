@@ -1,72 +1,69 @@
-<div class="flex justify-center mt-4">
+<section class="pb-28 px-8 mt-16 flex gap-10">
   <app-user-head-profile [user]="user" ></app-user-head-profile>
-</div>
 
-<section class="pb-28 px-8 mt-16">
-    <div class="grid xl:grid-cols-2 md:grid-cols-1 container gap-20 mx-auto items-start">
-      <div>
-        <div class="mb-10">
-          <h1 class="text-blue-gray mb-2 text-3xl font-bold">Education & Certifications</h1>
-          <p class="text-gray-500 leading-relaxed">See my education history.</p>
-          <button (click)="navigateToSettingsSection('education')" class="flex items-center">
-            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
-          </button>
+  <div class="grid xl:grid-cols-2 md:grid-cols-1 gap-20 mx-auto items-start">
+    <div>
+      <div class="mb-10">
+        <h1 class="mb-2 text-3xl font-bold">Education & Certifications</h1>
+        <p class="text-gray-500 leading-relaxed">See my education history.</p>
+        <button (click)="navigateToSettingsSection('education')" class="flex items-center">
+          <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+        </button>
 
-        </div>
-        <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12">
-          <div *ngFor="let education of user?.education">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h2 class="font-semibold text-lg">{{ education.title }}</h2>
-              <p class="text-gray-600">{{ education.period.startDate | date:'shortDate' }} - {{ education.period.endDate | date:'shortDate' }}</p>
-              <p class="mt-2 text-gray-700">{{ education.description }}</p>
-            </div>
-          </div>
-          <div *ngIf="!user?.education?.length">
-            <p class="text-gray-500 mt-8 text-center">No education to display.</p>
-          </div>
-        </div>
       </div>
-      <div>
-        <div class="mb-10">
-          <h1 class="text-blue-gray mb-2 text-3xl font-bold">Experience</h1>
-          <p class="text-gray-500 leading-relaxed">See my experience </p>
-          <button (click)="navigateToSettingsSection('experience')" class="flex items-center">
-            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
-          </button>
-
-        </div>
-        <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12">
-          <div *ngFor="let experience of user?.experience">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h2 class="font-semibold text-lg">{{ experience.title }}</h2>
-              <p class="text-gray-600">{{ experience.period.startDate | date:'shortDate' }} - {{ experience.period.endDate | date:'shortDate' }}</p>
-              <p class="mt-2 text-gray-700">{{ experience.description }}</p>
-            </div>
-          </div>
-          <div *ngIf="!user?.experience?.length">
-            <p class="text-gray-500 mt-8 text-center">No experience to display.</p>
+      <div class="mx-auto grid grid-cols-1 gap-16 gap-y-12">
+        <div *ngFor="let education of user?.education">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="font-semibold text-lg">{{ education.title }}</h2>
+            <p class="text-gray-600">{{ education.period.startDate | date:'shortDate' }} - {{ education.period.endDate | date:'shortDate' }}</p>
+            <p class="mt-2 text-gray-700">{{ education.description }}</p>
           </div>
         </div>
-      </div>
-      <div>
-        <div class="mb-10">
-          <h1 class="text-blue-gray mb-2 text-3xl font-bold">Skills</h1>
-          <p class="text-gray-500 leading-relaxed">Check out my technical and soft skills.</p>
-          <button (click)="navigateToSettingsSection('skills')" class="flex items-center">
-            <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
-          </button>
-        </div>
-        <div class="container mx-auto grid grid-cols-1 gap-16 gap-y-12 lg:grid-cols-2">
-          <div *ngFor="let skill of user?.skills">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <h1 class="font-semibold text-lg">{{ skill }}</h1>
-            </div>
-          </div>
-          <div *ngIf="!user?.skills?.length">
-            <p class="text-gray-500 mt-8 text-center">No skills to display.</p>
-          </div>
+        <div *ngIf="!user?.education?.length">
+          <p class="text-gray-500 mt-8 text-center">No education to display.</p>
         </div>
       </div>
     </div>
-  </section>
-  
+
+    <div>
+      <div class="mb-10">
+        <h1 class="mb-2 text-3xl font-bold">Experience</h1>
+        <p class="text-gray-500 leading-relaxed">See my experience </p>
+        <button (click)="navigateToSettingsSection('experience')" class="flex items-center">
+          <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+        </button>
+      </div>
+
+      <div class="mx-auto grid grid-cols-1 gap-16 gap-y-12">
+        <div *ngFor="let experience of user?.experience">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="font-semibold text-lg">{{ experience.title }}</h2>
+            <p class="text-gray-600">{{ experience.period.startDate | date:'shortDate' }} - {{ experience.period.endDate | date:'shortDate' }}</p>
+            <p class="mt-2 text-gray-700">{{ experience.description }}</p>
+          </div>
+        </div>
+        <div *ngIf="!user?.experience?.length">
+          <p class="text-gray-500 mt-8 text-center">No experience to display.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <h1 class="mb-2 text-3xl font-bold">Skills</h1>
+      <p class="text-gray-500 leading-relaxed">Check out my technical and soft skills.</p>
+      <button (click)="navigateToSettingsSection('skills')" class="flex items-center">
+        <img src="assets/icons/heroicons/outline/edit-infos.svg" alt="Edit Infos" class="w-5 h-5 mr-2">
+      </button>
+    </div>
+    <div class="mx-auto grid grid-cols-1 gap-16 gap-y-12 lg:grid-cols-2">
+      <div *ngFor="let skill of user?.skills">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h1 class="font-semibold text-lg">{{ skill }}</h1>
+        </div>
+      </div>
+      <div *ngIf="!user?.skills?.length">
+        <p class="text-gray-500 mt-8 text-center">No skills to display.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-<div *ngFor="let job of jobOffers" class="job-offer mb-4 p-4 border rounded relative">
+<div *ngFor="let job of jobOffers" class="mb-4 p-4 border rounded relative">
   <div class="flex items-start justify-end">
     <button (click)="toggleMenu(job._id)" type="button" [attr.id]="'options-menu-' + job._id" class="p-2 menu-button" aria-haspopup="true" aria-expanded="true">
       ...
