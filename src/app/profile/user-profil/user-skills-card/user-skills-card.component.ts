@@ -1,15 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-skills-card',
   templateUrl: './user-skills-card.component.html',
 })
 export class UserSkillsCardComponent {
-  @Input() skill: any;
+  @Input() skills?: string[] = [];
 
-  constructor() {}
-
-  
-  
+  constructor(public userService: UserService) {}
 }

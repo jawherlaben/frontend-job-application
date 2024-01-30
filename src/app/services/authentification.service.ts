@@ -97,7 +97,7 @@ export class AuthenticationService {
     const token = localStorage.getItem('currentUserToken');
     if (token) {
       const tokenPayload = this.decodeToken(token);
-      // FIX THIS
+      // FIX THIS (SEND REQUEST TO VERIFY COMPANY)
       return tokenPayload.role === 'company';
     } else {
       return false;

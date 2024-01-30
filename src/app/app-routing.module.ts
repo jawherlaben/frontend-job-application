@@ -34,7 +34,10 @@ const routes: Routes = [
     { path: 'company/:id', component: UserNotificationsComponent },
   ]},
 
-  { path: 'company-dashboard', component: CompanyDashboardComponent, canActivate: [CompanyGuard]},
+  { path:'company-dashboard', redirectTo: '/company-dashboard/profile', pathMatch: 'full'},
+  { path: 'company-dashboard', component: AuthenticatedDashboardComponent, children: [ // canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], 
+    { path: 'profile', component: CompanyDashboardComponent },
+  ]},
   
   { path: 'forbidden', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
