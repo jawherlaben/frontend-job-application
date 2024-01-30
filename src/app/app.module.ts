@@ -60,8 +60,8 @@ import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { LogoutGuard } from './guards/logout.guard';
 import { UserGuard } from './guards/user.guard';
 import { CompanyGuard } from './guards/company.guard';
-
-
+import { NotificationComponent } from './notification/notification.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +117,7 @@ import { CompanyGuard } from './guards/company.guard';
     UserEducationCardComponent,
     UserSkillsCardComponent,
     UserExperienceCardComponent,
+    NotificationComponent,
     
   ],
   imports: [
@@ -126,7 +127,7 @@ import { CompanyGuard } from './guards/company.guard';
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-
+    ToastrModule.forRoot(),
   ],
   providers: [
     

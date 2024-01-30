@@ -22,7 +22,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
-
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: SimpleUserComponent, canActivate: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
@@ -42,7 +41,6 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesComponent },
   { path: 'company-dashboard', component: CompanyDashboardComponent },
 
-  
   { path: 'forbidden', component: AccessForbiddenComponent },
   { path: '**', component: NonExistentURLsComponent },
 ];
