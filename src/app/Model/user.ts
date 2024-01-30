@@ -13,10 +13,9 @@ export interface User {
     role: string;
     date_added: Date;
     description?: string;
-    education: Education[];
-    experience: Experience[];
-    skills?: string[];
-
+    education?: Education[];
+    experience?: Experience[];
+    skills?: String[];
   }
 
   interface Experience {
@@ -36,4 +35,3 @@ export interface User {
     };
     description: string;
   }
-

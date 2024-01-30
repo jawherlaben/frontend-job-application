@@ -51,7 +51,7 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${user._id}`;
+    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${user.email}`;
     return this.http.patch(url, user);
   }
 
