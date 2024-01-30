@@ -1,36 +1,32 @@
-<div *ngFor="let job of jobOffers" class="mb-4 p-4 border rounded relative">
-  <div class="flex items-start justify-end">
-    <button (click)="toggleMenu(job._id)" type="button" [attr.id]="'options-menu-' + job._id" class="p-2 menu-button" aria-haspopup="true" aria-expanded="true">
-      ...
-    </button>
-
-    <button class="px-4 py-2" (click)="ignoreJob(job)">X</button>
-  </div>
-
-  <div *ngIf="openMenus[job._id]" class="absolute top-10 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" [attr.aria-labelledby]="'options-menu-' + job._id">
-    <a (click)="viewCompany(job.recruiter)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-      Voir l'entreprise
-    </a>
-    <a (click)="ignoreJob(job)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Je ne souhaite pas voir ceci</a>
-  </div>
-
-  <div class="flex items-center">
-    <div class="rounded-full overflow-hidden mr-4">
-      <img [src]="companies[job.recruiter].avatar" alt="Logo" class="w-16 h-16 object-cover" >    
+<div *ngFor="let job of jobOffers" class="mb-4 p-4 border-2 rounded rounded-xl shadow-xl bg-gray-200/25">
+  <div class="flex flex-row-reverse justify-between ">
+    <div class="flex items-start justify-end">
+      <!-- <button (click)="toggleMenu(job._id)" type="button" [attr.id]="'options-menu-' + job._id" class="p-2 menu-button">
+        ...
+      </button> -->
+      <button class="px-4 py-2 text-xl font-medium hover:bg-gray-200 hover:rounded-xl" (click)="ignoreJob(job)">X</button>
     </div>
 
-    <div class="flex-1">
-      <h3 class="text-lg font-bold">{{ job.title }}</h3>
-      <p class="text-gray-600 mb-2">Company: {{ companies[job.recruiter].name }} </p>
-      <p>Location: </p>
-      <p>Description: {{ job.description }}</p>
-      <div class="pt-5">
-        <app-button (onClick)="togglePostuler(job._id)">Postuler</app-button>
+    <div>
+      <div class="flex items-center">
+        <div class="rounded-full overflow-hidden mr-4">
+          <img [src]="companies[job.recruiter].avatar" alt="Logo" class="w-16 h-16 object-cover" >    
+        </div>
+
+        <div class="flex-1">
+          <h3 class="text-lg font-bold">{{ job.title }}</h3>
+          <p class="text-gray-600 mb-2">Company: {{ companies[job.recruiter].name }} </p>
+          <p>Location: </p>
+          <p>Description: {{ job.description }}</p>
+          <div class="pt-5">
+            <app-button (onClick)="togglePostuler(job._id)">Postuler</app-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="apply-section mt-4 p-4 border-t" [ngClass]="postulerJob == job._id ? '' : 'hidden' ">
+  
+  <div class="apply-section mt-4 p-4 border-t" [ngClass]="selectedJobId == job._id ? '' : 'hidden' ">
     <h5 class="text-lg font-semibold mb-2">Postuler à cette offre</h5>
     <form (ngSubmit)="applyToJob(job._id)" class="space-y-4">
       <div class="mb-3">
@@ -45,9 +41,9 @@
         <input 
         *ngIf="!selectedCVFileNames[job._id]"
         type="file" (change)="onFileSelected($event, job._id)" 
-               name="cv{{job._id}}" 
-               [disabled]="appliedJobs[job._id]" 
-               accept=".pdf,.doc,.docx" />
+              name="cv{{job._id}}" 
+              [disabled]="appliedJobs[job._id]" 
+              accept=".pdf,.doc,.docx" />
 
         <div *ngIf="selectedCVFileNames[job._id]">
           Fichier CV: {{ selectedCVFileNames[job._id] }}

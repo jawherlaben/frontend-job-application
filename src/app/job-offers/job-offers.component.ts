@@ -14,7 +14,6 @@ import { UserService } from '../services/user.service';
 
 export class JobOffersComponent  implements OnInit {
   @Input() user: User | undefined;
-  postulerJob: string = "";
 
   jobOffers: JobOffer[] = [];
   companies: { [id: string]: Company } = {};
@@ -23,8 +22,7 @@ export class JobOffersComponent  implements OnInit {
   appliedJobs: { [id: string]: boolean } = {};
 
   selectedCVFileNames: { [id: string]: string } = {};
-
-  selectedJob: any | null = null;
+  selectedJobId ?: string = '';
 
   openMenus: { [key: string]: boolean } = {};
 
@@ -42,10 +40,10 @@ export class JobOffersComponent  implements OnInit {
   }
 
   togglePostuler(job: string): void {
-    if (this.postulerJob === job) {
-      this.postulerJob = "";
+    if (this.selectedJobId === job) {
+      this.selectedJobId = "";
     } else {
-      this.postulerJob = job;
+      this.selectedJobId = job;
     }
   }
   
@@ -72,8 +70,8 @@ export class JobOffersComponent  implements OnInit {
     if (index !== -1) {
       this.jobOffers.splice(index, 1);
 
-      if (this.selectedJob === job) {
-        this.selectedJob = null;
+      if (this.selectedJobId === job._id) {
+        this.selectedJobId = '';
       }
     }
   }
