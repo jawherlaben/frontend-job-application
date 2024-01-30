@@ -61,6 +61,8 @@ import { LogoutGuard } from './guards/logout.guard';
 import { UserGuard } from './guards/user.guard';
 import { CompanyGuard } from './guards/company.guard';
 import { ImagePipePipe } from './image-pipe.pipe';
+import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
+import { CompanyHeadProfileComponent } from './profile/company-profil/company-head-profile/company-head-profile.component';
 
 
 @NgModule({
@@ -119,6 +121,8 @@ import { ImagePipePipe } from './image-pipe.pipe';
     UserSkillsCardComponent,
     UserExperienceCardComponent,
     ImagePipePipe,
+    CompanyProfilComponent,
+    CompanyHeadProfileComponent,
   ],
   imports: [
     BrowserModule,

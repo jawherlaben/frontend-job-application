@@ -15,6 +15,7 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserGuard } from './guards/user.guard';
 import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
 import { CompanyGuard } from './guards/company.guard';
+import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -36,7 +37,7 @@ const routes: Routes = [
 
   { path:'company-dashboard', redirectTo: '/company-dashboard/profile', pathMatch: 'full'},
   { path: 'company-dashboard', component: AuthenticatedDashboardComponent, children: [ // canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], 
-    { path: 'profile', component: CompanyDashboardComponent },
+    { path: 'profile', component: CompanyProfilComponent },
   ]},
   
   { path: 'forbidden', component: AccessForbiddenComponent },
