@@ -14,8 +14,10 @@ import { Company } from '../Model/Company';
 export class UserService {
   private apiUrl = environment.apiUrl;
   private currentUserSubject = new BehaviorSubject<User |  undefined>(undefined);
+  private currentCompanySubject = new BehaviorSubject<Company |  undefined>(undefined);
 
   currentUser = this.currentUserSubject.asObservable();
+  currentCompany = this.currentCompanySubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -39,6 +41,12 @@ export class UserService {
     return this.http.get<User>(url,{ headers });
   }
 
+  getCompanyById(userId: string): Observable<Company> {
+    const headers = this.getHeaders();
+    const url = `${this.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${classpathoperations.FIND_COMPANY_BY_ID}/${userId}`;
+    return this.http.get<Company>(url,{ headers });
+  }
+
   getUserFromToken(): void {
     const storedToken = localStorage.getItem('currentUserToken');
 
@@ -55,6 +63,23 @@ export class UserService {
     } else {
       this.currentUserSubject.next(undefined);
     }
+  }
+
+  getCompanyFromToken(): void {
+    const storedToken = localStorage.getItem('currentUserToken');
+
+    if (storedToken) {
+      const companyId = this.getUserIdFromToken(storedToken);
+      
+      try {
+        this.getCompanyById(companyId).subscribe(company => {
+          this.currentCompanySubject.next(company);
+        });
+      } catch (err) {
+        this.currentCompanySubject.next(undefined);
+      }
+    } else
+      this.currentCompanySubject.next(undefined);
   }
 
   updateUser(user: User): Observable<any> {

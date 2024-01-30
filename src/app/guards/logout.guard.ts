@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { UserService } from '../services/user.service';
-import { CompanyService } from '../services/company.service';
+import { AuthenticationService } from '../services/authentification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +9,17 @@ export class LogoutGuardClass {
   isUserLoggedIn: boolean = false;
   isCompanyLoggedIn: boolean = false;
   
-  constructor(private userService: UserService, private companyService: CompanyService, private router: Router) {
-    this.userService.getUserFromToken();
-    this.userService.currentUser.subscribe(() => {
-      this.isUserLoggedIn = true;
+  constructor(private authService: AuthenticationService, private router: Router) {
+    this.authService.isLoggedIn.subscribe({
+      next: (value) => {
+        this.isUserLoggedIn = value;
+      }
     });
 
-    this.companyService.getCompanyFromToken();
-    this.companyService.currentCompany.subscribe(() => {
-      this.isCompanyLoggedIn = true;
+    this.authService.isCompanyUser.subscribe({
+      next: (value) => {
+        this.isCompanyLoggedIn = value;
+      }
     });
   }
 

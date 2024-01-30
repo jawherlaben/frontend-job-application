@@ -17,11 +17,11 @@
 
     <app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link>
     
-    <div class="relative" *ngIf="isUserLoggedIn">
+    <div class="relative" *ngIf="isUserLoggedIn && !isCompanyUser">
       <app-profile-menu [user]="user"> </app-profile-menu>
     </div>
     
-    <div class="relative" *ngIf="isCompanyUser">
+    <div class="relative" *ngIf="isUserLoggedIn && isCompanyUser">
       <app-company-profile-menu [company]="company"></app-company-profile-menu>
     </div>
 
