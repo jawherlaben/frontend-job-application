@@ -5,6 +5,7 @@ import * as jwt_decode from 'jwt-decode';
 import { classpathoperations, environment, pathconst } from 'src/environments/environment';
 import { Application } from '../Model/application';
 import { User } from '../Model/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class UserService {
   private currentUserSubject = new BehaviorSubject<User | undefined>(undefined);
   currentUser = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getHeaders(): HttpHeaders {
     const storedToken = localStorage.getItem('currentUserToken');
@@ -66,5 +67,10 @@ export class UserService {
     };
     return this.http.patch(`${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.CHANGE_USERPWD_BY_ID}/${userId}`, body);
 
+  }
+
+  // This route is used in user-settings components (profile) to navigate to the correct section
+  navigateToSettingsSection(section: string) {
+    this.router.navigate(['user-component/user-settings'], { fragment: section });
   }
 }

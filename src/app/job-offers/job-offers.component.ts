@@ -13,9 +13,7 @@ import { UserService } from '../services/user.service';
 })
 
 export class JobOffersComponent  implements OnInit {
-
-  @Input() user: User | undefined; 
-
+  @Input() user: User | undefined;
 
   jobOffers: JobOffer[] = [];
   companies: { [id: string]: Company } = {};
@@ -24,9 +22,7 @@ export class JobOffersComponent  implements OnInit {
   appliedJobs: { [id: string]: boolean } = {};
 
   selectedCVFileNames: { [id: string]: string } = {};
-
-  selectedJob: any | null = null;
-  public isMenuOpen = false;
+  selectedJobId ?: string = '';
 
   openMenus: { [key: string]: boolean } = {};
 
@@ -42,6 +38,14 @@ export class JobOffersComponent  implements OnInit {
     this.getJobOffers();
     this.loadUserApplications();
   }
+
+  togglePostuler(job: string): void {
+    if (this.selectedJobId === job) {
+      this.selectedJobId = "";
+    } else {
+      this.selectedJobId = job;
+    }
+  }
   
   getJobOffers(): void {
     this.jobOfferService.getJobOffers().subscribe({
@@ -53,20 +57,21 @@ export class JobOffersComponent  implements OnInit {
           });
         });
       },
-      error: (error: any) => {
+      error: (error) => {
+        // add toastr here
         console.error('Error fetching job offers:', error);
       }
     });
   }
 
-  ignoreJob(job: any): void {
+  ignoreJob(job: JobOffer): void {
     const index = this.jobOffers.indexOf(job);
 
     if (index !== -1) {
       this.jobOffers.splice(index, 1);
 
-      if (this.selectedJob === job) {
-        this.selectedJob = null;
+      if (this.selectedJobId === job._id) {
+        this.selectedJobId = '';
       }
     }
   }
@@ -106,11 +111,13 @@ export class JobOffersComponent  implements OnInit {
 
     this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe(
       response => {
+        // toastr
         console.log('Application sent!', response);
         this.appliedJobs[jobId] = true;
 
       },
       error => {
+        // toastr
         console.error('Error when applying to job:', error);
       }
     );
@@ -129,6 +136,7 @@ export class JobOffersComponent  implements OnInit {
               }
             });
           },
+          // toastr
           error => console.error('Erreur lors du chargement des candidatures:', error)
         );
       }

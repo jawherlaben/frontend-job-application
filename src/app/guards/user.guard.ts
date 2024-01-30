@@ -13,6 +13,12 @@ export class UserGuardClass {
       this.router.navigate(['/authentification']);
       return false;
     }
+    
+    if(this.authService.isCompany()) {
+      this.router.navigate(['/company-dashboard']);
+      return false;
+    }
+
     return true;
   }
 }

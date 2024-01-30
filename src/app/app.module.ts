@@ -47,7 +47,7 @@ import { ForgetPasswordSettingsComponent } from './settings/user/forget-password
 import { NewPasswordSettingsComponent } from './settings/user/new-password-settings/new-password-settings.component';
 import { TwoStepsAuthSettingsComponent } from './settings/user/two-steps-auth-settings/two-steps-auth-settings.component';
 import { InformationsAutorisationsSettingsComponent } from './settings/user/informations-autorisations-settings/informations-autorisations-settings.component';
-import { SimpleUserComponent } from './user/simple-user/simple-user.component';
+import { AuthenticatedDashboardComponent } from './auth-dashboard/auth-dashboard.component';
 import { PasswordSecurityComponentComponent } from './settings/user/password-security-component/password-security-component.component';
 import { CardForgetPasswordComponent } from './settings/user/card-forget-password/card-forget-password.component';
 import { CardTwostepsAuthenticationComponent } from './settings/user/card-twosteps-authentication/card-twosteps-authentication.component';
@@ -60,6 +60,7 @@ import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { LogoutGuard } from './guards/logout.guard';
 import { UserGuard } from './guards/user.guard';
 import { CompanyGuard } from './guards/company.guard';
+import { ImagePipePipe } from './image-pipe.pipe';
 
 
 @NgModule({
@@ -108,7 +109,7 @@ import { CompanyGuard } from './guards/company.guard';
     NewPasswordSettingsComponent,
     TwoStepsAuthSettingsComponent,
     InformationsAutorisationsSettingsComponent,
-    SimpleUserComponent,
+    AuthenticatedDashboardComponent,
     PasswordSecurityComponentComponent,
     CardForgetPasswordComponent,
     CardTwostepsAuthenticationComponent,
@@ -117,7 +118,7 @@ import { CompanyGuard } from './guards/company.guard';
     UserEducationCardComponent,
     UserSkillsCardComponent,
     UserExperienceCardComponent,
-    
+    ImagePipePipe,
   ],
   imports: [
     BrowserModule,
