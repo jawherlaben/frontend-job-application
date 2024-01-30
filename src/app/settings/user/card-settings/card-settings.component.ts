@@ -121,12 +121,6 @@ export class CardSettingsComponent {
   }
 
   validateEducation(): void {
-    /*
-    if (this.newEducation.title && this.newEducation.period.startDate && this.newEducation.period.endDate) {
-      this.userUpdateDTO.education = this.userUpdateDTO.education ?? [];
-      this.userUpdateDTO.education.push({ ...this.newEducation });
-      this.newEducation = { title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' };
-    }*/
     this.isEducationInputEnabled = false;
   }
 
@@ -157,11 +151,7 @@ export class CardSettingsComponent {
   }
 
   validateExperience(): void {
-    if (this.newExperience.title) {
-      this.userUpdateDTO.experience = this.userUpdateDTO.experience ?? [];
-        this.userUpdateDTO.experience.push({ ...this.newExperience });
-        this.newExperience = { title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' };
-    }
+
     this.isExperienceInputEnabled = false;
 
   }
