@@ -14,7 +14,6 @@ import { Company } from '../Model/Company';
 export class UserService {
   private apiUrl = environment.apiUrl;
   private currentUserSubject = new BehaviorSubject<User |  undefined>(undefined);
-  private currentCompanySubject = new BehaviorSubject<User |  undefined>(undefined);
 
   currentUser = this.currentUserSubject.asObservable();
 
@@ -40,12 +39,6 @@ export class UserService {
     return this.http.get<User>(url,{ headers });
   }
 
-  getCompanyById(userId: string): Observable<User> {
-    const headers = this.getHeaders();
-    const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${classpathoperations.FIND_USER_BY_ID}/${userId}`;
-    return this.http.get<User>(url,{ headers });
-  }
-
   getUserFromToken(): void {
     const storedToken = localStorage.getItem('currentUserToken');
 
@@ -63,9 +56,6 @@ export class UserService {
       this.currentUserSubject.next(undefined);
     }
   }
-
-
-
 
   updateUser(user: User): Observable<any> {
     const url = `${this.apiUrl}/${pathconst.USER_ENDPOINT_PATH}/${user.email}`;

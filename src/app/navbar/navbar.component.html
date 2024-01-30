@@ -20,6 +20,10 @@
     <div class="relative" *ngIf="isUserLoggedIn">
       <app-profile-menu [user]="user"> </app-profile-menu>
     </div>
+    
+    <div class="relative" *ngIf="isCompanyUser">
+      <app-company-profile-menu [company]="company"></app-company-profile-menu>
+    </div>
 
   </div>
 </nav>
