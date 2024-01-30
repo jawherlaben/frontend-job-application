@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center gap-5 mx-8 mb-4" *ngIf="!isUserLoggedIn">
+<div class="flex justify-center items-center gap-5 py-5 mx-8 mb-4" *ngIf="!isUserLoggedIn">
     <div class="w-1/2 h-full self-center">
       <app-authentification></app-authentification>
     </div>
@@ -12,6 +12,3 @@
     <h2 class="text-xl font-semibold">Partager des offres de travail avec des personnes motivées</h2>
     <app-button [routerLink]="['/inscrire']">Publier une offre</app-button>
 </div>
-  
-<app-companies></app-companies>
-  
