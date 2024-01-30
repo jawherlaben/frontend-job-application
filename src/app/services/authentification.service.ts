@@ -85,7 +85,7 @@ export class AuthenticationService {
     if (role === 'user') {
       this.router.navigate(['/user-component']);
     } else if (role === 'company') {
-      this.router.navigate(['/company-dashboard']);
+      this.router.navigate(['/company-component']);
     }
   }
 

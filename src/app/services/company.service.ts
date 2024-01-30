@@ -14,6 +14,7 @@ export class CompanyService {
 
   private currentCompanySubject = new BehaviorSubject<Company |  undefined>(undefined);
   currentCompany = this.currentCompanySubject.asObservable();
+  private apiUrl = environment.apiUrl;
 
   
   constructor(private httpClient: HttpClient) {}
@@ -64,6 +65,12 @@ export class CompanyService {
   getCompanyIdFromToken(token: string): string {
     const decodedToken: any = jwt_decode.jwtDecode(token);
     return decodedToken._id;
+  }
+
+
+  updateCompany(company: Company): Observable<any> {
+    const url = `${this.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${company.id}`;
+    return this.httpClient.patch(url, company);
   }
 
 
