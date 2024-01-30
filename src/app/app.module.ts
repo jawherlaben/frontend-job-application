@@ -60,6 +60,7 @@ import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { LogoutGuard } from './guards/logout.guard';
 import { UserGuard } from './guards/user.guard';
 import { CompanyGuard } from './guards/company.guard';
+import { ImagePipePipe } from './image-pipe.pipe';
 
 
 @NgModule({
@@ -117,7 +118,7 @@ import { CompanyGuard } from './guards/company.guard';
     UserEducationCardComponent,
     UserSkillsCardComponent,
     UserExperienceCardComponent,
-    
+    ImagePipePipe,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
     <div>
       <div class="flex items-center">
         <div class="rounded-full overflow-hidden mr-4">
-          <img [src]="companies[job.recruiter].avatar" alt="Logo" class="w-16 h-16 object-cover" >    
+          <img [src]="companies[job.recruiter].avatar | imagePipe" alt="Logo" class="w-16 h-16 object-cover" >    
         </div>
 
         <div class="flex-1">
