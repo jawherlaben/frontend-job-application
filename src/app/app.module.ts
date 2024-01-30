@@ -57,11 +57,7 @@ import { UserEducationCardComponent } from './profile/user-profil/user-education
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
-import { LogoutGuard } from './guards/logout.guard';
-import { UserGuard } from './guards/user.guard';
-import { CompanyGuard } from './guards/company.guard';
 import { ImagePipePipe } from './image-pipe.pipe';
-
 
 @NgModule({
   declarations: [
@@ -127,12 +123,9 @@ import { ImagePipePipe } from './image-pipe.pipe';
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-
   ],
   providers: [
-    
     LoginInterceptorProvider,
-    LogoutGuard,
   ],
   bootstrap: [AppComponent]
 })

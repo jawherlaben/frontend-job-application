@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { of, switchMap } from 'rxjs';
 import { AuthenticationService } from '../services/authentification.service';
 import { UserService } from '../services/user.service';
 import { User } from '../Model/user';
@@ -21,12 +20,17 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.isLoggedIn.subscribe(loggedIn => {
-      this.isUserLoggedIn = loggedIn;
-      if (this.isUserLoggedIn) {
-        this.userService.currentUser.subscribe(user => {
-          this.user = user;
-        });
+    this.authService.isLoggedIn.subscribe({
+      next: (loggedIn) => {
+        this.isUserLoggedIn = loggedIn;
+        if (this.isUserLoggedIn) {
+          this.userService.currentUser.subscribe(user => {
+            this.user = user;
+          });
+        }
+      },
+      error: (err) => {
+        this.user = undefined;
       }
     });
 
@@ -34,14 +38,11 @@ export class NavbarComponent implements OnInit {
       this.isCompanyUser = isCompanyUser;
     });
   }
- 
-
 
   logout() {
-    console.log("LOGOUT ! ");
     this.authService.logout();
     this.isUserLoggedIn = false;
     this.isCompanyUser = false;
-    this.router.navigate(['/authentification']); 
+    this.router.navigate(['/home']); 
   }
 }

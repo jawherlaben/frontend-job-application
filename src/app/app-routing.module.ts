@@ -15,10 +15,11 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserGuard } from './guards/user.guard';
 import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
 import { CompanyGuard } from './guards/company.guard';
+import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LogoutGuard] },
   { path: 'contact', component: ContactComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
@@ -35,7 +36,7 @@ const routes: Routes = [
   ]},
 
   { path:'company-dashboard', redirectTo: '/company-dashboard/profile', pathMatch: 'full'},
-  { path: 'company-dashboard', component: AuthenticatedDashboardComponent, children: [ // canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], 
+  { path: 'company-dashboard', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [
     { path: 'profile', component: CompanyDashboardComponent },
   ]},
   
