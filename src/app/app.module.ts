@@ -57,16 +57,12 @@ import { UserEducationCardComponent } from './profile/user-profil/user-education
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
-import { LogoutGuard } from './guards/logout.guard';
-import { UserGuard } from './guards/user.guard';
-import { CompanyGuard } from './guards/company.guard';
 import { ImagePipePipe } from './image-pipe.pipe';
 import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
 import { CompanyHeadProfileComponent } from './profile/company-profil/company-head-profile/company-head-profile.component';
 import { CompanySettingsComponent } from './settings/company/company-settings.component';
 import { CardCompanyUpdateComponent } from './settings/company/card-company-update/card-company-update.component';
 import { CardCompanySettingsComponent } from './settings/company/card-company-settings/card-company-settings.component';
-
 
 @NgModule({
   declarations: [
@@ -137,12 +133,9 @@ import { CardCompanySettingsComponent } from './settings/company/card-company-se
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-
   ],
   providers: [
-    
     LoginInterceptorProvider,
-    LogoutGuard,
   ],
   bootstrap: [AppComponent]
 })

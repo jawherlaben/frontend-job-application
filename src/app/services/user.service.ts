@@ -52,9 +52,13 @@ export class UserService {
     if (storedToken) {
       const userId = this.getUserIdFromToken(storedToken);
       
-      this.getUserById(userId).subscribe(user => {
-        this.currentUserSubject.next(user);
-      });
+      try {
+        this.getUserById(userId).subscribe(user => {
+          this.currentUserSubject.next(user);
+        });
+      } catch (err) {
+        this.currentUserSubject.next(undefined);
+      }
     } else {
       this.currentUserSubject.next(undefined);
     }

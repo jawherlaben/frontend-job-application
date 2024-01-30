@@ -26,8 +26,11 @@ export class AuthenticationService {
   private isCompanyUserSubject = new BehaviorSubject<boolean>(false);
   isCompanyUser = this.isCompanyUserSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.checkUserLoggedIn();
+  }
 
+  // Cette fonction permet de créer un header pour les requêtes HTTP qu'on va utiliser dans le service
   getHeaders() {
     return new HttpHeaders({ 'Content-Type': 'application/json' });
   }
@@ -89,18 +92,19 @@ export class AuthenticationService {
     }
   }
 
-  isUserLoggedIn(): boolean {
-    return !!localStorage.getItem('currentUserToken');
-  }
-
-  isCompany(): boolean {
+  checkUserLoggedIn(): void {
     const token = localStorage.getItem('currentUserToken');
-    if (token) {
+    if(token) {
       const tokenPayload = this.decodeToken(token);
-      // FIX THIS (SEND REQUEST TO VERIFY COMPANY)
-      return tokenPayload.role === 'company';
-    } else {
-      return false;
+      
+      if (tokenPayload.role == 'user')
+        this.isLoggedInSubject.next(true);
+      else
+        this.isCompanyUserSubject.next(true);
+    }
+    else {
+      this.isLoggedInSubject.next(false);
+      this.isCompanyUserSubject.next(false);
     }
   }
 

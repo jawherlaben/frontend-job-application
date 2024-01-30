@@ -4,7 +4,9 @@
   </a>
   
   <div class="flex justify-center gap-8 w-full text-white text-lg pt-1">
-    <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
+    <ng-container *ngIf="!isUserLoggedIn">
+      <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
+    </ng-container>
     <ng-container *ngIf="isUserLoggedIn && !isCompanyUser">
       <app-underlined-link [routerLink]="['user-component']">Tableau de bord </app-underlined-link>
     </ng-container>

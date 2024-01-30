@@ -17,10 +17,11 @@ import { CompanyDashboardComponent } from './dashboard/company/company-dashboard
 import { CompanyGuard } from './guards/company.guard';
 import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
 import { CompanySettingsComponent } from './settings/company/company-settings.component';
+import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LogoutGuard] },
   { path: 'contact', component: ContactComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
@@ -37,12 +38,10 @@ const routes: Routes = [
   ]},
 
   { path:'company-component', redirectTo: '/company-component/company-dashboard', pathMatch: 'full'},
-
-  { path: 'company-component', component: AuthenticatedDashboardComponent,/* canActivate: [CompanyGuard], canActivateChild: [CompanyGuard],*/ children: [  
+  { path: 'company-component', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [  
     { path: 'profile', component: CompanyProfilComponent },
     { path: 'company-dashboard', component: CompanyDashboardComponent},
     { path: 'company-settings', component: CompanySettingsComponent },
-
   ]},
   
   { path: 'forbidden', component: AccessForbiddenComponent },

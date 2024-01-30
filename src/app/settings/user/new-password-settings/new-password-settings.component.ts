@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NewPasswordData } from 'src/app/Model/new-password-data';
-import { User } from 'src/app/Model/user';
-import { AuthenticationService } from 'src/app/services/authentification.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
