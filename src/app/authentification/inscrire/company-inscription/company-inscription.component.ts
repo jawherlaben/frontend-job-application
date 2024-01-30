@@ -37,7 +37,7 @@ export class CompanyInscriptionComponent {
           if (errorResponse.error.message == "Company already exists!") {
             this.notificationService.showError('Email existe déjà', 'Erreur');
           } else {
-            this.notificationService.showError('Erreur de connexion', 'Erreur');
+            this.notificationService.showError('Erreur de connexion !', 'Erreur');
           }
         }
       });
