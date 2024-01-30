@@ -37,7 +37,7 @@ const routes: Routes = [
     { path: 'company/:id', component: UserNotificationsComponent },
   ]},
 
-  { path:'company-component', redirectTo: '/company-component/company-dashboard', pathMatch: 'full'},
+  { path:'company-component', redirectTo: '/company-component/profile', pathMatch: 'full'},
   { path: 'company-component', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [  
     { path: 'profile', component: CompanyProfilComponent },
     { path: 'company-dashboard', component: CompanyDashboardComponent},
