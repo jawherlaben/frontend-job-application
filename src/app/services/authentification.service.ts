@@ -74,7 +74,7 @@ export class AuthenticationService {
 
   companyRegister(companyForm: CompanyFormDTO): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.post<RegistrationResponse>(this.authUrl + '/company', companyForm, { headers });
+    return this.http.post<RegistrationResponse>(this.authUrl + '/auth/company-register', companyForm, { headers });
   }
 
   logout(): void {
