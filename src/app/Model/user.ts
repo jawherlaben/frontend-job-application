@@ -15,7 +15,7 @@ export interface User {
     description?: string;
     education?: Education[];
     experience?: Experience[];
-    skills?: String[];
+    skills?: string[];
   }
 
   export interface Experience {
