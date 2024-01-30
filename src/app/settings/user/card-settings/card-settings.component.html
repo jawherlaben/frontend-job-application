@@ -1,14 +1,12 @@
-<div
-  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
->
-  <div class="rounded-t bg-white mb-0 px-6 py-6">
+<div class="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg bg-gray-200/50">
+  <div class="rounded-t mb-0 px-6 py-6">
     <div class="text-center flex justify-between">
-      <h6 class="text-blueGray-700 text-xl font-bold">Mon Compte</h6>
+      <h6 class="text-xl font-bold">Mon Compte</h6>
     </div>
   </div>
   <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
     <form #settingsForm="ngForm" (ngSubmit)="updateUserInfos(settingsForm)">
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+      <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
         Mes Informations
       </h6>
       <div class="flex flex-wrap">
@@ -17,14 +15,14 @@
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
 
             >
             Prénom
             </label>
             <input
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               type="text" id="lastname" [class.border-red-500]="!firstname.valid && firstname.touched" #firstname="ngModel" [(ngModel)]="userUpdateDTO.firstname" required name="firstname" minlength="3"
             />
             <div *ngIf="!firstname.valid && firstname.touched" class="text-red-500"> Veuillez saisir un prénom valide. </div>
@@ -34,13 +32,13 @@
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
             Nom de famille              
             </label>
             <input
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               type="text" id="lastname" [class.border-red-500]="!lastname.valid && lastname.touched" #lastname="ngModel" [(ngModel)]="userUpdateDTO.lastname" required name="lastname" minlength="3"
             />
             <div *ngIf="!lastname.valid && lastname.touched" class="text-red-500"> Veuillez saisir un nom valide. </div>
@@ -51,14 +49,14 @@
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
               Date of birth
             </label>
             <input
             type="date"
-            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+            class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
             [(ngModel)]="userUpdateDTO.dateBirth"
             name="dateBirth"
             (ngModelChange)="userUpdateDTO.dateBirth = $event"
@@ -68,13 +66,13 @@
         <div class="w-full lg:w-6/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
               Gender
             </label>
             <select
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               name="gender"
             >
             <option [value]="'Male'" [selected]="userUpdateDTO.gender === 'Male'">Male</option>
@@ -87,20 +85,20 @@
 
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+      <h6 class="text-sm mt-3 mb-6 font-bold uppercase">
         Contact Information
       </h6>
       <div class="flex flex-wrap">
         <div class="w-full lg:w-12/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
             Adresse
             </label>
             <input
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               type="text" id="address" [class.border-red-500]="!address.valid && address.touched" #address="ngModel" [(ngModel)]="userUpdateDTO.address" required name="address" minlength="3" maxlength="32"
             />
             <div *ngIf="!address.valid && address.touched" class="text-red-500"> Veuillez saisir une adresse valide. </div>
@@ -110,13 +108,13 @@
         <div class="w-full lg:w-4/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
             Numéro de téléphone
             </label>
             <input
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               type="number" id="phoneNumber" [class.border-red-500]="!phoneNumber.valid && phoneNumber.touched" #phoneNumber="ngModel" [(ngModel)]="userUpdateDTO.phoneNumber" required name="phoneNumber" minlength="8" maxlength="16"
             />
             <div *ngIf="!phoneNumber.valid && phoneNumber.touched" class="text-red-500"> Veuillez saisir un numéro de téléphone valide. </div>
@@ -125,13 +123,13 @@
         <div class="w-full lg:w-4/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
             Email
           </label>
           <input
-            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+            class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
             type="email" id="email"  [class.border-red-500]="!email.valid && email.touched" #email="ngModel" [(ngModel)]="userUpdateDTO.email" required name="email"
           />
 
@@ -149,13 +147,13 @@
         <div class="w-full lg:w-12/12 px-4">
           <div class="relative w-full mb-3">
             <label
-              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              class="block uppercase text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
               About me
             </label>
             <textarea
-              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               rows="4"
               type="text" id="Aboutme" [class.border-red-500]="!Aboutme.valid && Aboutme.touched" #Aboutme="ngModel" [(ngModel)]="userUpdateDTO.description"  name="Aboutme" maxlength="250"
             >    

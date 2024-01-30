@@ -1,9 +1,6 @@
-<div *ngFor="let job of jobOffers" class="mb-4 p-4 border-2 rounded rounded-xl shadow-xl bg-gray-200/25">
+<div *ngFor="let job of jobOffers" class="mb-4 p-4 border-2 rounded rounded-xl shadow-xl bg-gray-200/50">
   <div class="flex flex-row-reverse justify-between ">
     <div class="flex items-start justify-end">
-      <!-- <button (click)="toggleMenu(job._id)" type="button" [attr.id]="'options-menu-' + job._id" class="p-2 menu-button">
-        ...
-      </button> -->
       <button class="px-4 py-2 text-xl font-medium hover:bg-gray-200 hover:rounded-xl" (click)="ignoreJob(job)">X</button>
     </div>
 
