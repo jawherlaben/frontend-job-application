@@ -50,16 +50,23 @@
 
       <!-- Tags -->
       <div class="mb-4">
-        <label for="tags" class="block text-sm font-medium text-gray-600"
-          >Tags (séparés par des virgules)</label
-        >
-        <input
-          type="text"
+        <label for="tags" class="block mb-2 text-sm font-medium text-gray-700">
+          Tags
+        </label>
+        <ng-select
           id="tags"
           name="tags"
+          [items]="skillsEnum"
+          bindLabel="name"
+          [multiple]="true"
           [(ngModel)]="job.tags"
-          class="mt-1 p-2 w-full border rounded-md"
-        />
+          class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
+          [ngClass]="{
+            'custom-dropdown-panel': true,
+            'custom-dropdown-option': true
+          }"
+        >
+        </ng-select>
       </div>
 
       <!-- Salaire -->

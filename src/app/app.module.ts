@@ -59,6 +59,7 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserEducationCardComponent } from './profile/user-profil/user-education-card/user-education-card.component';
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -127,8 +128,9 @@ import { UserExperienceCardComponent } from './profile/user-profil/user-experien
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot(),
-
+    NgSelectModule ,
+    AngularSvgIconModule.forRoot()
+    
   ],
   providers: [
   ],

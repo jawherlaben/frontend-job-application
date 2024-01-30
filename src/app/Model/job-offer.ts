@@ -1,4 +1,3 @@
-// Enumérations pour les compétences et les types de travail
 export enum Skills {
     JAVASCRIPT = 'javascript',
     FRONTEND = 'frontend',
@@ -26,7 +25,6 @@ export enum Skills {
     HYBRID = 'HYBRID',
   }
   
-  // Classe Job pour correspondre au DTO CreateJobDto
   export class Job {
     title: string;
     description: string;

@@ -8,7 +8,8 @@ import { Job, Skills, JOB_TYPES } from '../Model/job-offer';
 })
 export class JobComponent {
     job: Job;
-
+    tagsText: string = '';
+    skillsEnum = Object.values(Skills).filter(value => typeof value === 'string');
     constructor() {
         this.job = new Job(
             '',  
@@ -24,4 +25,5 @@ export class JobComponent {
     
         console.log(this.job);
     }
+    
 }
