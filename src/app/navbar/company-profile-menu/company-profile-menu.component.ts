@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentification.service';
 import { Company } from '../../Model/Company';
 
@@ -13,9 +11,9 @@ import { Company } from '../../Model/Company';
   @Input() company: Company | undefined;
 
   isUserLoggedIn = false; 
-  isCompanyUser = false; 
+  isCompanyUser = false;
 
-  constructor(private authService: AuthenticationService,private userService: UserService, private router: Router) {}
+  constructor(private authService: AuthenticationService) {}
 
   public toggleMenu(value: boolean): void {
     this.isMenuOpen = value;

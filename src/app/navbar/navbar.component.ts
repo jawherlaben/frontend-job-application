@@ -24,18 +24,20 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userService.getUserFromToken();
-    this.userService.currentUser.subscribe(user => {
-      if (user) {
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isUserLoggedIn = isLoggedIn;
+      this.userService.getUserFromToken();
+      this.userService.currentUser.subscribe(user => {
         this.user = user;
-        this.isUserLoggedIn = true;
-      }
+      });
     });
 
-    this.companyService.getCompanyFromToken();
-    this.companyService.currentCompany.subscribe(company => {
-      this.isCompanyUser = true;
-      this.company = company;
+    this.authService.isCompanyUser.subscribe((isCompanyUser) => {
+      this.isCompanyUser = isCompanyUser;
+      this.companyService.getCompanyFromToken();
+      this.companyService.currentCompany.subscribe(company => {
+        this.company = company;
+      });
     });
   }
 
