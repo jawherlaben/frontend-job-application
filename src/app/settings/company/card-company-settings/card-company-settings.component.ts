@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './card-company-settings.component.html',
   styleUrls: ['./card-company-settings.component.css']
 })
+
 export class CardCompanySettingsComponent {
 
   @Input() company: Company | undefined ;
@@ -29,17 +30,18 @@ export class CardCompanySettingsComponent {
   }
 
   private initializeModel(): void {
+    this.companyUpdateDTOChanged.emit(this.companyUpdateDTO);
+
+    
     if (this.company) {
       this.companyUpdateDTO = { ...this.company };
+      this.companyUpdateDTOChanged.emit(this.companyUpdateDTO);
     } else {
-      this.companyService.getCompanyFromToken();
       this.companyService.currentCompany.subscribe(company => {
         this.company = company;
         this.companyUpdateDTO = { ...this.company };
-        this.companyUpdateDTOChanged.emit(this.companyUpdateDTO); 
       });
       return;
-    this.companyUpdateDTOChanged.emit(this.companyUpdateDTO);
     }
   }
 
