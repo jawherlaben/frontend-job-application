@@ -86,21 +86,24 @@
 
       <!-- Type de poste -->
       <div class="mb-4">
-        <label for="type" class="block text-sm font-medium text-gray-600"
-          >Type de Poste</label
-        >
-        <select
+        <label for="type" class="block mb-2 text-sm font-medium text-gray-700">
+          Type de Poste
+        </label>
+        <ng-select
           id="type"
           name="type"
+          [items]="jobTypesEnum"
+          bindLabel="name"
+          [multiple]="false"
           [(ngModel)]="job.type"
           required
-          class="mt-1 p-2 w-full border rounded-md"
+          class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
+          [ngClass]="{
+            'custom-dropdown-panel': true,
+            'custom-dropdown-option': true
+          }"
         >
-          <option value="">Sélectionnez un type</option>
-          <option value="ON_SITE">Sur Site</option>
-          <option value="REMOTE">Télétravail</option>
-          <option value="HYBRID">Hybride</option>
-        </select>
+        </ng-select>
       </div>
 
       <div class="mt-4">
