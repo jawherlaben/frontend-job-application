@@ -24,7 +24,8 @@ export enum Skills {
     REMOTE = 'REMOTE',
     HYBRID = 'HYBRID',
   }
-  
+  export const REMUNERATION = ['UNPAID', 'PAID'];
+
   export class Job {
     title: string;
     description: string;

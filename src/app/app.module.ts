@@ -60,7 +60,8 @@ import { UserEducationCardComponent } from './profile/user-profil/user-education
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -129,7 +130,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     HttpClientModule,
     NgSelectModule ,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
+    ToastrModule.forRoot(), // ToastrModule added
+    BrowserAnimationsModule, // required for toastr animations
     
   ],
   providers: [

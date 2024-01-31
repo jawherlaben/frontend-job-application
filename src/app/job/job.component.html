@@ -4,7 +4,7 @@
       Publier une Offre d'Emploi
     </h1>
 
-    <form (submit)="submitJobForm()">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
       <!-- Titre de l'emploi -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-medium text-gray-600"
@@ -13,9 +13,19 @@
         <input
           type="text"
           id="title"
-          name="title"
-          [(ngModel)]="job.title"
-          required
+          formControlName="title"
+          class="mt-1 p-2 w-full border rounded-md"
+        />
+      </div>
+      <!-- Recruiter -->
+      <div class="mb-4">
+        <label for="recruiter" class="block text-sm font-medium text-gray-600"
+          >Recruiter</label
+        >
+        <input
+          type="text"
+          id="recruiter"
+          formControlName="recruiter"
           class="mt-1 p-2 w-full border rounded-md"
         />
       </div>
@@ -27,9 +37,7 @@
         >
         <textarea
           id="description"
-          name="description"
-          [(ngModel)]="job.description"
-          required
+          formControlName="description"
           class="mt-1 p-2 w-full border rounded-md resize-none"
         ></textarea>
       </div>
@@ -41,9 +49,7 @@
         >
         <textarea
           id="body"
-          name="body"
-          [(ngModel)]="job.body"
-          required
+          formControlName="body"
           class="mt-1 p-2 w-full border rounded-md resize-none"
         ></textarea>
       </div>
@@ -59,7 +65,7 @@
           [items]="skillsEnum"
           bindLabel="name"
           [multiple]="true"
-          [(ngModel)]="job.tags"
+          formControlName="tags"
           class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
           [ngClass]="{
             'custom-dropdown-panel': true,
@@ -74,14 +80,19 @@
         <label for="pay" class="block text-sm font-medium text-gray-600"
           >Salaire</label
         >
-        <input
-          type="text"
+        <ng-select
           id="pay"
           name="pay"
-          [(ngModel)]="job.pay"
-          required
-          class="mt-1 p-2 w-full border rounded-md"
-        />
+          [items]="remunerationOptions"
+          [multiple]="false"
+          formControlName="pay"
+          class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
+          [ngClass]="{
+            'custom-dropdown-panel': true,
+            'custom-dropdown-option': true
+          }"
+        >
+        </ng-select>
       </div>
 
       <!-- Type de poste -->
@@ -95,8 +106,7 @@
           [items]="jobTypesEnum"
           bindLabel="name"
           [multiple]="false"
-          [(ngModel)]="job.type"
-          required
+          formControlName="type"
           class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
           [ngClass]="{
             'custom-dropdown-panel': true,

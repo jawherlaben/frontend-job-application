@@ -1,5 +1,5 @@
 
-import { Skills, JOB_TYPES } from '../Model/job-offer';
+import { Skills, JOB_TYPES } from './job-offer';
 
 export interface JobDto {
   title: string;
@@ -7,5 +7,6 @@ export interface JobDto {
   body: string;
   pay: string;
   type: JOB_TYPES;
+  Recruiter: String ;
   tags: Skills[];
 }
