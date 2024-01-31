@@ -64,7 +64,7 @@ import { CompanyHeadProfileComponent } from './profile/company-profil/company-he
 import { CompanySettingsComponent } from './settings/company/company-settings.component';
 import { CardCompanyUpdateComponent } from './settings/company/card-company-update/card-company-update.component';
 import { CardCompanySettingsComponent } from './settings/company/card-company-settings/card-company-settings.component';
-import { HeadCompanyDashboardComponent } from './company/head-company-dashboard/head-company-dashboard.component';
+import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-dashboard/head-company-dashboard.component';
 
 @NgModule({
   declarations: [

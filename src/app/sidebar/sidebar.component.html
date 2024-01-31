@@ -35,7 +35,15 @@
     <ng-container *ngIf="isCompany">
       <div class="relative h-10">
         <div class="flex items-center" *ngIf="showSideBar">
-          <app-head-company-dashboard [company]="company"> </app-head-company-dashboard>
+          <ng-container *ngIf="user && !company; else companyHead">
+            <app-head-user-dashboard [user]="user"></app-head-user-dashboard>
+          </ng-container>
+        
+          <ng-template #companyHead>
+            <app-head-company-dashboard [company]="company"></app-head-company-dashboard>
+          </ng-template>
+
+
         </div>
 
         <button
@@ -45,6 +53,7 @@
           <svg-icon src="assets/icons/heroicons/solid/chevron-double-left.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
         </button>
       </div>
+
 
       <div class="pt-3">
         <hr class="border-dashed border-gray-200 dark:border-night-500" />
