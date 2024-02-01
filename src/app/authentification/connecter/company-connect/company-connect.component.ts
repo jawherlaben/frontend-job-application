@@ -48,7 +48,9 @@ export class CompanyConnectComponent {
           }
         });
     }
-    else {
+    else 
+    if(!this.authForm.valid)
+    {
       this.toastr.error('Veuillez vérifier le formulaire.', 'Error');
     }
   }

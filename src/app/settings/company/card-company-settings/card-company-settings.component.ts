@@ -59,7 +59,9 @@ export class CardCompanySettingsComponent {
           this.toastr.error('Erreur lors de la mise à jour');
         }
       });
-    } else {
+    } else 
+    if(!settingsForm.valid )
+    {
       this.toastr.error('Le formulaire n est pas valide ou les données sont manquantes');
       return;
     }

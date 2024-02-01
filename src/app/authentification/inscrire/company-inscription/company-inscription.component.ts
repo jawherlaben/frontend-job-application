@@ -33,9 +33,10 @@ export class CompanyInscriptionComponent {
           if (response.statusCode == 201) {
   
             this.toastr.success('Inscription Réussie', 'Succès');
-          } else {
+          } 
+          /*else {
             this.toastr.error('Erreur de connexion', 'Erreur');
-          }
+          }*/
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "Company already exists!") {

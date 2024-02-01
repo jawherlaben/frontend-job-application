@@ -6,6 +6,8 @@ export class Company {
   avatar: string;
   website: string;
   state: string;
+  email:string;
+
 
   constructor(
     _id: string,
@@ -14,7 +16,8 @@ export class Company {
     description: string,
     avatar: string,
     website: string,
-    state: string
+    state: string,
+    email : string
   ) {
     this._id = _id;
     this.name = name;
@@ -23,5 +26,6 @@ export class Company {
     this.avatar = avatar;
     this.website = website;
     this.state = state;
+    this.email=email;
   }
 }

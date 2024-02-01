@@ -1,10 +1,10 @@
-<div class="min-h-screen flex justify-center items-center">
-  <app-card>
-    <h1 class="text-xl font-medium text-center mb-2">
+<div class="container mx-auto px-4 py-6">
+  <div class="bg-white shadow-lg rounded-lg p-6">
+    <h1 class="text-2xl font-semibold text-center mb-6">
       Publier une Offre d'Emploi
     </h1>
 
-    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="space-y-4">
       <div class="mb-4">
         <label for="title" class="block text-sm font-medium text-gray-600"
           >Titre de l'Emploi</label
@@ -79,8 +79,8 @@
       </div>
 
 
-      <div class="mb-4">
-        <label for="type" class="block mb-2 text-sm font-medium text-gray-700">
+      <div class="flex flex-col space-y-2">
+        <label for="type" class="text-sm font-medium text-gray-700">
           Type de Poste
         </label>
         <ng-select
@@ -90,7 +90,7 @@
           bindLabel="name"
           [multiple]="false"
           formControlName="type"
-          class="mt-1 block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm"
+          class="block w-full p-2 border border-gray-300 bg-white rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200"
           [ngClass]="{
             'custom-dropdown-panel': true,
             'custom-dropdown-option': true
@@ -99,11 +99,10 @@
         </ng-select>
       </div>
 
-      <div class="mt-4">
-        <button type="submit" class="bg-blue-500 text-white p-2 rounded-md">
+      <div class="flex justify-center mt-6">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition duration-200">
           Soumettre l'Offre
         </button>
       </div>
     </form>
-  </app-card>
 </div>

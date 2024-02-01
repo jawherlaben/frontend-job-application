@@ -7,4 +7,5 @@ export interface CompanyUpdateDTO {
   avatar?: string;
   website?: string;
   state?: string;
+  email?:string
   }

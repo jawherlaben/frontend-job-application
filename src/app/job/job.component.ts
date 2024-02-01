@@ -62,7 +62,8 @@ export class JobComponent {
             this.toastr.error('Failed to post job', 'Error');
           }
         });
-      } else {
+      } else 
+      if(!this.jobForm.valid) {
         this.toastr.error('Please fill out the form correctly', 'Form Invalid');
       }
     });

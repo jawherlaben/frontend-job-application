@@ -36,9 +36,10 @@ export class UserInscriptionComponent {
              this.toastr.success('Inscription Réussie', 'Succès');
             this.router.navigate(['/home']);
           }
+          /*
           else {
             this.toastr.error('Erreur de connexion', 'Erreur');
-          }
+          }*/
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "user already exists") {
