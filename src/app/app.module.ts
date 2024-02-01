@@ -131,8 +131,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     NgSelectModule ,
     AngularSvgIconModule.forRoot(),
-    ToastrModule.forRoot(), // ToastrModule added
-    BrowserAnimationsModule, // required for toastr animations
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+    }),
+    BrowserAnimationsModule, 
     
   ],
   providers: [

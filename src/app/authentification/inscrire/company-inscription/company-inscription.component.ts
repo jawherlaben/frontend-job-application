@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthentificationTypeService } from '../../authentification-type.service';
 import { AuthenticationService } from '../../../services/authentification.service';
 import { CompanyFormDTO } from './CompanyInscription.dto';
-import { NotificationService } from '../../../services/notification.service'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-company-inscription',
@@ -18,7 +18,7 @@ export class CompanyInscriptionComponent {
     this.authentificationService.emitUserType();
   }
 
-  constructor(private authService: AuthenticationService, private authentificationService: AuthentificationTypeService,    private notificationService: NotificationService 
+  constructor(private authService: AuthenticationService, private authentificationService: AuthentificationTypeService,    private toastr: ToastrService 
     ) {
     this.loginMessage = '';
     this.loginMessageClass = '';
@@ -32,16 +32,16 @@ export class CompanyInscriptionComponent {
         next: (response) => {
           if (response.statusCode == 201) {
   
-            this.notificationService.showSuccess('Inscription Réussie', 'Succès');
+            this.toastr.success('Inscription Réussie', 'Succès');
           } else {
-            this.notificationService.showError('Erreur de connexion', 'Erreur');
+            this.toastr.error('Erreur de connexion', 'Erreur');
           }
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "Company already exists!") {
-            this.notificationService.showError('Email existe déjà', 'Erreur');
+            this.toastr.error('Email existe déjà', 'Erreur');
           } else {
-            this.notificationService.showError('Erreur de connexion !', 'Erreur');
+            this.toastr.error('Erreur de connexion !', 'Erreur');
           }
         }
       });

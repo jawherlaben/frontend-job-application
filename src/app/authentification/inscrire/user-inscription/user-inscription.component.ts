@@ -3,7 +3,7 @@ import { AuthentificationTypeService } from '../../authentification-type.service
 import { AuthenticationService } from '../../../services/authentification.service';
 import { UserFormDTO } from './UserInscription.dto';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../../services/notification.service'; 
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,7 +21,7 @@ export class UserInscriptionComponent {
     this.authentificationService.emitUserType();
   }
 
-  constructor( private authService: AuthenticationService, private authentificationService: AuthentificationTypeService, private router: Router , private notificationService: NotificationService) {
+  constructor( private authService: AuthenticationService, private authentificationService: AuthentificationTypeService, private router: Router , private toastr: ToastrService ) {
     this.loginMessage = '';
     this.loginMessageClass = '';
   }
@@ -33,18 +33,18 @@ export class UserInscriptionComponent {
       .subscribe({
         next: (response) => {
           if (response.statusCode == 201) {
-             this.notificationService.showSuccess('Inscription Réussie', 'Succès');
+             this.toastr.success('Inscription Réussie', 'Succès');
             this.router.navigate(['/home']);
           }
           else {
-            this.notificationService.showError('Erreur de connexion', 'Erreur');
+            this.toastr.error('Erreur de connexion', 'Erreur');
           }
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "user already exists") {
-            this.notificationService.showError('Email existe déjà', 'Erreur');}
+            this.toastr.error('Email existe déjà', 'Erreur');}
           else {
-            this.notificationService.showError('Erreur de connexion', 'Erreur');
+            this.toastr.error('Erreur de connexion', 'Erreur');
         }
       }
   
