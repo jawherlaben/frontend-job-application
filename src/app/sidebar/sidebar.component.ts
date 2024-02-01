@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
-import { NgClass, NgIf } from '@angular/common';
-import { ThemeService } from '../theme.service';
 import { MenuService } from '../services/menu.service';
 import { User } from '../Model/user';
 import { UserService } from '../services/user.service';
+import { AuthenticationService } from '../services/authentification.service';
+import { Company } from '../Model/Company';
+import { CompanyService } from '../services/company.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -14,20 +13,28 @@ import { UserService } from '../services/user.service';
 })
 export class SidebarComponent implements OnInit {
   public user: User | undefined;
+  public company: Company | undefined;
+  isCompany: boolean = false;
+  showSideBar: boolean = true;
 
-  constructor(public themeService: ThemeService, public menuService: MenuService, private userService: UserService) {}
+  constructor(public menuService: MenuService, private userService: UserService, public authService: AuthenticationService, private companyService: CompanyService) {}
 
   ngOnInit(): void {
     this.userService.getUserFromToken();
     this.userService.currentUser.subscribe(user => {
       this.user = user;
     });
-  }
-  public toggleSidebar() {
-    this.menuService.toggleSidebar();
-  }
 
- 
+    this.companyService.getCompanyFromToken();
+    this.companyService.currentCompany.subscribe(company => {
+      this.isCompany = true;
+      this.company = company;
+    });
+    
+    this.menuService.showSideBar$.subscribe((showSideBar) => {
+      this.showSideBar = showSideBar;
+    });
+  }
 }
 
 

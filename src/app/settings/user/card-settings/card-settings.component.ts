@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../../../Model/user';
-import { UserFormDTO } from '../../../authentification/inscrire/user-inscription/UserInscription.dto';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Education, Experience, User } from '../../../Model/user';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { UserUpdateDTO } from './UserUpdate.dto';
@@ -16,11 +15,27 @@ export class CardSettingsComponent {
   editMessage: string;
   editMessageClass: string;
 
+  isSkillInputEnabled: boolean = true;
+  isEducationInputEnabled: boolean = false;
+  isExperienceInputEnabled: boolean = false;
+
+  isEditingEducation: boolean = false;
+  isEditingExperience: boolean = false;
+  newEducation: Education = { title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' };
+  newExperience: Experience = { title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' };
+
+
   @Output() userUpdateDTOChanged = new EventEmitter<UserUpdateDTO>();
+  @ViewChild('newSkill') newSkill?: ElementRef;
+
 
   constructor( private userService: UserService) {
     this.editMessage = '';
     this.editMessageClass = '';
+    this.userUpdateDTO = 
+    {
+      education: [], 
+    };
   }
   ngOnInit(): void {
     this.initializeModel();
@@ -30,8 +45,17 @@ export class CardSettingsComponent {
     if (this.user) {
       this.userUpdateDTO = { ...this.user };
       this.userUpdateDTO.dateBirth = this.formatDate(this.user.dateBirth);
-
       this.userUpdateDTOChanged.emit(this.userUpdateDTO);
+      this.userUpdateDTO.education = this.userUpdateDTO.education ?? [];
+      this.userUpdateDTO.experience = this.userUpdateDTO.experience ?? [];
+      this.userUpdateDTO.skills = this.userUpdateDTO.skills ?? [];
+    }
+    else {
+      this.userUpdateDTO = {
+        education: [],
+        experience: [],
+        skills: []
+      };    
     }
   }
   private formatDate(dateString: string | undefined): string {
@@ -64,26 +88,100 @@ export class CardSettingsComponent {
 
   updateUserInfos(settingsForm: NgForm): void {
     if (settingsForm.valid && this.userUpdateDTO) {
-      /* && this.userUpdateDTO && this.userUpdateDTO._id */ 
       this.userService.updateUser(this.userUpdateDTO as User).subscribe({
         next: (response) => {
-          console.log('Mise à jour réussie', response);
-          console.log(this.userUpdateDTO.dateBirth);
-          console.log(this.user?.dateBirth);
-
+          this.showErrorMessage('Update successful', "success");
           if (this.user) {
             Object.assign(this.user, this.userUpdateDTO);
           }
         },
         error: (error) => {
-          console.error('Erreur lors de la mise à jour', error);
+          this.showErrorMessage('Erreur lors de la mise à jour');
 
         }
       });
     } else {
-      console.log("Le formulaire n'est pas valide ou les données sont manquantes.");
+      this.showErrorMessage('Le formulaire n est pas valide ou les données sont manquantes');
+      return;
+
+    }
+  }
+
+  addEducation() {
+
+    if (this.userUpdateDTO && this.userUpdateDTO.education) {
+      this.userUpdateDTO?.education?.push({ title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' });
+    }
+  }
+
+  removeEducation(index: number) {
+    if (this.userUpdateDTO && this.userUpdateDTO.education) {
+      this.userUpdateDTO.education.splice(index, 1);
+    }
+  }
+
+  validateEducation(): void {
+    this.isEducationInputEnabled = false;
+  }
+
+  editEducation():void
+  {
+    this.isEducationInputEnabled = !this.isEducationInputEnabled;
+  }
+
+  
+  addExperience() {
+
+    if (this.userUpdateDTO && this.userUpdateDTO.experience) {
+      this.userUpdateDTO?.experience?.push({ title: '', period: { startDate: new Date(), endDate: new Date() }, description: '' });
     }
   }
 
 
+  removeExperience(index: number) {
+    if (this.userUpdateDTO && this.userUpdateDTO.experience) {
+      this.userUpdateDTO.experience.splice(index, 1);
+    }
+  }
+
+  editExperience():void
+  {
+    this.isExperienceInputEnabled = !this.isExperienceInputEnabled;
+
+  }
+
+  validateExperience(): void {
+
+    this.isExperienceInputEnabled = false;
+
+  }
+
+  addSkill(skill: string) {
+    if (!this.userUpdateDTO.skills) {
+      this.userUpdateDTO.skills = [];
+    }
+    if (skill) {
+      this.userUpdateDTO.skills.push(skill);
+    }
+    this.isSkillInputEnabled = true;
+  }
+    
+  removeSkill(index: number) {
+    this.userUpdateDTO.skills?.splice(index, 1);
+  }
+
+
+  isEducationValid(): boolean {
+    return this.user?.education?.every(edu => 
+      edu.title && edu.period.startDate && edu.period.endDate
+    ) ?? false;
+  }
+
+  isExperienceValid(): boolean {
+    return this.user?.experience?.every(exp => 
+      exp.title && exp.period.startDate && exp.period.endDate
+    ) ?? false;
+  }
+
 }
+

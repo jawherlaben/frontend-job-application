@@ -9,7 +9,7 @@ import { Company } from 'src/app/Model/Company';
 export class CompanyListComponent {
   @Input() companies: Company[] = [];
 
-  followCompany(id: string): void {
-    console.log('Following company with id:', id);
+  followCompany(company: Company): void {
+    location.href = company.website;
   }
 }

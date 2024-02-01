@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { HttpClient} from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 
+import { CompanyUpdateDTO } from '../settings/company/card-company-settings/CompanyUpdateDTO';
+
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +49,6 @@ export class CompanyService {
     .delete(`${environment.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${id}`);
   }
 
-
   getCompanyFromToken(): void {
     const storedToken = localStorage.getItem('currentUserToken');
 
@@ -67,10 +68,10 @@ export class CompanyService {
     return decodedToken._id;
   }
 
-
   updateCompany(company: Company): Observable<any> {
     const url = `${this.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${company._id}`;
     return this.httpClient.patch(url, company);
+
   }
 
 

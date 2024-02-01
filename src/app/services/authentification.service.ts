@@ -26,8 +26,11 @@ export class AuthenticationService {
   private isCompanyUserSubject = new BehaviorSubject<boolean>(false);
   isCompanyUser = this.isCompanyUserSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.checkUserLoggedIn();
+  }
 
+  // Cette fonction permet de créer un header pour les requêtes HTTP qu'on va utiliser dans le service
   getHeaders() {
     return new HttpHeaders({ 'Content-Type': 'application/json' });
   }
@@ -55,7 +58,7 @@ export class AuthenticationService {
         map(response => {
           if (response && response.token) {
             localStorage.setItem('currentUserToken', response.token);
-            this.isLoggedInSubject.next(true);
+            this.isLoggedInSubject.next(false);
             this.isCompanyUserSubject.next(true);
             this.redirectBasedOnRole('company'); 
           }
@@ -71,7 +74,7 @@ export class AuthenticationService {
 
   companyRegister(companyForm: CompanyFormDTO): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.post<RegistrationResponse>(this.authUrl + '/company', companyForm, { headers });
+    return this.http.post<RegistrationResponse>(this.authUrl + '/auth/company-register', companyForm, { headers });
   }
 
   logout(): void {
@@ -85,21 +88,27 @@ export class AuthenticationService {
     if (role === 'user') {
       this.router.navigate(['/user-component']);
     } else if (role === 'company') {
-      this.router.navigate(['/company-dashboard']);
+      this.router.navigate(['/company-component']);
     }
   }
 
-  isUserLoggedIn(): boolean {
-    return !!localStorage.getItem('currentUserToken');
-  }
-
-  isCompany(): boolean {
+  checkUserLoggedIn(): void {
     const token = localStorage.getItem('currentUserToken');
-    if (token) {
+    if(token) {
       const tokenPayload = this.decodeToken(token);
-      return tokenPayload.role === 'company';
-    } else {
-      return false;
+      
+      if (tokenPayload.role == 'user') {
+        this.isLoggedInSubject.next(true);
+        this.isCompanyUserSubject.next(false);
+      }
+      else {
+        this.isLoggedInSubject.next(false);
+        this.isCompanyUserSubject.next(true);
+      }
+    }
+    else {
+      this.isLoggedInSubject.next(false);
+      this.isCompanyUserSubject.next(false);
     }
   }
 

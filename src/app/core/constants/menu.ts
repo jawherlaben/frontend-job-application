@@ -1,4 +1,4 @@
-import { MenuItem } from "src/app/Model/menu-model/menu-model";
+import { MenuItem } from "src/app/Model/menu-model";
 
 export class Menu {
   public static pages: MenuItem[] = [
@@ -7,47 +7,54 @@ export class Menu {
       separator: false,
       items: [
         {
-          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Profile',
-          route: '/user-component/profile',
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Dashboard',
+          icon: 'assets/icons/heroicons/outline/eye.svg',
+          label: 'Accueil',
           route: '/user-component/user-dashboard',
           
         },
+        {
+          icon: 'assets/icons/heroicons/outline/users.svg',
+          label: 'Profile',
+          route: '/user-component/profile',
+        },
       ],
     },
-
     {
-      group: 'Settings',
+      group: 'Parametres',
       separator: false,
       items: [
         {
-          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Profile Settings',
+          icon: 'assets/icons/heroicons/outline/lock-closed.svg',
+          label: 'Parametres Profile',
           route: '/user-component/user-settings',
-          children: [
-            { label: 'Informations personnelles', route: '/user-component/user-settings' },
-            { label: 'Auth Settings',route:'/user-component/auth-settings',},
-            { label: 'Paiements', route: '/user-component/payments-settings' },
-            { label: 'Proflix Verified', route: '/user-component/proflix-verified-settings' },
-          ],
         },
-      ],
-    },
-
-    {
-      group: 'Notifications',
-      separator: false,
-      items: [
         {
-          icon: 'assets/icons/heroicons/outline/bell.svg',
-          label: 'Notifications',
-          route: '/user-component/user-notifications',
+          icon: 'assets/icons/heroicons/outline/information-circle.svg',
+          label: 'Parametres Compte',
+          route:'/user-component/auth-settings',
         },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+        //   label: 'Paiements', 
+        //   route: '/user-component/payments-settings' 
+        // },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+        //   label: 'Proflix Verified', 
+        //   route: '/user-component/proflix-verified-settings' 
+        // },
       ],
     },
+    // {
+    //   group: 'Notifications',
+    //   separator: false,
+    //   items: [
+    //     {
+    //       icon: 'assets/icons/heroicons/outline/bell.svg',
+    //       label: 'Notifications',
+    //       route: '/user-component/user-notifications',
+    //     },
+    //   ],
+    // },
   ];
 }

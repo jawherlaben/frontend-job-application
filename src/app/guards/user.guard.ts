@@ -6,13 +6,29 @@ import { AuthenticationService } from '../services/authentification.service';
   providedIn: 'root'
 })
 export class UserGuardClass {
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  isUserLoggedIn: boolean = false;
+  isCompanyLoggedIn: boolean = false;
+
+  constructor(private authService: AuthenticationService, private router: Router) {
+    this.authService.isLoggedIn.subscribe({
+      next: (value) => {
+        this.isUserLoggedIn = value;
+      }
+    });
+
+    this.authService.isCompanyUser.subscribe({
+      next: (value) => {
+        this.isCompanyLoggedIn = value;
+      }
+    });
+  }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.authService.isUserLoggedIn()) {
-      this.router.navigate(['/authentification']);
+    if (!this.isUserLoggedIn) {
+      this.router.navigate(['/home']);
       return false;
     }
+
     return true;
   }
 }
