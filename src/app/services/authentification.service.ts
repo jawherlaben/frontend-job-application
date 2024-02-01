@@ -58,7 +58,7 @@ export class AuthenticationService {
         map(response => {
           if (response && response.token) {
             localStorage.setItem('currentUserToken', response.token);
-            this.isLoggedInSubject.next(true);
+            this.isLoggedInSubject.next(false);
             this.isCompanyUserSubject.next(true);
             this.redirectBasedOnRole('company'); 
           }
@@ -88,7 +88,7 @@ export class AuthenticationService {
     if (role === 'user') {
       this.router.navigate(['/user-component']);
     } else if (role === 'company') {
-      this.router.navigate(['/company-dashboard']);
+      this.router.navigate(['/company-component']);
     }
   }
 
@@ -97,10 +97,14 @@ export class AuthenticationService {
     if(token) {
       const tokenPayload = this.decodeToken(token);
       
-      if (tokenPayload.role == 'user')
+      if (tokenPayload.role == 'user') {
         this.isLoggedInSubject.next(true);
-      else
+        this.isCompanyUserSubject.next(false);
+      }
+      else {
+        this.isLoggedInSubject.next(false);
         this.isCompanyUserSubject.next(true);
+      }
     }
     else {
       this.isLoggedInSubject.next(false);

@@ -15,6 +15,8 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserGuard } from './guards/user.guard';
 import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
 import { CompanyGuard } from './guards/company.guard';
+import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
+import { CompanySettingsComponent } from './settings/company/company-settings.component';
 import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
@@ -35,9 +37,11 @@ const routes: Routes = [
     { path: 'company/:id', component: UserNotificationsComponent },
   ]},
 
-  { path:'company-dashboard', redirectTo: '/company-dashboard/profile', pathMatch: 'full'},
-  { path: 'company-dashboard', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [
-    { path: 'profile', component: CompanyDashboardComponent },
+  { path:'company-component', redirectTo: '/company-component/profile', pathMatch: 'full'},
+  { path: 'company-component', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [  
+    { path: 'profile', component: CompanyProfilComponent },
+    { path: 'company-dashboard', component: CompanyDashboardComponent},
+    { path: 'company-settings', component: CompanySettingsComponent },
   ]},
   
   { path: 'forbidden', component: AccessForbiddenComponent },

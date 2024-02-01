@@ -33,6 +33,7 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './dashboard/user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './dashboard/user/head-user-dashboard/head-user-dashboard.component';
 import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.component';
+import { CompanyProfileMenuComponent } from './navbar/company-profile-menu/company-profile-menu.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarMenuComponent } from './sidebar/sidebar-menu/sidebar-menu.component';
@@ -58,6 +59,12 @@ import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 import { ImagePipePipe } from './image-pipe.pipe';
+import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
+import { CompanyHeadProfileComponent } from './profile/company-profil/company-head-profile/company-head-profile.component';
+import { CompanySettingsComponent } from './settings/company/company-settings.component';
+import { CardCompanyUpdateComponent } from './settings/company/card-company-update/card-company-update.component';
+import { CardCompanySettingsComponent } from './settings/company/card-company-settings/card-company-settings.component';
+import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-dashboard/head-company-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +101,7 @@ import { ImagePipePipe } from './image-pipe.pipe';
     SidebarComponent,
     SidebarMenuComponent,
     ProfileMenuComponent,
+    CompanyProfileMenuComponent,
     UserSettingsComponent,
     UserNotificationsComponent,
     CardSettingsComponent,
@@ -115,6 +123,12 @@ import { ImagePipePipe } from './image-pipe.pipe';
     UserSkillsCardComponent,
     UserExperienceCardComponent,
     ImagePipePipe,
+    CompanyProfilComponent,
+    CompanyHeadProfileComponent,
+    CompanySettingsComponent,
+    CardCompanyUpdateComponent,
+    CardCompanySettingsComponent,
+    HeadCompanyDashboardComponent
   ],
   imports: [
     BrowserModule,

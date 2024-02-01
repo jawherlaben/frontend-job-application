@@ -4,21 +4,25 @@
   </a>
   
   <div class="flex justify-center gap-8 w-full text-white text-lg pt-1">
-    <ng-container *ngIf="!isUserLoggedIn">
+    <ng-container *ngIf="!isUserLoggedIn && !isCompanyUser">
       <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
     </ng-container>
     <ng-container *ngIf="isUserLoggedIn && !isCompanyUser">
-      <app-underlined-link [routerLink]="['user-component']">Tableau de bord </app-underlined-link>
+      <app-underlined-link [routerLink]="['user-component']">Accueil </app-underlined-link>
     </ng-container>
   
-    <ng-container *ngIf="isUserLoggedIn && isCompanyUser">
-      <app-underlined-link [routerLink]="['company-dashboard']">Tableau de bord </app-underlined-link>
+    <ng-container *ngIf="!isUserLoggedIn && isCompanyUser">
+      <app-underlined-link [routerLink]="['company-component']">Accueil </app-underlined-link>
     </ng-container>
 
     <app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link>
     
-    <div class="relative" *ngIf="isUserLoggedIn">
+    <div class="relative" *ngIf="isUserLoggedIn && !isCompanyUser">
       <app-profile-menu [user]="user"> </app-profile-menu>
+    </div>
+    
+    <div class="relative" *ngIf="!isUserLoggedIn && isCompanyUser">
+      <app-company-profile-menu [company]="company"></app-company-profile-menu>
     </div>
 
   </div>

@@ -25,7 +25,7 @@ export class LogoutGuardClass {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if(this.isCompanyLoggedIn) {
-      this.router.navigate(['/company-dashboard/profile']);
+      this.router.navigate(['/company-component/profile']);
       return false
     }
     

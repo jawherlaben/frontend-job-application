@@ -3,8 +3,8 @@
     <h1 *ngIf="authType == 'inscrire'" class="text-xl font-medium text-center mb-2">Inscription</h1>
     <h1 *ngIf="authType == 'login'" class="text-xl font-medium text-center mb-2">Se connecter</h1>
     <div class="m-3 flex justify-center items-center">
-      <button type="button" class="font-medium cursor-pointer border-b-2 p-3 w-full transition-color duration-300" [class.border-b-blue-500]="connectType === 'user'" (click)="setconnectType('user')">User</button>
-      <button type="button" class="font-medium cursor-pointer border-b-2 p-3 w-full transition-color duration-300" [class.border-b-blue-500]="connectType === 'company'" (click)="setconnectType('company')">Company</button>
+      <button type="button" class="font-medium cursor-pointer border-b-2 p-3 w-full transition-color duration-300" [class.border-b-blue-500]="connectType === 'user'" (click)="setconnectType('user')">Utilisateur</button>
+      <button type="button" class="font-medium cursor-pointer border-b-2 p-3 w-full transition-color duration-300" [class.border-b-blue-500]="connectType === 'company'" (click)="setconnectType('company')">Entreprise</button>
     </div>
     
     <div *ngIf="authType == 'login'">

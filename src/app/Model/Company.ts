@@ -1,7 +1,7 @@
 export class Company {
   id: string;
   name: string;
-  address: string;
+  country: string;
   description: string;
   avatar: string;
   website: string;
@@ -10,7 +10,7 @@ export class Company {
   constructor(
     id: string,
     name: string,
-    address: string,
+    country: string,
     description: string,
     avatar: string,
     website: string,
@@ -18,7 +18,7 @@ export class Company {
   ) {
     this.id = id;
     this.name = name;
-    this.address = address;
+    this.country = country;
     this.description = description;
     this.avatar = avatar;
     this.website = website;

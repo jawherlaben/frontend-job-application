@@ -15,7 +15,7 @@ export class ProfileMenuComponent implements OnInit {
   isUserLoggedIn = false; 
   isCompanyUser = false; 
 
-  constructor(private authService: AuthenticationService,private userService: UserService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
     this.authService.isLoggedIn.subscribe(loggedIn => {
@@ -24,11 +24,6 @@ export class ProfileMenuComponent implements OnInit {
         this.authService.isCompanyUser.subscribe(isCompanyUser => {
           this.isCompanyUser = isCompanyUser;
         });
-
-      this.userService.getUserFromToken();
-      this.userService.currentUser.subscribe(user => {
-        this.user = user;
-      });
       }
     });
   }
