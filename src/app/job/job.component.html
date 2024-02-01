@@ -5,7 +5,6 @@
     </h1>
 
     <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
-      <!-- Titre de l'emploi -->
       <div class="mb-4">
         <label for="title" class="block text-sm font-medium text-gray-600"
           >Titre de l'Emploi</label
@@ -17,20 +16,7 @@
           class="mt-1 p-2 w-full border rounded-md"
         />
       </div>
-      <!-- Recruiter -->
-      <div class="mb-4">
-        <label for="recruiter" class="block text-sm font-medium text-gray-600"
-          >Recruiter</label
-        >
-        <input
-          type="text"
-          id="recruiter"
-          formControlName="recruiter"
-          class="mt-1 p-2 w-full border rounded-md"
-        />
-      </div>
 
-      <!-- Description de l'emploi -->
       <div class="mb-4">
         <label for="description" class="block text-sm font-medium text-gray-600"
           >Description de l'Emploi</label
@@ -42,7 +28,6 @@
         ></textarea>
       </div>
 
-      <!-- Détails de l'emploi -->
       <div class="mb-4">
         <label for="body" class="block text-sm font-medium text-gray-600"
           >Détails de l'Emploi</label
@@ -54,7 +39,6 @@
         ></textarea>
       </div>
 
-      <!-- Tags -->
       <div class="mb-4">
         <label for="tags" class="block mb-2 text-sm font-medium text-gray-700">
           Tags
@@ -75,7 +59,6 @@
         </ng-select>
       </div>
 
-      <!-- Salaire -->
       <div class="mb-4">
         <label for="pay" class="block text-sm font-medium text-gray-600"
           >Salaire</label
@@ -95,7 +78,7 @@
         </ng-select>
       </div>
 
-      <!-- Type de poste -->
+
       <div class="mb-4">
         <label for="type" class="block mb-2 text-sm font-medium text-gray-700">
           Type de Poste

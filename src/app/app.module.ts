@@ -62,6 +62,7 @@ import { UserExperienceCardComponent } from './profile/user-profil/user-experien
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginInterceptorProvider } from './interceptors/login.interceptor';
 
 
 @NgModule({
@@ -138,6 +139,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     
   ],
   providers: [
+    LoginInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,6 @@ export interface JobDto {
   body: string;
   pay: string;
   type: JOB_TYPES;
-  Recruiter: String ;
+  recruiter: String ;
   tags: Skills[];
 }
