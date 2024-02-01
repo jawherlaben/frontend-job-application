@@ -72,6 +72,7 @@ import { CompanySettingsComponent } from './settings/company/company-settings.co
 import { CardCompanyUpdateComponent } from './settings/company/card-company-update/card-company-update.component';
 import { CardCompanySettingsComponent } from './settings/company/card-company-settings/card-company-settings.component';
 import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-dashboard/head-company-dashboard.component';
+import { CompanyDashboardComponent } from './dashboard/company/company-dashboard/company-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-
     CompanySettingsComponent,
     CardCompanyUpdateComponent,
     CardCompanySettingsComponent,
-    HeadCompanyDashboardComponent
+    HeadCompanyDashboardComponent,
+    CompanyDashboardComponent
   ],
   imports: [
     BrowserModule,

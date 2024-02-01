@@ -68,11 +68,9 @@ export class CompanyService {
     return decodedToken._id;
   }
 
-  updateCompany(company: Company): Observable<any> {
+  updateCompany(company: CompanyUpdateDTO): Observable<Company> {
     const url = `${this.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${company._id}`;
-    return this.httpClient.patch(url, company);
-
+    return this.httpClient.patch<Company>(url, company);
   }
-
 
 }

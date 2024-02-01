@@ -42,9 +42,8 @@ export class CardCompanySettingsComponent {
     }
   }
 
-
-  
   updateCompanyInfos(settingsForm: NgForm): void {
+
     if (settingsForm.valid && this.companyUpdateDTO ) { 
       this.companyService.updateCompany(this.companyUpdateDTO).subscribe({
         next: (response) => {
@@ -58,14 +57,13 @@ export class CardCompanySettingsComponent {
         },
         error: (error) => {
           this.toastr.error('Erreur lors de la mise à jour');
-
         }
       });
     } else {
       this.toastr.error('Le formulaire n est pas valide ou les données sont manquantes');
-
       return;
     }
+
   }
 
 }

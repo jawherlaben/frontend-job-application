@@ -6,6 +6,7 @@ import { CompanyService } from '../services/company.service';
 import { Company } from '../Model/Company';
 import { User } from '../Model/user';
 import { UserService } from '../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-job-offers',
@@ -30,7 +31,8 @@ export class JobOffersComponent  implements OnInit {
     private router: Router,
     private jobOfferService: JobOfferService,
     private companyService: CompanyService,
-    private userService : UserService
+    private userService : UserService,
+    private toastr: ToastrService
 
      ) {}
 
@@ -58,8 +60,8 @@ export class JobOffersComponent  implements OnInit {
         });
       },
       error: (error) => {
-        // add toastr here
-        console.error('Error fetching job offers:', error);
+        this.toastr.error('Error fetching job offers');
+
       }
     });
   }
@@ -111,14 +113,14 @@ export class JobOffersComponent  implements OnInit {
 
     this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe(
       response => {
-        // toastr
-        console.log('Application sent!', response);
+        this.toastr.success('Application sent!');
+
         this.appliedJobs[jobId] = true;
 
       },
       error => {
-        // toastr
-        console.error('Error when applying to job:', error);
+        this.toastr.error('Error when applying to job:');
+
       }
     );
   }
@@ -136,8 +138,7 @@ export class JobOffersComponent  implements OnInit {
               }
             });
           },
-          // toastr
-          error => console.error('Erreur lors du chargement des candidatures:', error)
+          error => this.toastr.error('Erreur lors du chargement des candidatures:')
         );
       }
     });
