@@ -45,15 +45,15 @@ export class UserConnectComponent {
             if (response.token)
               this.toastr.success('Login successful', 'Success');  
             else
-              this.toastr.error('Erreur de connexion', 'Error'); 
+              this.toastr.error('Erreur ', 'Error'); 
           },
           error: (error) => {
-            this.toastr.error('Erreur de connexion', 'Error');  
+            this.toastr.error('Erreur ', 'Error');  
           }
         });
     }
     else {
-      this.toastr.error('Veuillez vérifier le formulaire.', 'Error'); 
+      this.toastr.error('Verfie you credentials.', 'Error'); 
     }
   }
   

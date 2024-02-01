@@ -127,7 +127,9 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+  preventDuplicates: true,
+}),
   ],
   providers: [
     
