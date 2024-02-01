@@ -1,8 +1,8 @@
 
 export interface CompanyUpdateDTO {
-  id?: string;
+  _id?: string;
   name?: string;
-  address?: string;
+  country?: string;
   description?: string;
   avatar?: string;
   website?: string;

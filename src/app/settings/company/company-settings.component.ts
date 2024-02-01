@@ -14,7 +14,7 @@ export class CompanySettingsComponent {
   public company: Company | undefined;
   companyUpdateDTO: CompanyUpdateDTO | null = null;
 
-  constructor(private companyService: CompanyService, private route: ActivatedRoute) {}
+  constructor(private companyService: CompanyService) {}
 
   ngOnInit(): void {
     this.companyService.getCompanyFromToken();
@@ -23,10 +23,7 @@ export class CompanySettingsComponent {
     });
   }
 
-
   updateCompanyUpdateDTO(companyUpdateDTO: CompanyUpdateDTO): void {
     this.companyUpdateDTO = companyUpdateDTO;
   }
-
-
 }

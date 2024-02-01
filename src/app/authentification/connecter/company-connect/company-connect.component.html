@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-2 [&>input]:px-5 [&>input]:py-2 [&>input]:rounded-md">
         <div class="self-end px-5" [class]="loginMessageClass">{{ loginMessage }}</div>
         
-        <label for="email">Company Email</label>
+        <label for="email">Email Entreprise</label>
         <input type="email" id="email" name="email" formControlName="email" placeholder="Email" required />
         <div *ngIf="isInvalidAndTouched('email')" class="text-red-500"> Veuillez saisir un adresse mail valide. </div>
 

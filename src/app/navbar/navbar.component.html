@@ -8,11 +8,11 @@
       <app-underlined-link [routerLink]="['home']">Accueil </app-underlined-link>
     </ng-container>
     <ng-container *ngIf="isUserLoggedIn && !isCompanyUser">
-      <app-underlined-link [routerLink]="['user-component']">Tableau de bord </app-underlined-link>
+      <app-underlined-link [routerLink]="['user-component']">Accueil </app-underlined-link>
     </ng-container>
   
     <ng-container *ngIf="!isUserLoggedIn && isCompanyUser">
-      <app-underlined-link [routerLink]="['company-component']">Tableau de bord </app-underlined-link>
+      <app-underlined-link [routerLink]="['company-component']">Accueil </app-underlined-link>
     </ng-container>
 
     <app-underlined-link [routerLink]="['contact']">Contact</app-underlined-link>

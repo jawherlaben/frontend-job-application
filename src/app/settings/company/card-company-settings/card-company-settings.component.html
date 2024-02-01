@@ -19,6 +19,13 @@
               />
               <div *ngIf="!name.valid && name.touched" class="text-red-500"> Veuillez saisir un nom valide. </div>
           </div>
+          <div class="w-full">
+            <label class="block uppercase text-xs font-bold mb-2">Email</label>
+            <input class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              type="email" id="email"  [class.border-red-500]="!website.valid && website.touched" #website="ngModel" [(ngModel)]="companyUpdateDTO.website" required name="website"
+            />
+            <span *ngIf="!website.valid && website.touched" class="text-red-500"> Veuillez saisir un website valide. </span>
+          </div>
         </div>
   
         <hr class="mt-6 border-b-1" />
@@ -28,21 +35,21 @@
         </h6>
         <div class="flex gap-1 px-4 my-2">
           <div class="w-full">
-              <label class="block uppercase text-xs font-bold mb-2">Adresse</label>
-              <input class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                type="text" id="address" [class.border-red-500]="!address.valid && address.touched" #address="ngModel" [(ngModel)]="companyUpdateDTO.address" required name="address" minlength="3" maxlength="32"
-              />
-              <div *ngIf="!address.valid && address.touched" class="text-red-500"> Veuillez saisir une adresse valide. </div>
-          </div>
-
-          <div class="w-full">
-            <label class="block uppercase text-xs font-bold mb-2">Email</label>
+            <label class="block uppercase text-xs font-bold mb-2">Adresse</label>
             <input class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-              type="email" id="email"  [class.border-red-500]="!website.valid && website.touched" #website="ngModel" [(ngModel)]="companyUpdateDTO.website" required name="website"
+              type="text" id="address" [class.border-red-500]="!address.valid && address.touched" #address="ngModel" [(ngModel)]="companyUpdateDTO.country" required name="address" minlength="3" maxlength="32"
             />
-            <span *ngIf="!website.valid && website.touched" class="text-red-500"> Veuillez saisir un website valide. </span>
+            <div *ngIf="!address.valid && address.touched" class="text-red-500"> Veuillez saisir une adresse valide. </div>
+          </div>
+          <div class="w-full">
+            <label class="block uppercase text-xs font-bold mb-2">Etat</label>
+            <input class="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              type="text" id="state" [class.border-red-500]="!state.valid && state.touched" #state="ngModel" [(ngModel)]="companyUpdateDTO.state" required name="state" minlength="3" maxlength="32"
+            />
+            <div *ngIf="!state.valid && state.touched" class="text-red-500"> Veuillez saisir un état valide. </div>
           </div>
         </div>
+        
 
         <div class="flex px-4">
             <div class="relative w-full mb-3">

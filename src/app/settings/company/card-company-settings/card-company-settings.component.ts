@@ -3,6 +3,7 @@ import { Company } from 'src/app/Model/Company';
 import { CompanyUpdateDTO } from './CompanyUpdateDTO';
 import { CompanyService } from 'src/app/services/company.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-company-settings',
@@ -20,18 +21,13 @@ export class CardCompanySettingsComponent {
 
   @Output() companyUpdateDTOChanged = new EventEmitter<CompanyUpdateDTO>();
 
-  constructor( private companyService: CompanyService) {
+  constructor(private companyService: CompanyService, private router: Router) {
     this.editMessage = '';
     this.editMessageClass = '';
   }
 
   ngOnInit(): void {
-    this.initializeModel();
-  }
-
-  private initializeModel(): void {
     this.companyUpdateDTOChanged.emit(this.companyUpdateDTO);
-
     
     if (this.company) {
       this.companyUpdateDTO = { ...this.company };
@@ -44,7 +40,6 @@ export class CardCompanySettingsComponent {
       return;
     }
   }
-
 
   showErrorMessage(message: string, type: string = 'error') {
     this.editMessage = message;
@@ -60,11 +55,14 @@ export class CardCompanySettingsComponent {
   
   updateCompanyInfos(settingsForm: NgForm): void {
     if (settingsForm.valid && this.companyUpdateDTO) {
-      this.companyService.updateCompany(this.companyUpdateDTO as Company).subscribe({
+      this.companyService.updateCompany(this.companyUpdateDTO).subscribe({
         next: (response) => {
           this.showErrorMessage('Update successful', "success");
           if (this.company) {
             Object.assign(this.company, this.companyUpdateDTO);
+            this.companyUpdateDTOChanged.emit(this.companyUpdateDTO);
+
+            this.router.navigate(['/company-component/profile']);
           }
         },
         error: (error) => {

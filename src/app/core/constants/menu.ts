@@ -7,30 +7,30 @@ export class Menu {
       separator: false,
       items: [
         {
+          icon: 'assets/icons/heroicons/outline/eye.svg',
+          label: 'Accueil',
+          route: '/user-component/user-dashboard',
+          
+        },
+        {
           icon: 'assets/icons/heroicons/outline/users.svg',
           label: 'Profile',
           route: '/user-component/profile',
         },
-        {
-          icon: 'assets/icons/heroicons/outline/eye.svg',
-          label: 'Dashboard',
-          route: '/user-component/user-dashboard',
-          
-        },
       ],
     },
     {
-      group: 'Settings',
+      group: 'Parametres',
       separator: false,
       items: [
         {
           icon: 'assets/icons/heroicons/outline/lock-closed.svg',
-          label: 'Profile Settings',
+          label: 'Parametres Profile',
           route: '/user-component/user-settings',
         },
         {
           icon: 'assets/icons/heroicons/outline/information-circle.svg',
-          label: 'Auth Settings',
+          label: 'Parametres Compte',
           route:'/user-component/auth-settings',
         },
         // {

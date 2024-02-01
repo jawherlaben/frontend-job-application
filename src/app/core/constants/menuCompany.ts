@@ -19,12 +19,12 @@ export class MenuCompany {
       ],
     },
     {
-      group: 'Settings',
+      group: 'Paramètres',
       separator: false,
       items: [
         {
           icon: 'assets/icons/heroicons/outline/lock-closed.svg',
-          label: 'Profile Settings',
+          label: 'Paramètres Profile',
           route: '/company-component/company-settings',
         }
       ],
