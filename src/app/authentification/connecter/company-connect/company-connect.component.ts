@@ -39,17 +39,17 @@ export class CompanyConnectComponent {
         .subscribe({
           next: (response) => {
             if (response.token)
-              this.toastr.success('Login successful', 'Success');  // Toastr success message
+              this.toastr.success('Login successful', 'Success');  
             else
-              this.toastr.error('Erreur de connexion', 'Error');  // Toastr error message
+              this.toastr.error('Erreur de connexion', 'Error');
           },
           error: (error) => {
-            this.toastr.error('Erreur de connexion', 'Error');  // Toastr error message
+            this.toastr.error('Erreur de connexion', 'Error');  
           }
         });
     }
     else {
-      this.toastr.error('Veuillez vérifier le formulaire.', 'Error');  // Toastr error message
+      this.toastr.error('Veuillez vérifier le formulaire.', 'Error');
     }
   }
   

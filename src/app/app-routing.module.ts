@@ -19,6 +19,8 @@ import { CompanyGuard } from './guards/company.guard';
 import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
 import { CompanySettingsComponent } from './settings/company/company-settings.component';
 import { LogoutGuard } from './guards/logout.guard';
+import { AuthentificationComponent } from './authentification/authentification.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,7 +31,7 @@ const routes: Routes = [
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: AuthenticatedDashboardComponent, canActivate: [UserGuard], canActivateChild: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
-    { path: 'user-dashboard', component: UserDashboardComponent }
+    { path: 'user-dashboard', component: UserDashboardComponent },
 
     { path: 'user-settings', component: UserSettingsComponent },
     { path: 'auth-settings', component: UserSettingsAuthComponent },
