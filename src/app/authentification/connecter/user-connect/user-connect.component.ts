@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentification.service';
 import { AuthentificationTypeService } from '../../authentification-type.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-connect',
@@ -17,7 +18,8 @@ export class UserConnectComponent {
     this.authentificationService.emitUserType();
   }
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService, private authentificationService: AuthentificationTypeService ) {
+  constructor( private formBuilder: FormBuilder, private authService: AuthenticationService, private authentificationService: AuthentificationTypeService,    private toastr: ToastrService  
+    ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]]
@@ -29,35 +31,25 @@ export class UserConnectComponent {
     return ctrl !== null && ctrl.invalid && ctrl.touched;
   }
 
-  showErrorMessage(message: string, type: string = 'error') {
-    this.loginMessage = message;
-    if (type == 'error')
-      this.loginMessageClass = 'text-red-500';
-    else
-      this.loginMessageClass = 'text-green-500';
-
-    setTimeout(() => {
-      this.loginMessage = '';
-    }, 5000);
-  }
+  
 
   onSubmit() {
     if (this.authForm.valid) {
       this.authService.userLogin(this.authForm.value.email, this.authForm.value.password)
         .subscribe({
           next: (response) => {
-          if (response.token)
-            this.showErrorMessage('Login successful', "success");
-          else
-            this.showErrorMessage('Erreur de connexion');
+            if (response.token)
+              this.toastr.success('Login successful', 'Success');  
+            else
+              this.toastr.error('Erreur de connexion', 'Error'); 
           },
           error: (error) => {
-            this.showErrorMessage('Erreur de connexion');
+            this.toastr.error('Erreur de connexion', 'Error');  
           }
         });
     }
     else {
-      this.showErrorMessage('Erreur de connexion');
+      this.toastr.error('Veuillez vérifier le formulaire.', 'Error'); 
     }
   }
 }

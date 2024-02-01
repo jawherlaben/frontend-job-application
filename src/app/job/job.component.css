@@ -1,0 +1,8 @@
+.custom-dropdown-panel .ng-dropdown-panel-items {
+    background-color: white !important; /* Force white background */
+  }
+  
+  .custom-dropdown-option .ng-option {
+    background-color: white !important; /* Force white background on individual options */
+  }
+  

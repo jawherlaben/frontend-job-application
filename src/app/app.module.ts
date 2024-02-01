@@ -33,6 +33,8 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 import { UserDashboardComponent } from './dashboard/user/user-dashboard/user-dashboard.component';
 import { HeadUserDashboardComponent } from './dashboard/user/head-user-dashboard/head-user-dashboard.component';
 import { ProfileMenuComponent } from './navbar/profile-menu/profile-menu.component';
+import { JobComponent } from './job/job.component';
+
 import { CompanyProfileMenuComponent } from './navbar/company-profile-menu/company-profile-menu.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -57,7 +59,12 @@ import { UserProfilComponent } from './profile/user-profil/user-profil.component
 import { UserEducationCardComponent } from './profile/user-profil/user-education-card/user-education-card.component';
 import { UserSkillsCardComponent } from './profile/user-profil/user-skills-card/user-skills-card.component';
 import { UserExperienceCardComponent } from './profile/user-profil/user-experience-card/user-experience-card.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginInterceptorProvider } from './interceptors/login.interceptor';
+
 import { ImagePipePipe } from './image-pipe.pipe';
 import { CompanyProfilComponent } from './profile/company-profil/company-profil.component';
 import { CompanyHeadProfileComponent } from './profile/company-profil/company-head-profile/company-head-profile.component';
@@ -96,6 +103,7 @@ import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-
     UserConnectComponent,
     CompanyConnectComponent,
     JobOffersComponent,
+    JobComponent,
     UserDashboardComponent,
     HeadUserDashboardComponent,
     SidebarComponent,
@@ -136,11 +144,18 @@ import { HeadCompanyDashboardComponent } from './dashboard/company/head-company-
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgSelectModule ,
     AngularSvgIconModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+    }),
+    BrowserAnimationsModule, 
+    
   ],
   providers: [
-    LoginInterceptorProvider,
+    LoginInterceptorProvider
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

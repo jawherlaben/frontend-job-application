@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AccessForbiddenComponent } from './error/access-forbidden/access-forbidden.component';
 import { NonExistentURLsComponent } from './error/non-existent-urls/non-existent-urls.component';
+import { JobComponent } from './job/job.component';
 import { UserDashboardComponent } from './dashboard/user/user-dashboard/user-dashboard.component';
 import { UserSettingsComponent } from './settings/user/user-settings.component';
 import { UserNotificationsComponent } from './notifications/user-notifications/user-notifications.component';
@@ -21,13 +22,14 @@ import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'job', component: JobComponent },
   { path: 'home', component: HomeComponent, canActivate: [LogoutGuard] },
   { path: 'contact', component: ContactComponent },
 
   { path:'user-component', redirectTo: '/user-component/user-dashboard', pathMatch: 'full'},
   { path: 'user-component', component: AuthenticatedDashboardComponent, canActivate: [UserGuard], canActivateChild: [UserGuard], children: [
     { path: 'profile', component: UserProfilComponent },
-    { path: 'user-dashboard', component: UserDashboardComponent },
+    { path: 'user-dashboard', component: UserDashboardComponent }
 
     { path: 'user-settings', component: UserSettingsComponent },
     { path: 'auth-settings', component: UserSettingsAuthComponent },
@@ -36,6 +38,10 @@ const routes: Routes = [
     { path: 'user-notifications', component: UserNotificationsComponent },
     { path: 'company/:id', component: UserNotificationsComponent },
   ]},
+
+  { path: 'authentification', component: AuthentificationComponent },
+  { path: 'companies', component: CompaniesComponent },
+  { path: 'company-dashboard', component: CompanyDashboardComponent },
 
   { path:'company-component', redirectTo: '/company-component/profile', pathMatch: 'full'},
   { path: 'company-component', component: AuthenticatedDashboardComponent, canActivate: [CompanyGuard], canActivateChild: [CompanyGuard], children: [  

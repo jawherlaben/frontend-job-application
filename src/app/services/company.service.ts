@@ -5,6 +5,7 @@ import {classpathoperations, pathconst} from 'src/environments/environment';
 import { environment } from 'src/environments/environment';
 import { HttpClient} from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
+
 import { CompanyUpdateDTO } from '../settings/company/card-company-settings/CompanyUpdateDTO';
 
 
@@ -67,9 +68,10 @@ export class CompanyService {
     return decodedToken._id;
   }
 
-  updateCompany(company: CompanyUpdateDTO): Observable<Company> {
+  updateCompany(company: Company): Observable<any> {
     const url = `${this.apiUrl}/${pathconst.COMPANY_ENDPOINT_PATH}/${company._id}`;
-    return this.httpClient.patch<Company>(url, company);
+    return this.httpClient.patch(url, company);
+
   }
 
 

@@ -1,5 +1,5 @@
 export class Company {
-  id: string;
+  _id: string;
   name: string;
   country: string;
   description: string;
@@ -8,7 +8,7 @@ export class Company {
   state: string;
 
   constructor(
-    id: string,
+    _id: string,
     name: string,
     country: string,
     description: string,
@@ -16,7 +16,7 @@ export class Company {
     website: string,
     state: string
   ) {
-    this.id = id;
+    this._id = _id;
     this.name = name;
     this.country = country;
     this.description = description;
