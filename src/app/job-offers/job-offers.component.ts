@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
 import { JobOffer } from '../Model/job-offer';
 import { Router } from '@angular/router';
@@ -111,25 +111,22 @@ export class JobOffersComponent  implements OnInit {
     const comment = this.comments[jobId] || '';
     const cvFile = this.selectedCVs[jobId];
 
-    this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe(
-      response => {
+    this.jobOfferService.applyToJob(jobId, comment,cvFile).subscribe({
+      next: (response) => {
         this.toastr.success('Application sent!');
-
         this.appliedJobs[jobId] = true;
-
       },
-      error => {
+      error: () => {
         this.toastr.error('Error when applying to job:');
-
+        
       }
-    );
+    });
   }
 
   loadUserApplications(): void {
     this.userService.currentUser.subscribe(user => {
       if (user && user._id) {
-        this.userService.getUserApplications(user._id).subscribe(
-          applications => {
+        this.userService.getUserApplications(user._id).subscribe(applications => {
             applications.forEach(app => {
               if (Array.isArray(app.job) && app.job.length > 0) {
                 const jobId = app.job[0];
@@ -137,9 +134,7 @@ export class JobOffersComponent  implements OnInit {
                 this.selectedCVFileNames[jobId] = app.cv; 
               }
             });
-          },
-          error => this.toastr.error('Erreur lors du chargement des candidatures:')
-        );
+          });
       }
     });
   }

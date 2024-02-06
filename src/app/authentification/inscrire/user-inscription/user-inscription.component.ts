@@ -26,20 +26,19 @@ export class UserInscriptionComponent {
     this.loginMessageClass = '';
   }
 
-  
-
   onSubmit() {
     this.authService.userRegister(this.model)
       .subscribe({
         next: (response) => {
           if (response.statusCode == 201) {
-             this.toastr.success('Inscription Réussie', 'Succès');
-            this.router.navigate(['/home']);
-          }
-          /*
-          else {
+            this.router.navigate(['/home'])
+            .then(() => {
+                window.location.reload();
+                this.toastr.success('Inscription Réussie', 'Succès');
+            });
+          } else {
             this.toastr.error('Erreur de connexion', 'Erreur');
-          }*/
+          }
         },
         error: (errorResponse) => {
           if (errorResponse.error.message == "user already exists") {
